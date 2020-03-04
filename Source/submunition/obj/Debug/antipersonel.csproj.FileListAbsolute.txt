@@ -1,0 +1,4 @@
+C:\DEV\rimworld\antipersonel\Source\antipersonel\obj\Debug\antipersonel.csproj.CoreCompileInputs.cache
+C:\DEV\rimworld\antipersonel\Source\antipersonel\obj\Debug\antipersonel.csprojResolveAssemblyReference.cache
+C:\DEV\rimworld\antipersonel\Assemblies\submunition.dll
+C:\DEV\rimworld\antipersonel\Source\antipersonel\obj\Debug\submunition.dll

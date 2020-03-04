@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ResearchProjectDef>
+    <defName>Submunitions</defName>
+    <label>advanced munitions</label>
+    <description>Manufacture advanced munitions.</description>
+    <baseCost>2000</baseCost>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>Mortars</li>
+      <li>PrecisionRifling</li>
+    </prerequisites>
+    <researchViewX>10</researchViewX>
+    <researchViewY>5</researchViewY>
+  </ResearchProjectDef>
+    
+  <ThingDef ParentName="MakeableShellBase">
+    <defName>Shell_AirBurst</defName>
+    <label>air-burst shell</label>
+    <description>An High-tech warhead that detonates above the target and showers it with shrapnel for wide area damage !! Warning: targeting close range targets may result in unexpected friendly fire !!</description>
+    <graphicData>
+      <texPath>Submunition/Item/Shell_AirBurst</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>2</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+        <explosiveExpandPerStackcount>2</explosiveExpandPerStackcount>
+        <startWickHitPointsPercent>0.7</startWickHitPointsPercent>
+        <wickTicks>
+          <min>30</min>
+          <max>60</max>
+        </wickTicks>
+      </li>
+    </comps>
+    <projectileWhenLoaded>Bullet_Shell_AirBurst</projectileWhenLoaded>
+    <costList>
+      <Steel>80</Steel>
+      <Chemfuel>15</Chemfuel>
+    </costList>
+    <recipeMaker>
+      <workAmount>6400</workAmount>
+      <researchPrerequisite>Submunitions</researchPrerequisite>
+      <skillRequirements>
+        <Crafting>6</Crafting>
+      </skillRequirements>
+    </recipeMaker>
+    <statBases>
+      <MaxHitPoints>60</MaxHitPoints>
+      <MarketValue>150</MarketValue>
+      <Mass>20</Mass>
+    </statBases>
+    <thingSetMakerTags>
+      <li>RewardSpecial</li>
+    </thingSetMakerTags>
+  </ThingDef>
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Shell_AirBurst</defName>
+    <label>air-burst shell</label>
+    <graphicData>
+      <texPath>Submunition/Item/Bullet_Shell_AirBurst</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+    <thingClass>Submunition.Projectile_Submunition</thingClass>
+    <projectile>
+      <damageDef>Bomb</damageDef>
+      <damageAmountBase>12</damageAmountBase><!-- 8 -->
+      <armorPenetrationBase>0.5</armorPenetrationBase>
+      <stoppingPower>4.0</stoppingPower>
+      <explosionDelay>0</explosionDelay>
+      <speed>41</speed>
+      <explosionRadius>10</explosionRadius><!-- 10 -->
+      <flyOverhead>true</flyOverhead>
+      <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+      <soundExplode>Explosion_Smoke</soundExplode>
+      <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+      <soundAmbient>MortarRound_Ambient</soundAmbient>
+    </projectile>
+    <modExtensions>
+      <li Class="Submunition.DefSubmunitionExtension">
+        <submunitionCount>0</submunitionCount><!-- 0 -->
+        <submunitionMultiplier>4</submunitionMultiplier><!-- 3 -->
+        <submunitionExplosionRadius>1</submunitionExplosionRadius>
+    <!--<submunitionDelay>15</submunitionDelay> -->
+        <submunitionPreDetonation>70</submunitionPreDetonation>
+        <submunitionDuration>15</submunitionDuration>
+        <submunitionInterval>5</submunitionInterval>
+<!--    <submunitionDamageDef>Bullet</submunitionDamageDef>
+        <submunitionSoundExplode>BulletImpact_Ground</submunitionSoundExplode>
+        <submunitionSpawnThingDef>Filth_RubbleRock</submunitionSpawnThingDef>
+        <submunitionSpawnThingChance>0.25</submunitionSpawnThingChance> -->
+        <submunitionFragment>true</submunitionFragment>
+        <submunitionFragmentThingDef>SM_Bullet_Shell_AirBurst_Fragment</submunitionFragmentThingDef>
+      </li>
+    </modExtensions>
+  </ThingDef>
+  <ThingDef ParentName="BaseBullet">
+    <defName>SM_Bullet_Shell_AirBurst_Fragment</defName>
+    <label>shrapnel</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass> 
+    </graphicData>
+    <thingClass>Projectile_Explosive</thingClass>
+    <projectile>
+      <damageDef>SM_Shrapnel</damageDef>
+      <damageAmountBase>5</damageAmountBase>
+      <armorPenetrationBase>0.0</armorPenetrationBase>
+      <stoppingPower>0.3</stoppingPower>
+      <explosionDelay>0</explosionDelay>
+      <speed>60</speed>
+      <explosionRadius>2</explosionRadius>
+      <flyOverhead>true</flyOverhead>
+      <soundExplode>BulletImpact_Ground</soundExplode>
+      <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+    </projectile>
+  </ThingDef>
+  
+
+  <ThingDef ParentName="MakeableShellBase">
+    <defName>SM_Shell_Sabot</defName>
+    <label>sabot shell</label>
+    <description>A Uranium slug wraped in a plasteel jacket with a wooden sabot. Has extreme armor penetration and damage but requires a direct hit. Designed for use with field guns to counter heavy mechanoid armor, can still be used with a mortar and a bit of luck.</description>
+    <graphicData>
+      <texPath>Submunition/Item/SM_Shell_Sabot</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>.5</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+        <explosiveExpandPerStackcount>.01</explosiveExpandPerStackcount>
+        <startWickHitPointsPercent>0.7</startWickHitPointsPercent>
+        <wickTicks>
+          <min>30</min>
+          <max>60</max>
+        </wickTicks>
+      </li>
+    </comps>
+    <projectileWhenLoaded>SM_Bullet_Shell_Sabot</projectileWhenLoaded>
+    <costList>
+      <WoodLog>4</WoodLog>
+      <Plasteel>10</Plasteel>
+      <Uranium>20</Uranium>
+      <Steel>10</Steel>
+      <Chemfuel>10</Chemfuel>
+    </costList>
+    <recipeMaker>
+      <workAmount>2000</workAmount>
+      <researchPrerequisite>Submunitions</researchPrerequisite>
+      <skillRequirements>
+        <Crafting>6</Crafting>
+      </skillRequirements>
+    </recipeMaker>
+    <statBases>
+      <MaxHitPoints>60</MaxHitPoints>
+      <MarketValue>200</MarketValue>
+      <Mass>15</Mass>
+    </statBases>
+    <thingSetMakerTags>
+      <li>RewardSpecial</li>
+    </thingSetMakerTags>
+  </ThingDef>
+  <ThingDef ParentName="BaseBullet">
+    <defName>SM_Bullet_Shell_Sabot</defName>
+    <label>sabot shell</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_big</texPath>
+      <graphicClass>Graphic_Single</graphicClass> 
+    </graphicData>
+    <thingClass>Projectile_Explosive</thingClass>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>400</damageAmountBase>
+      <armorPenetrationBase>999</armorPenetrationBase>
+      <stoppingPower>400.0</stoppingPower>
+      <explosionDelay>0</explosionDelay>
+      <speed>120</speed>
+      <explosionRadius>.5</explosionRadius>
+      <flyOverhead>true</flyOverhead>
+      <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+      <soundExplode>MortarBomb_Explode</soundExplode>
+      <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+      <soundAmbient>MortarRound_Ambient</soundAmbient>
+    </projectile>
+  </ThingDef>
+
+ </Defs>

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <ThingDef ParentName="ResourceBase">
+    <defName>SM_partNerveAgent</defName>
+    <label>phial of R-NDY</label>
+    <description>A small glass phial of highly illegal R-NDY Nerve Agent.</description>
+    <graphicData>
+      <texPath>Submunition/Item/SM_partNerveAgent</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <tickerType>Normal</tickerType>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>1</explosiveRadius>
+        <explosiveDamageType>Toxic</explosiveDamageType>
+        <postExplosionSpawnThingDef>SM_Gas_Nerve</postExplosionSpawnThingDef>
+        <postExplosionSpawnChance>1.0</postExplosionSpawnChance>
+        <explosiveExpandPerStackcount>2</explosiveExpandPerStackcount>
+        <startWickHitPointsPercent>0.9</startWickHitPointsPercent>
+        <wickTicks>
+          <min>1</min>
+          <max>5</max>
+        </wickTicks>
+      </li>
+    </comps>
+    <stackLimit>100</stackLimit>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <MarketValue>50</MarketValue>
+      <Mass>0.02</Mass>
+      <Flammability>0.1</Flammability>
+      <DeteriorationRate>5</DeteriorationRate>
+    </statBases>
+    <costList>
+      <Neutroamine>10</Neutroamine>
+    </costList>
+    <recipeMaker>
+      <workAmount>2000</workAmount>
+      <effectWorking>Cook</effectWorking>
+      <workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+      <workSkill>Intellectual</workSkill>
+      <recipeUsers>
+        <li>DrugLab</li>
+      </recipeUsers>
+      <researchPrerequisite>Submunitions</researchPrerequisite>
+      <skillRequirements>
+				<Crafting>12</Crafting>
+        <Intellectual>12</Intellectual>
+      </skillRequirements>
+    </recipeMaker>
+    <thingCategories>
+      <li>Manufactured</li>
+    </thingCategories>
+    <tradeability>None</tradeability>
+  </ThingDef>
+  
+  <DamageDef Name="Toxic">
+    <defName>Toxic</defName>
+    <workerClass>DamageWorker_AddInjury</workerClass>
+    <label>chemical burn</label>
+    <hasForcefulImpact>false</hasForcefulImpact>
+    <makesBlood>false</makesBlood>
+    <canInterruptJobs>false</canInterruptJobs>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0} has burned to death.</deathMessage>
+    <hediff>SM_Chem_Burn</hediff>
+    <harmsHealth>true</harmsHealth>
+    <additionalHediffs>
+      <li>
+        <hediff>ToxicBuildup</hediff>
+        <severityPerDamageDealt>0.003</severityPerDamageDealt>
+        <victimSeverityScaling>ToxicSensitivity</victimSeverityScaling>
+      </li>
+    </additionalHediffs>
+    <minDamageToFragment>15</minDamageToFragment>
+    <defaultDamage>1</defaultDamage>
+    <defaultArmorPenetration>99</defaultArmorPenetration>
+    <explosionHeatEnergyPerCell>0</explosionHeatEnergyPerCell>
+    <explosionCellMote>Mote_BlastDry</explosionCellMote>
+    <explosionColorCenter>(0.5, 1., 0.5)</explosionColorCenter>
+    <explosionColorEdge>(0, 1, 0)</explosionColorEdge>
+    <soundExplosion>Explosion_Smoke</soundExplosion>
+    <combatLogRules>Damage_Flame</combatLogRules>
+    <canUseDeflectMetalEffect>false</canUseDeflectMetalEffect>
+  </DamageDef>
+  
+  <ThingDef ParentName="MoteBase" Name="SM_Mote_Gas_Nerve">
+    <defName>SM_Mote_Gas_Nerve</defName>
+    <graphicData>
+      <texPath>Things/Gas/Puff</texPath>
+      <shaderType>MoteGlow</shaderType>
+      <drawSize>2</drawSize>
+      <color>(0.0,1.0,0.0,0.25)</color>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.75</fadeInTime>
+      <solidTime>0.75</solidTime>
+      <fadeOutTime>0.75</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="BaseGas">
+    <thingClass>Submunition.Gas_Toxic</thingClass>
+    <defName>SM_Gas_Nerve</defName>
+    <label>R-NDY nerve gas</label>
+    <graphicData>
+      <texPath>Things/Gas/Puff</texPath>
+      <drawSize>1</drawSize>
+      <color>(0.0,1.0,0.0,0.25)</color>
+    </graphicData>
+    <gas>
+      <expireSeconds>
+        <min>60</min>
+        <max>90</max>
+      </expireSeconds>
+      <blockTurretTracking>false</blockTurretTracking>
+      <accuracyPenalty>0</accuracyPenalty>
+      <rotationSpeed>20</rotationSpeed>
+    </gas>
+    <modExtensions>
+      <li Class="Submunition.DefToxicGasExtension">
+        <toxicGasHediffChance>1</toxicGasHediffChance>
+        <toxicGasHediffStrength>0.05</toxicGasHediffStrength>
+        <toxicGasHediffToAdd>NerveAgent</toxicGasHediffToAdd>
+        <toxicGasHediffResist>ToxicSensitivity</toxicGasHediffResist>
+        <toxicGasMote>SM_Mote_Gas_Nerve</toxicGasMote>
+        <toxicGasMoteRate>100</toxicGasMoteRate>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="MakeableShellBase">
+    <defName>Shell_Nerve_Agent</defName>
+    <label>nerve agent shell</label>
+    <description>A questionably safe mortar shell loaded with R-NDY nerve agent, banned on almost all planets capable of impossing said ban</description>
+    <graphicData>
+      <texPath>Submunition/Item/Shell_Nerve</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>5</explosiveRadius>
+        <explosiveDamageType>Toxic</explosiveDamageType>
+        <postExplosionSpawnThingDef>SM_Gas_Nerve</postExplosionSpawnThingDef>
+        <postExplosionSpawnChance>1.0</postExplosionSpawnChance>
+        <explosiveExpandPerStackcount>5</explosiveExpandPerStackcount>
+        <startWickHitPointsPercent>0.7</startWickHitPointsPercent>
+        <wickTicks>
+          <min>5</min>
+          <max>10</max>
+        </wickTicks>
+      </li>
+    </comps>
+    <projectileWhenLoaded>Bullet_Shell_Nerve_Agent</projectileWhenLoaded>
+    <costList>
+      <Plasteel>20</Plasteel>
+      <Chemfuel>20</Chemfuel>
+      <SM_partNerveAgent>10</SM_partNerveAgent>
+    </costList>
+    <recipeMaker>
+      <workAmount>4000</workAmount>
+      <researchPrerequisite>Submunitions</researchPrerequisite>
+      <skillRequirements>
+        <Crafting>12</Crafting>
+        <Intellectual>12</Intellectual>
+      </skillRequirements>
+    </recipeMaker>
+    <statBases>
+      <MaxHitPoints>60</MaxHitPoints>
+      <MarketValue>700</MarketValue>
+      <Mass>3</Mass>
+    </statBases>
+    <tradeability>None</tradeability>
+  </ThingDef>
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Shell_Nerve_Agent</defName>
+    <label>nerve agent shell</label>
+    <graphicData>
+      <texPath>Submunition/Item/Bullet_Shell_Nerve</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+    <thingClass>Projectile_Explosive</thingClass>
+    <projectile>
+      <damageDef>Toxic</damageDef>
+      <speed>41</speed>
+      <explosionRadius>8</explosionRadius>
+      <postExplosionSpawnThingDef>SM_Gas_Nerve</postExplosionSpawnThingDef>
+      <postExplosionSpawnChance>1.0</postExplosionSpawnChance>
+      <flyOverhead>true</flyOverhead>
+      <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+      <soundExplode>Explosion_Smoke</soundExplode>
+      <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+      <soundAmbient>MortarRound_Ambient</soundAmbient>
+      <ai_IsIncendiary>true</ai_IsIncendiary>
+    </projectile>
+  </ThingDef>
+   
+  <ThingDef ParentName="TrapIEDBase">
+    <defName>TrapIED_Nerve</defName>
+    <label>Nerve Agent IED trap</label>
+    <description>A pair of nerve agent shells connected to a touch-activated trigger. Since it is hidden in the surrounding terrain, it cannot be placed adjacent to other traps. Animals can sense these when calm.</description>
+    <graphicData>
+      <texPath>Submunition/Item/IED_Nerve</texPath>
+    </graphicData>
+    <costList>
+      <Shell_Nerve_Agent>2</Shell_Nerve_Agent>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveDamageType>Toxic</explosiveDamageType>
+        <explosiveRadius>16</explosiveRadius>
+        <postExplosionSpawnThingDef>SM_Gas_Nerve</postExplosionSpawnThingDef>
+        <postExplosionSpawnChance>1.0</postExplosionSpawnChance>
+        <startWickHitPointsPercent>0.2</startWickHitPointsPercent>
+        <wickTicks>
+          <min>15</min>
+          <max>15</max>
+        </wickTicks>
+      </li>
+    </comps>
+    <specialDisplayRadius>16</specialDisplayRadius>
+  </ThingDef>  
+  
+</Defs>

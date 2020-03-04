@@ -1,0 +1,4 @@
+C:\DEV\rimworld\submunition\Assemblies\submunition.dll
+C:\DEV\rimworld\submunition\Source\submunition\obj\Release\submunition.csproj.CoreCompileInputs.cache
+C:\DEV\rimworld\submunition\Source\submunition\obj\Release\submunition.dll
+C:\DEV\rimworld\submunition\Source\submunition\obj\Release\Submunition.csprojResolveAssemblyReference.cache

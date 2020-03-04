@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef ParentName="MakeableShellBase">
+    <defName>Shell_Minelet</defName>
+    <label>minelet shell</label>
+    <description>A shell filled with minelets. releases its payload prior to impact to create an instant mine field. Due to the random placement of the minelets they are impossible to avoid for foe and friendly alike</description>
+    <graphicData>
+      <texPath>Submunition/Item/Shell_Minelet</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>2.9</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+        <explosiveExpandPerStackcount>0.4</explosiveExpandPerStackcount>
+        <startWickHitPointsPercent>0.7</startWickHitPointsPercent>
+        <wickTicks>
+          <min>30</min>
+          <max>60</max>
+        </wickTicks>
+      </li>
+    </comps>
+    <projectileWhenLoaded>Bullet_Shell_Minelet</projectileWhenLoaded>
+    <costList>
+      <Steel>10</Steel>
+      <Chemfuel>10</Chemfuel>
+      <SM_partMinlet>30</SM_partMinlet>
+    </costList>
+    <recipeMaker>
+      <workAmount>1600</workAmount>
+      <researchPrerequisite>Submunitions</researchPrerequisite>
+      <skillRequirements>
+        <Crafting>10</Crafting>
+      </skillRequirements>
+    </recipeMaker>
+    <statBases>
+      <MaxHitPoints>60</MaxHitPoints>
+      <MarketValue>500</MarketValue>
+      <Mass>40</Mass>
+    </statBases>
+  </ThingDef>
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Shell_Minelet</defName>
+    <label>minelet shell</label>
+    <graphicData>
+      <texPath>Submunition/Item/Bullet_Shell_Minelet</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+    <thingClass>Submunition.Projectile_Submunition</thingClass>
+    <projectile>
+      <damageDef>SM_Danger_Smoke</damageDef>
+      <damageAmountBase>1</damageAmountBase>
+      <armorPenetrationBase>0.5</armorPenetrationBase>
+      <stoppingPower>4.0</stoppingPower>
+      <explosionDelay>0</explosionDelay>
+      <speed>31</speed>
+      <explosionRadius>10</explosionRadius>
+      <flyOverhead>true</flyOverhead>
+      <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+      <soundExplode>Explosion_Smoke</soundExplode>
+      <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+      <soundAmbient>MortarRound_Ambient</soundAmbient>
+    </projectile>
+    <modExtensions>
+      <li Class="Submunition.DefSubmunitionExtension">
+        <submunitionCount>30</submunitionCount><!-- 0 -->
+        <submunitionMultiplier>0</submunitionMultiplier><!-- 3 -->
+        <submunitionExplosionRadius>1</submunitionExplosionRadius>
+    <!--<submunitionDelay>15</submunitionDelay> -->
+        <submunitionPreDetonation>70</submunitionPreDetonation>
+        <submunitionDuration>0</submunitionDuration>
+        <submunitionInterval>0</submunitionInterval>
+<!--    <submunitionDamageDef>Bullet</submunitionDamageDef>
+        <submunitionSoundExplode>BulletImpact_Ground</submunitionSoundExplode>
+        <submunitionSpawnThingDef>Filth_RubbleRock</submunitionSpawnThingDef>
+        <submunitionSpawnThingChance>0.25</submunitionSpawnThingChance> -->
+        <submunitionFragment>true</submunitionFragment>
+        <submunitionFragmentThingDef>SM_Bullet_Minelet_Fragment</submunitionFragmentThingDef>
+      </li>
+    </modExtensions>
+  </ThingDef>
+  <ThingDef ParentName="BaseBullet">
+    <defName>SM_Bullet_Minelet_Fragment</defName>
+    <label>shrapnel</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Big</texPath>
+      <graphicClass>Graphic_Single</graphicClass> 
+    </graphicData>
+    <thingClass>Projectile_Explosive</thingClass>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>10</damageAmountBase>
+      <armorPenetrationBase>999</armorPenetrationBase>
+      <stoppingPower>1.0</stoppingPower>
+      <explosionDelay>0</explosionDelay>
+      <speed>31</speed>
+      <explosionRadius>.9</explosionRadius>
+      <flyOverhead>true</flyOverhead>
+      <postExplosionSpawnThingDef>SM_Minelet</postExplosionSpawnThingDef>
+      <postExplosionSpawnChance>1.0</postExplosionSpawnChance>
+      <soundExplode>BulletImpact_Ground</soundExplode>
+      <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+    </projectile>
+  </ThingDef>
+  
+  <ThingDef ParentName="ResourceBase">
+    <defName>SM_partMinlet</defName>
+    <label>minelet</label>
+    <description>A small anti-personel mine that is sensitive to any form of pressure. Due to the random placement of the minelets they are impossible to avoid for foe and friendly alike</description>
+    <graphicData>
+      <texPath>Submunition/Item/SM_Minelet</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <tickerType>Normal</tickerType>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>1</explosiveRadius>
+        <explosiveDamageType>Bullet</explosiveDamageType>
+        <damageAmountBase>25</damageAmountBase>
+        <armorPenetrationBase>0.5</armorPenetrationBase>
+        <explosiveExpandPerStackcount>.25</explosiveExpandPerStackcount>
+        <startWickHitPointsPercent>0.25</startWickHitPointsPercent>
+        <wickTicks>
+          <min>10</min>
+          <max>50</max>
+        </wickTicks>
+      </li>
+    </comps>
+    <stackLimit>50</stackLimit>
+    <statBases>
+      <MaxHitPoints>40</MaxHitPoints>
+      <MarketValue>20</MarketValue>
+      <Mass>2</Mass>
+      <Flammability>1</Flammability>
+      <DeteriorationRate>1</DeteriorationRate>
+    </statBases>
+    <costList>
+      <Steel>5</Steel>
+      <Chemfuel>5</Chemfuel>
+    </costList>
+    <recipeMaker>
+      <workAmount>400</workAmount>
+      <workSkill>Crafting</workSkill>
+      <workSpeedStat>SmithingSpeed</workSpeedStat>
+      <effectWorking>Cook</effectWorking>
+      <soundWorking>Recipe_Machining</soundWorking>
+      <recipeUsers>
+        <li>TableMachining</li>
+      </recipeUsers>
+      <researchPrerequisite>Submunitions</researchPrerequisite>
+      <skillRequirements>
+				<Crafting>10</Crafting>
+      </skillRequirements>
+    </recipeMaker>
+    <thingCategories>
+      <li>Manufactured</li>
+    </thingCategories>
+  </ThingDef>
+  
+  <ThingDef ParentName="TrapIEDBase">
+    <defName>SM_Minelet</defName>
+    <label>Minelet</label>
+    <description>A small anti-personel mine that is sensitive to any form or pressure. may spontaneously detotnate. Due to the random placement of the minelets they are impossible to avoid for foe and friendly alike</description>
+    <thingClass>Submunition.Building_TrapExplosive_Unstable</thingClass>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.5</drawSize>
+      <damageData>
+        <rect>(0.1,0,0.8,0.3)</rect>
+      </damageData>
+      <texPath>Submunition/Item/SM_Minelet</texPath>
+    </graphicData>
+    <uiIconOffset>(0,0)</uiIconOffset>
+    <altitudeLayer>Building</altitudeLayer>
+    <drawerType>RealtimeOnly</drawerType>
+    <rotatable>false</rotatable>
+    <tickerType>Normal</tickerType>
+    <stealable>false</stealable>
+    <statBases>
+      <Mass>2</Mass>
+      <MaxHitPoints>40</MaxHitPoints>
+      <Flammability>1</Flammability>
+      <Beauty>-4</Beauty>
+      <TrapSpringChance>2.0</TrapSpringChance>
+    </statBases>
+    <building>
+      <isTrap>true</isTrap>
+      <trapPeacefulWildAnimalsSpringChanceFactor>1</trapPeacefulWildAnimalsSpringChanceFactor>
+      <expandHomeArea>false</expandHomeArea>
+			<ai_chillDestination>false</ai_chillDestination>
+    </building>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>1</explosiveRadius>
+        <explosiveDamageType>SM_Shrapnel</explosiveDamageType>
+        <damageAmountBase>20</damageAmountBase>
+        <startWickHitPointsPercent>0.90</startWickHitPointsPercent>
+        <wickTicks>
+          <min>0</min>
+          <max>10</max>
+        </wickTicks>
+      </li>
+    </comps>
+    <specialDisplayRadius>1</specialDisplayRadius>
+  </ThingDef>
+  
+</Defs>
