@@ -23,6 +23,8 @@ namespace Submunition
 
         public bool toxicGasWholeBody = false;
 
+        public bool toxicGasAffectFlesh = true;
+        public bool toxicGasAffectMech = false;
 
         public ThingDef toxicGasMote = null;
         public float toxicGasMoteRate = 0f;
@@ -99,77 +101,80 @@ namespace Submunition
                         Pawn pawn = thingList[i] as Pawn;
                         if (pawn != null)
                         {
-                            var rand = Rand.Value;
-                            List<BodyPartRecord> parts = pawn.health.hediffSet.GetNotMissingParts().Where(x => x.coverageAbs > 0f).ToList();
-                            List<Hediff> hediffs = pawn.health.hediffSet.hediffs;
-                            BodyPartRecord part = parts.RandomElement();
-                            Hediff hediff = null;
-
-                            if (this.toxicGasHediffToAdd != null && rand <= toxicGasExtension.toxicGasHediffChance)
+                            if ((pawn.RaceProps.IsMechanoid && toxicGasExtension.toxicGasAffectMech) || (pawn.RaceProps.IsFlesh && toxicGasExtension.toxicGasAffectFlesh))
                             {
-                                float num = toxicGasExtension.toxicGasHediffStrength;
-                                if (toxicGasExtension.toxicGasHediffResist != null)
-                                {
-                                    num *= pawn.GetStatValue(toxicGasExtension.toxicGasHediffResist, true);
-                                }
+                                var rand = Rand.Value;
+                                List<BodyPartRecord> parts = pawn.health.hediffSet.GetNotMissingParts().Where(x => x.coverageAbs > 0f).ToList();
+                                List<Hediff> hediffs = pawn.health.hediffSet.hediffs;
+                                BodyPartRecord part = parts.RandomElement();
+                                Hediff hediff = null;
 
-                                if (toxicGasExtension.toxicGasHediffBodyScaling)
+                                if (this.toxicGasHediffToAdd != null && rand <= toxicGasExtension.toxicGasHediffChance)
                                 {
-                                    num = num / (pawn.BodySize * pawn.BodySize);
-                                }
-
-                                if (toxicGasExtension.toxicGasWholeBody)
-                                {
-                                    hediff = pawn.health.hediffSet.GetFirstHediffOfDef(this.toxicGasHediffToAdd);
-                                    part = null;
-                                }
-                                else
-                                {
-                                    for (int h = 0; h < hediffs.Count; h++)
+                                    float num = toxicGasExtension.toxicGasHediffStrength;
+                                    if (toxicGasExtension.toxicGasHediffResist != null)
                                     {
-                                        if (hediffs[h].def == this.toxicGasHediffToAdd && hediffs[h].Part.def == part.def)
-                                        {
-                                            hediff = hediffs[h];
-                                        }
+                                        num *= pawn.GetStatValue(toxicGasExtension.toxicGasHediffResist, true);
                                     }
-                                }
-                                if (num > 0f)
-                                {
-                                    if (hediff != null)
+
+                                    if (toxicGasExtension.toxicGasHediffBodyScaling)
                                     {
-                                        hediff.Severity += num;
+                                        num = num / (pawn.BodySize * pawn.BodySize);
+                                    }
+
+                                    if (toxicGasExtension.toxicGasWholeBody)
+                                    {
+                                        hediff = pawn.health.hediffSet.GetFirstHediffOfDef(this.toxicGasHediffToAdd);
+                                        part = null;
                                     }
                                     else
                                     {
-                                        hediff = HediffMaker.MakeHediff(this.toxicGasHediffToAdd, pawn, part);
-                                        hediff.Severity = num;
-                                        pawn.health.AddHediff(hediff);
+                                        for (int h = 0; h < hediffs.Count; h++)
+                                        {
+                                            if (hediffs[h].def == this.toxicGasHediffToAdd && hediffs[h].Part.def == part.def)
+                                            {
+                                                hediff = hediffs[h];
+                                            }
+                                        }
+                                    }
+                                    if (num > 0f)
+                                    {
+                                        if (hediff != null)
+                                        {
+                                            hediff.Severity += num;
+                                        }
+                                        else
+                                        {
+                                            hediff = HediffMaker.MakeHediff(this.toxicGasHediffToAdd, pawn, part);
+                                            hediff.Severity = num;
+                                            pawn.health.AddHediff(hediff);
+                                        }
                                     }
                                 }
-                            }
 
-                            if (this.toxicGasDamageDef != null && rand <= toxicGasExtension.toxicGasDamageChance)
-                            {
-                                float armorPenetration = 9999f;
-
-                                float dmg = toxicGasExtension.toxicGasDamageStrength;
-                                if (toxicGasExtension.toxicGasDamageResist != null)
+                                if (this.toxicGasDamageDef != null && rand <= toxicGasExtension.toxicGasDamageChance)
                                 {
-                                    dmg *= pawn.GetStatValue(toxicGasExtension.toxicGasDamageResist, true);
-                                }
+                                    float armorPenetration = 9999f;
 
-                                if (dmg > 0f)
-                                {
-                                    DamageInfo dinfo = new DamageInfo(this.toxicGasDamageDef, dmg, armorPenetration, -1f, this, part, null, DamageInfo.SourceCategory.ThingOrUnknown, null);
-                                    DamageWorker.DamageResult damageResult = pawn.TakeDamage(dinfo);
-
-                                    BattleLogEntry_DamageTaken battleLogEntry_DamageTaken = new BattleLogEntry_DamageTaken(pawn, RulePackDefOf.DamageEvent_Fire, null);
-                                    Find.BattleLog.Add(battleLogEntry_DamageTaken);
-                                    damageResult.AssociateWithLog(battleLogEntry_DamageTaken);
-
-                                    if (toxicGasExtension.toxicGasHot)
+                                    float dmg = toxicGasExtension.toxicGasDamageStrength;
+                                    if (toxicGasExtension.toxicGasDamageResist != null)
                                     {
-                                        pawn.TryAttachFire(Rand.Range(0.15f, 0.25f));
+                                        dmg *= pawn.GetStatValue(toxicGasExtension.toxicGasDamageResist, true);
+                                    }
+
+                                    if (dmg > 0f)
+                                    {
+                                        DamageInfo dinfo = new DamageInfo(this.toxicGasDamageDef, dmg, armorPenetration, -1f, this, part, null, DamageInfo.SourceCategory.ThingOrUnknown, null);
+                                        DamageWorker.DamageResult damageResult = pawn.TakeDamage(dinfo);
+
+                                        BattleLogEntry_DamageTaken battleLogEntry_DamageTaken = new BattleLogEntry_DamageTaken(pawn, RulePackDefOf.DamageEvent_Fire, null);
+                                        Find.BattleLog.Add(battleLogEntry_DamageTaken);
+                                        damageResult.AssociateWithLog(battleLogEntry_DamageTaken);
+
+                                        if (toxicGasExtension.toxicGasHot)
+                                        {
+                                            pawn.TryAttachFire(Rand.Range(0.15f, 0.25f));
+                                        }
                                     }
                                 }
                             }
@@ -348,7 +353,7 @@ namespace Submunition
                 }
 
 
-                if (pawn.RaceProps.FleshType.defName == FleshTypeDefOf.Mechanoid.defName)
+                if (pawn.RaceProps.IsMechanoid)
                 {
                    return base.Apply(dinfo, pawn);
                 }
@@ -365,7 +370,7 @@ namespace Submunition
             Pawn pawn = victim as Pawn;
             if (pawn != null)
             {
-                if (pawn.RaceProps.FleshType.defName != FleshTypeDefOf.Mechanoid.defName)
+                if (!pawn.RaceProps.IsMechanoid)
                 {
                     List<BodyPartRecord> parts = pawn.health.hediffSet.GetNotMissingParts().Where(x => x.coverageAbs > 0f).ToList();
                     List<Hediff> hediffs = pawn.health.hediffSet.hediffs;
@@ -373,6 +378,17 @@ namespace Submunition
 
                     DamageInfo damage = new DamageInfo(DamageDefOf.Burn, dinfo.Amount, 9999f, -1f, null, part, null, DamageInfo.SourceCategory.ThingOrUnknown, null);
                     DamageWorker.DamageResult damageResult = pawn.TakeDamage(damage);
+                    //if (pawn.Dead)
+                    //{
+                    //    PawnKindDef varKind = PawnKindDef.Named("Mech_Scyther");
+                    //    Faction varFac = Find.FactionManager.OfMechanoids;
+                    //    Pawn varPawn = PawnGenerator.GeneratePawn(varKind, varFac);
+                    //    varPawn.mindState.duty = new Verse.AI.PawnDuty(DutyDefOf.HuntEnemiesIndividual);
+
+                    //    LordToil_HuntEnemies x = new LordToil_HuntEnemies(pawn.Position);
+
+                    //    GenSpawn.Spawn(varPawn, pawn.Position, Find.CurrentMap);
+                    //}                    
                 }
             }
             else if (victim != null)
