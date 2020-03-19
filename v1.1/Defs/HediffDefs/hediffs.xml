@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-  <DamageDef>
+  <DamageDef Name="SM_Danger_Smoke">
     <defName>SM_Danger_Smoke</defName>
     <label>smoke</label>
     <externalViolence>true</externalViolence>
@@ -15,19 +15,38 @@
     <combatLogRules>Damage_Smoke</combatLogRules>
   </DamageDef>
 
-  <DamageDef ParentName="Bomb">
+  <DamageDef ParentName="SM_Danger_Smoke">
+    <defName>SM_Danger_Smoke_noShake</defName>
+    <workerClass>Submunition.DamageWorker_noShake</workerClass>
+  </DamageDef>
+
+  <DamageDef>
+    <defName>SM_Smoke_noShake</defName>
+    <label>smoke</label>
+    <canInterruptJobs>false</canInterruptJobs>
+    <workerClass>Submunition.DamageWorker_noShake</workerClass>
+    <makesBlood>false</makesBlood>
+    <defaultDamage>0</defaultDamage>
+    <explosionCellMote>Mote_BlastExtinguisher</explosionCellMote>
+    <explosionColorEdge>(1, 1, 1, 0.05)</explosionColorEdge>
+    <harmsHealth>false</harmsHealth>
+    <soundExplosion>Explosion_Smoke</soundExplosion>
+    <combatLogRules>Damage_Smoke</combatLogRules>
+  </DamageDef>
+
+  <DamageDef ParentName="Bomb" Name="SM_Shrapnel">
     <defName>SM_Shrapnel</defName>
     <label>shrapnel</label>
     <isExplosive>true</isExplosive>
     <minDamageToFragment>1</minDamageToFragment>
     <defaultDamage>12</defaultDamage>
-    <defaultArmorPenetration>0.0</defaultArmorPenetration>
+    <defaultArmorPenetration>0.01</defaultArmorPenetration>
     <overkillPctToDestroyPart>0~0.7</overkillPctToDestroyPart>
     <isRanged>true</isRanged>
     <hediff>SM_Shrapnel_Shredded</hediff>
     <makesAnimalsFlee>true</makesAnimalsFlee>
-    <buildingDamageFactor>.1</buildingDamageFactor>
-    <plantDamageFactor>1</plantDamageFactor>
+    <buildingDamageFactor>.5</buildingDamageFactor>
+    <plantDamageFactor>2</plantDamageFactor>
     <explosionHeatEnergyPerCell>0</explosionHeatEnergyPerCell>
     <explosionCellMote>Mote_ShotHit_Dirt</explosionCellMote>
     <explosionColorCenter>(1, 1, 1)</explosionColorCenter>
@@ -35,11 +54,17 @@
     <soundExplosion>BulletImpact_Ground</soundExplosion>
     <impactSoundType>Bullet</impactSoundType>
   </DamageDef>
-
+  
+  <DamageDef ParentName="SM_Shrapnel">
+    <defName>SM_Shrapnel_noShake</defName>
+    <workerClass>Submunition.DamageWorker_AddInjury_noShake</workerClass>
+  </DamageDef>
+  
   <DamageDef ParentName="Bomb">
     <defName>SM_AP_Bomb</defName>
-    <defaultStoppingPower>5.0</defaultStoppingPower>
-    <defaultArmorPenetration>999</defaultArmorPenetration>
+    <defaultStoppingPower>20.0</defaultStoppingPower>
+    <defaultArmorPenetration>9999</defaultArmorPenetration>
+    <minDamageToFragment>100</minDamageToFragment>
   </DamageDef>
   
   <!-- shrapnel -->
@@ -121,7 +146,7 @@
     <makesSickThought>true</makesSickThought>
     <modExtensions>
       <li Class="Submunition.DefAdvHediffExtension">
-        <advHediffDamageDef>Burn</advHediffDamageDef>
+        <advHediffDamageDef>SM_Mech_All</advHediffDamageDef>
         <advHediffDamageStrength>1</advHediffDamageStrength>
         <advHediffDamageScale>1</advHediffDamageScale>
         <advHediffDamageInterval>30</advHediffDamageInterval>
@@ -494,7 +519,7 @@
       </li>
       <li>
         <vomitMtbDays>0.3</vomitMtbDays>
-        <painOffset>0.1</painOffset>
+        <painOffset>0.2</painOffset>
         <minSeverity>0.10</minSeverity>
         <capMods>
           <li>
@@ -509,7 +534,7 @@
       </li>
       <li>
         <vomitMtbDays>0.2</vomitMtbDays>
-        <painOffset>0.2</painOffset>
+        <painOffset>0.3</painOffset>
         <minSeverity>0.20</minSeverity>
         <capMods>
           <li>
@@ -524,7 +549,7 @@
       </li>
       <li>
         <vomitMtbDays>0.1</vomitMtbDays>
-        <painOffset>0.2</painOffset>
+        <painOffset>0.4</painOffset>
         <minSeverity>0.30</minSeverity>
         <capMods>
           <li>
@@ -539,7 +564,7 @@
       </li>
       <li>
         <vomitMtbDays>0.05</vomitMtbDays>
-        <painOffset>0.3</painOffset>
+        <painOffset>0.5</painOffset>
         <minSeverity>0.40</minSeverity>
         <capMods>
           <li>
@@ -554,7 +579,7 @@
       </li>
       <li>
         <vomitMtbDays>0.01</vomitMtbDays>
-        <painOffset>0.3</painOffset>
+        <painOffset>0.6</painOffset>
         <minSeverity>0.50</minSeverity>
         <capMods>
           <li>
@@ -569,7 +594,7 @@
       </li>
       <li>
         <vomitMtbDays>0.01</vomitMtbDays>
-        <painOffset>0.3</painOffset>
+        <painOffset>0.6</painOffset>
         <minSeverity>0.60</minSeverity>
         <capMods>
           <li>
@@ -584,7 +609,7 @@
       </li>
       <li>
         <vomitMtbDays>0.01</vomitMtbDays>
-        <painOffset>0.4</painOffset>
+        <painOffset>0.8</painOffset>
         <minSeverity>0.70</minSeverity>
         <capMods>
           <li>

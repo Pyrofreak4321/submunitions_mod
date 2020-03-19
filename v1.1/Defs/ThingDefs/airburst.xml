@@ -1,20 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-
-  <ResearchProjectDef>
-    <defName>Submunitions</defName>
-    <label>advanced munitions</label>
-    <description>Manufacture advanced munitions.</description>
-    <baseCost>2000</baseCost>
-    <techLevel>Industrial</techLevel>
-    <prerequisites>
-      <li>Mortars</li>
-      <li>PrecisionRifling</li>
-    </prerequisites>
-    <researchViewX>10</researchViewX>
-    <researchViewY>5</researchViewY>
-  </ResearchProjectDef>
-    
   <ThingDef ParentName="MakeableShellBase">
     <defName>Shell_AirBurst</defName>
     <label>air-burst shell</label>
@@ -106,86 +91,84 @@
     </graphicData>
     <thingClass>Projectile_Explosive</thingClass>
     <projectile>
-      <damageDef>SM_Shrapnel</damageDef>
+      <damageDef>SM_Shrapnel_noShake</damageDef>
       <damageAmountBase>5</damageAmountBase>
-      <armorPenetrationBase>0.0</armorPenetrationBase>
-      <stoppingPower>0.3</stoppingPower>
       <explosionDelay>0</explosionDelay>
       <speed>60</speed>
       <explosionRadius>2</explosionRadius>
       <flyOverhead>true</flyOverhead>
+      <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
       <soundExplode>BulletImpact_Ground</soundExplode>
       <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
     </projectile>
   </ThingDef>
-  
-
-  <ThingDef ParentName="MakeableShellBase">
-    <defName>SM_Shell_Sabot</defName>
-    <label>sabot shell</label>
-    <description>A Uranium slug wraped in a plasteel jacket with a wooden sabot. Has extreme armor penetration and damage but requires a direct hit. Designed for use with field guns to counter heavy mechanoid armor, can still be used with a mortar and a bit of luck.</description>
+ 
+  <ThingDef ParentName="BaseMakeableGrenade">
+    <defName>SM_Weapon_GrenadeFrag</defName>
+    <label>frag grenades</label>
+    <description>Old-school fragmentation grenades. They can be thrown a short distance, where they'll explode, damaging anything and anyone nearby.</description>
+    <tickerType>Normal</tickerType>
     <graphicData>
-      <texPath>Submunition/Item/SM_Shell_Sabot</texPath>
-      <graphicClass>Graphic_StackCount</graphicClass>
+      <texPath>Things/Item/Equipment/WeaponRanged/Grenades</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
+    <uiIconScale>1.3</uiIconScale>
+    <soundInteract>Interact_Grenade</soundInteract>
+    <techLevel>Industrial</techLevel>
+    <statBases>
+      <Mass>1</Mass>
+      <RangedWeapon_Cooldown>2.66</RangedWeapon_Cooldown>
+      <WorkToMake>12000</WorkToMake>
+    </statBases>
+    <costList>
+      <Steel>40</Steel>
+      <Chemfuel>60</Chemfuel>
+    </costList>
+    <weaponTags>
+      <li>GrenadeDestructive</li>
+    </weaponTags>
+    <thingCategories>
+      <li>Grenades</li>
+    </thingCategories>
+    <verbs>
+      <li>
+        <label>throw frag grenade</label>
+        <verbClass>Verb_LaunchProjectile</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <range>12.9</range>
+        <forcedMissRadius>1.9</forcedMissRadius>
+        <warmupTime>1.5</warmupTime>
+        <noiseRadius>4</noiseRadius>
+        <ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+        <soundCast>ThrowGrenade</soundCast>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+        <defaultProjectile>SM_Proj_GrenadeFrag</defaultProjectile>
+        <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+      </li>
+    </verbs>
     <comps>
       <li Class="CompProperties_Explosive">
-        <explosiveRadius>.5</explosiveRadius>
-        <explosiveDamageType>Bomb</explosiveDamageType>
-        <explosiveExpandPerStackcount>.01</explosiveExpandPerStackcount>
-        <startWickHitPointsPercent>0.7</startWickHitPointsPercent>
-        <wickTicks>
-          <min>30</min>
-          <max>60</max>
-        </wickTicks>
+        <explosiveRadius>5</explosiveRadius>
+        <explosiveDamageType>SM_Shrapnel</explosiveDamageType>
+        <requiredDamageTypeToExplode>Flame</requiredDamageTypeToExplode>
       </li>
     </comps>
-    <projectileWhenLoaded>SM_Bullet_Shell_Sabot</projectileWhenLoaded>
-    <costList>
-      <WoodLog>4</WoodLog>
-      <Plasteel>10</Plasteel>
-      <Uranium>20</Uranium>
-      <Steel>10</Steel>
-      <Chemfuel>10</Chemfuel>
-    </costList>
-    <recipeMaker>
-      <workAmount>2000</workAmount>
-      <researchPrerequisite>Submunitions</researchPrerequisite>
-      <skillRequirements>
-        <Crafting>6</Crafting>
-      </skillRequirements>
-    </recipeMaker>
-    <statBases>
-      <MaxHitPoints>60</MaxHitPoints>
-      <MarketValue>200</MarketValue>
-      <Mass>15</Mass>
-    </statBases>
-    <thingSetMakerTags>
-      <li>RewardSpecial</li>
-    </thingSetMakerTags>
   </ThingDef>
-  <ThingDef ParentName="BaseBullet">
-    <defName>SM_Bullet_Shell_Sabot</defName>
-    <label>sabot shell</label>
-    <graphicData>
-      <texPath>Things/Projectile/Bullet_big</texPath>
-      <graphicClass>Graphic_Single</graphicClass> 
-    </graphicData>
+  <ThingDef ParentName="BaseGrenadeProjectile">
+    <defName>SM_Proj_GrenadeFrag</defName>
+    <label>frag grenade</label>
     <thingClass>Projectile_Explosive</thingClass>
+    <graphicData>
+      <texPath>Things/Projectile/Grenade</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
     <projectile>
-      <damageDef>Bullet</damageDef>
-      <damageAmountBase>400</damageAmountBase>
-      <armorPenetrationBase>999</armorPenetrationBase>
-      <stoppingPower>400.0</stoppingPower>
-      <explosionDelay>0</explosionDelay>
-      <speed>120</speed>
-      <explosionRadius>.5</explosionRadius>
-      <flyOverhead>true</flyOverhead>
-      <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
-      <soundExplode>MortarBomb_Explode</soundExplode>
-      <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
-      <soundAmbient>MortarRound_Ambient</soundAmbient>
+      <explosionRadius>5</explosionRadius>
+      <damageDef>SM_Shrapnel</damageDef>
+      <damageAmountBase>15</damageAmountBase>
+      <explosionDelay>100</explosionDelay>
     </projectile>
   </ThingDef>
-
- </Defs>
+</Defs>

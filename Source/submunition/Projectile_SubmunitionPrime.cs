@@ -19,6 +19,8 @@ namespace Submunition
         public int submunitionPreDetonation = 0;
         public bool submunitionDestroyOnImpact = false;
 
+        public float submunitionPopSize = 0;
+
         public DamageDef submunitionDamageDef;// = DamageDefOf.Bomb;
         public int submunitionDamageAmount = -1;
         public SoundDef submunitionSoundExplode;// = DamageDefOf.Bomb.soundExplosion;
@@ -31,6 +33,7 @@ namespace Submunition
 
     public class Projectile_Submunition : Projectile
     {
+        private DefSubmunitionExtension extension;
         private int ticksToDetonation = 0;
         private int ticksToSubDetonation = 0;
         private int ticksOfRain = 0;
@@ -56,9 +59,14 @@ namespace Submunition
             base.SpawnSetup(map, respawningAfterLoad);
             if (this.def.HasModExtension<DefSubmunitionExtension>())
             {
-                this.preDetonation = this.def.GetModExtension<DefSubmunitionExtension>().submunitionPreDetonation;
-                this.destroyOnImpact = this.def.GetModExtension<DefSubmunitionExtension>().submunitionDestroyOnImpact;                
+                extension = this.def.GetModExtension<DefSubmunitionExtension>();
             }
+            else
+            {
+                extension = new DefSubmunitionExtension();
+            }
+            this.preDetonation = this.extension.submunitionPreDetonation;
+            this.destroyOnImpact = this.extension.submunitionDestroyOnImpact;
         }
 
         public override void Tick()
@@ -113,12 +121,9 @@ namespace Submunition
             {
                 this.detonated = true;
 
-                if (this.def.HasModExtension<DefSubmunitionExtension>())
-                {
-                    this.submunitionInterval = this.def.GetModExtension<DefSubmunitionExtension>().submunitionInterval;
-                    this.submunitionDelay = this.def.GetModExtension<DefSubmunitionExtension>().submunitionDelay;
-                    this.submunitionDuration = this.def.GetModExtension<DefSubmunitionExtension>().submunitionDuration;
-                }
+                this.submunitionInterval = this.extension.submunitionInterval;
+                this.submunitionDelay = this.extension.submunitionDelay;
+                this.submunitionDuration = this.extension.submunitionDuration;
 
                 this.wholemap = CellRect.WholeMap(base.Map);
                 this.roofGrid = new RoofGrid(base.Map);
@@ -158,15 +163,19 @@ namespace Submunition
             float postExplosionSpawnChance = this.def.projectile.postExplosionSpawnChance;
             int postExplosionSpawnThingCount = this.def.projectile.postExplosionSpawnThingCount;
             ThingDef preExplosionSpawnThingDef = this.def.projectile.preExplosionSpawnThingDef;
-
+            float popSize = 2f;
 
             IEnumerable<IntVec3> cellRect = GenRadial.RadialCellsAround(base.ExactPosition.ToIntVec3(), explosionRadius, true);
 
             if (this.initalBlast)
             {
+                if(this.extension.submunitionPopSize > 0)
+                {
+                    popSize = this.extension.submunitionPopSize;
+                }
                 this.ticksToSubDetonation = this.submunitionDelay;
 
-                GenExplosion.DoExplosion(position, map2, 2f, damageDef,
+                GenExplosion.DoExplosion(position, map2, popSize, damageDef,
                     launcher, damageAmount, armorPenetration, soundExplode, equipmentDef,
                     def, thing, postExplosionSpawnThingDef, postExplosionSpawnChance,
                     postExplosionSpawnThingCount, this.def.projectile.applyDamageToExplosionCellsNeighbors,
@@ -188,25 +197,14 @@ namespace Submunition
                 ThingDef submunitionSpawnThingDef;
                 int submunitionDamageAmount;
 
-                DefSubmunitionExtension submunitionsExtension;
-
-                if (this.def.HasModExtension<DefSubmunitionExtension>())
-                {
-                    submunitionsExtension = this.def.GetModExtension<DefSubmunitionExtension>();
-                }
-                else
-                {
-                    submunitionsExtension = new DefSubmunitionExtension();
-                }
-
-                submunitionCount = submunitionsExtension.submunitionCount;
-                submunitionMultiplier = submunitionsExtension.submunitionMultiplier;
-                submunitionExplosionRadius = submunitionsExtension.submunitionExplosionRadius;
-                submunitionSoundExplode = submunitionsExtension.submunitionSoundExplode;
-                submunitionDamageDef = submunitionsExtension.submunitionDamageDef;
-                submunitionSpawnThingChance = submunitionsExtension.submunitionSpawnThingChance;
-                submunitionSpawnThingDef = submunitionsExtension.submunitionSpawnThingDef;
-                submunitionDamageAmount = submunitionsExtension.submunitionDamageAmount;
+                submunitionCount = this.extension.submunitionCount;
+                submunitionMultiplier = this.extension.submunitionMultiplier;
+                submunitionExplosionRadius = this.extension.submunitionExplosionRadius;
+                submunitionSoundExplode = this.extension.submunitionSoundExplode;
+                submunitionDamageDef = this.extension.submunitionDamageDef;
+                submunitionSpawnThingChance = this.extension.submunitionSpawnThingChance;
+                submunitionSpawnThingDef = this.extension.submunitionSpawnThingDef;
+                submunitionDamageAmount = this.extension.submunitionDamageAmount;
 
                 if (submunitionDamageDef == null)
                 {
@@ -227,7 +225,7 @@ namespace Submunition
                     submunitionCount = (int)Math.Floor(submunitionMultiplier * explosionRadius);
                 }
 
-                if (submunitionsExtension.submunitionFragment && submunitionsExtension.submunitionFragmentThingDef != null)
+                if (this.extension.submunitionFragment && this.extension.submunitionFragmentThingDef != null)
                 {
                     cellRect = GenRadial.RadialCellsAround(base.destination.ToIntVec3(), explosionRadius, true);
 
@@ -236,8 +234,8 @@ namespace Submunition
                         IntVec3 randomCell = cellRect.RandomElement();
                         if (this.wholemap.Contains(randomCell))
                         {
-                            Projectile frag = (Projectile)GenSpawn.Spawn(submunitionsExtension.submunitionFragmentThingDef, base.Position, base.Map, WipeMode.Vanish);
-                            frag.Launch(this.launcher, randomCell, randomCell, this.HitFlags, null);
+                            Projectile frag = (Projectile)GenSpawn.Spawn(this.extension.submunitionFragmentThingDef, base.Position, base.Map, WipeMode.Vanish);
+                            frag.Launch(this.launcher, randomCell, this.intendedTarget, this.HitFlags, null);
                         }
                     }
                 }

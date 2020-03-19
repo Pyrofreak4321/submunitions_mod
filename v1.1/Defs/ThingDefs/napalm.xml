@@ -5,6 +5,7 @@
     <defName>SM_Napalm</defName>
     <label>burn</label>
     <defaultArmorPenetration>0.1</defaultArmorPenetration>
+    <workerClass>Submunition.DamageWorker_Inc_noShake</workerClass>
   </DamageDef>
 
   <ThingDef ParentName="BaseGas">
@@ -89,7 +90,8 @@
     </graphicData>
     <thingClass>Submunition.Projectile_Submunition</thingClass>
     <projectile>
-      <damageDef>SM_Napalm</damageDef>
+      <damageDef>Bomb</damageDef>
+      <damageAmountBase>10</damageAmountBase>
       <speed>41</speed>
       <explosionRadius>1</explosionRadius>
       <flyOverhead>true</flyOverhead>
@@ -107,8 +109,8 @@
         <submunitionPreDetonation>40</submunitionPreDetonation>
         <submunitionDuration>60</submunitionDuration>
         <submunitionInterval>5</submunitionInterval>
-        <submunitionDamageDef>Burn</submunitionDamageDef>
-        <submunitionDestroyOnImpact>true</submunitionDestroyOnImpact>
+        <submunitionDamageDef>SM_Napalm</submunitionDamageDef>
+        <submunitionDestroyOnImpact>false</submunitionDestroyOnImpact>
         <submunitionSpawnThingDef>SM_Gas_Napalm</submunitionSpawnThingDef>
         <submunitionSpawnThingChance>1</submunitionSpawnThingChance>
       </li>

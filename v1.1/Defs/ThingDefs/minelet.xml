@@ -172,6 +172,9 @@
       </damageData>
       <texPath>Submunition/Item/SM_Minelet</texPath>
     </graphicData>
+    <costList>
+      <SM_partMinlet>1</SM_partMinlet>
+    </costList>
     <uiIconOffset>(0,0)</uiIconOffset>
     <altitudeLayer>Building</altitudeLayer>
     <drawerType>RealtimeOnly</drawerType>

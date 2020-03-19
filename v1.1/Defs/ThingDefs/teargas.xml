@@ -85,7 +85,7 @@
     <modExtensions>
       <li Class="Submunition.DefToxicGasExtension">
         <toxicGasHediffChance>1</toxicGasHediffChance>
-        <toxicGasHediffStrength>.01</toxicGasHediffStrength>
+        <toxicGasHediffStrength>.05</toxicGasHediffStrength>
         <toxicGasHediffToAdd>SM_Teargas</toxicGasHediffToAdd>
         <toxicGasWholeBody>true</toxicGasWholeBody>
         <toxicGasHediffResist>ToxicSensitivity</toxicGasHediffResist>
@@ -107,7 +107,7 @@
     <comps>
       <li Class="CompProperties_Explosive">
         <explosiveRadius>4</explosiveRadius>
-        <explosiveDamageType>Smoke</explosiveDamageType>
+        <explosiveDamageType>SM_Danger_Smoke</explosiveDamageType>
         <postExplosionSpawnThingDef>SM_Gas_Tear</postExplosionSpawnThingDef>
         <postExplosionSpawnChance>1.0</postExplosionSpawnChance>
         <explosiveExpandPerStackcount>4</explosiveExpandPerStackcount>
@@ -261,9 +261,8 @@
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<projectile>
-      <!-- Use default damage from explosion def -->
 			<explosionDelay>10</explosionDelay>
-      <damageDef>Smoke</damageDef>
+      <damageDef>SM_Danger_Smoke_noShake</damageDef>
       <damageAmountBase>0</damageAmountBase>
       <explosionRadius>4</explosionRadius>
       <postExplosionSpawnThingDef>SM_Gas_Tear</postExplosionSpawnThingDef>

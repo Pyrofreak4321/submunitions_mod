@@ -3,3 +3,7 @@ C:\DEV\rimworld\submunition\Source\submunition\obj\Debug\submunition.csprojResol
 C:\DEV\rimworld\submunition\Assemblies\Submunition.dll
 C:\DEV\rimworld\submunition\Source\submunition\obj\Debug\Submunition.dll
 C:\DEV\rimworld\submunition\v1.1\Assemblies\Submunition.dll
+C:\DEV\rimworld\submunitions_mod\v1.1\Assemblies\Submunition.dll
+C:\DEV\rimworld\submunitions_mod\Source\submunition\obj\Debug\Submunition.csprojResolveAssemblyReference.cache
+C:\DEV\rimworld\submunitions_mod\Source\submunition\obj\Debug\Submunition.csproj.CoreCompileInputs.cache
+C:\DEV\rimworld\submunitions_mod\Source\submunition\obj\Debug\Submunition.dll

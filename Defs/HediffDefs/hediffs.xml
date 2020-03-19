@@ -897,7 +897,7 @@
         <mentalStateGivers>
           <li>
             <mentalState>Berserk</mentalState>
-            <mtbDays>1</mtbDays>
+            <mtbDays>1.5</mtbDays>
           </li>
         </mentalStateGivers>
       </li>
@@ -931,7 +931,7 @@
         <mentalStateGivers>
           <li>
             <mentalState>Berserk</mentalState>
-            <mtbDays>.5</mtbDays>
+            <mtbDays>1</mtbDays>
           </li>
         </mentalStateGivers>
       </li>
@@ -1111,7 +1111,7 @@
     <label>Roid tolerance</label>
     <comps>
       <li Class="HediffCompProperties_SeverityPerDay">
-        <severityPerDay>-0.025</severityPerDay>
+        <severityPerDay>-0.01</severityPerDay>
       </li>
       <li Class="HediffCompProperties_DrugEffectFactor">
         <chemical>Roid</chemical>

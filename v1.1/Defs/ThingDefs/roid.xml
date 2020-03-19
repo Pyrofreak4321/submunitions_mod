@@ -130,7 +130,7 @@
     <modExtensions>
       <li Class="Submunition.DefToxicGasExtension">
         <toxicGasHediffChance>1</toxicGasHediffChance>
-        <toxicGasHediffStrength>0.01</toxicGasHediffStrength>
+        <toxicGasHediffStrength>0.05</toxicGasHediffStrength>
         <toxicGasHediffToAdd>SM_Raging</toxicGasHediffToAdd>
         <toxicGasHediffResist>ToxicSensitivity</toxicGasHediffResist>
         <toxicGasHediffBodyScaling>true</toxicGasHediffBodyScaling>
@@ -270,7 +270,7 @@
 	</ThingDef>
   <ThingDef ParentName="BaseGrenadeProjectile">
 		<defName>SM_Proj_Grenade_Roid_Gas</defName>
-		<label>Roid grenade</label>
+		<label>Rage grenade</label>
 		<thingClass>Projectile_Explosive</thingClass>
 		<graphicData>
 			<texPath>Submunition/Item/Proj_Grenade_Roid_Gas</texPath>
@@ -279,7 +279,7 @@
 		<projectile>
       <!-- Use default damage from explosion def -->
 			<explosionDelay>10</explosionDelay>
-      <damageDef>Smoke</damageDef>
+      <damageDef>SM_Danger_Smoke_noShake</damageDef>
       <damageAmountBase>0</damageAmountBase>
       <explosionRadius>4</explosionRadius>
       <postExplosionSpawnThingDef>SM_Gas_Roid</postExplosionSpawnThingDef>
@@ -456,7 +456,7 @@
       <texPath>Submunition/Item/IED_Roid</texPath>
     </graphicData>
     <costList>
-      <SM_Shell_Tear_Gas>2</SM_Shell_Tear_Gas>
+      <SM_Shell_Roid_Gas>2</SM_Shell_Roid_Gas>
     </costList>
     <comps>
       <li Class="CompProperties_Explosive">

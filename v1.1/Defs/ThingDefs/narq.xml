@@ -114,7 +114,7 @@
     <modExtensions>
       <li Class="Submunition.DefToxicGasExtension">
         <toxicGasHediffChance>1</toxicGasHediffChance>
-        <toxicGasHediffStrength>0.01</toxicGasHediffStrength>
+        <toxicGasHediffStrength>0.05</toxicGasHediffStrength>
         <toxicGasHediffToAdd>SM_Sedated</toxicGasHediffToAdd>
         <toxicGasHediffResist>ToxicSensitivity</toxicGasHediffResist>
         <toxicGasHediffBodyScaling>true</toxicGasHediffBodyScaling>
@@ -263,7 +263,7 @@
 		<projectile>
       <!-- Use default damage from explosion def -->
 			<explosionDelay>10</explosionDelay>
-      <damageDef>Smoke</damageDef>
+      <damageDef>SM_Danger_Smoke_noShake</damageDef>
       <damageAmountBase>0</damageAmountBase>
       <explosionRadius>4</explosionRadius>
       <postExplosionSpawnThingDef>SM_Gas_Narq</postExplosionSpawnThingDef>
@@ -441,7 +441,7 @@
       <texPath>Submunition/Item/IED_Narq</texPath>
     </graphicData>
     <costList>
-      <SM_Shell_Tear_Gas>2</SM_Shell_Tear_Gas>
+      <SM_Shell_Narq_Gas>2</SM_Shell_Narq_Gas>
     </costList>
     <comps>
       <li Class="CompProperties_Explosive">

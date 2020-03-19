@@ -280,15 +280,12 @@ namespace Submunition
 
     }
 
+
     public class DamageWorker_Inc : DamageWorker_Flame
     {
         public override DamageWorker.DamageResult Apply(DamageInfo dinfo, Thing victim)
         {
-            Pawn pawn = victim as Pawn;
-            if (pawn != null)
-            {
-                victim.TryAttachFire(Rand.Range(0.5f, 1f));
-            }
+            victim.TryAttachFire(Rand.Range(0.5f, 1f));
 
             return base.Apply(dinfo, victim);
         }
@@ -299,6 +296,49 @@ namespace Submunition
             base.ExplosionAffectCell(explosion, c, damagedThings, ignoredThings, canThrowMotes);
         }
     }
+
+    public class DamageWorker_Inc_noShake : DamageWorker_Inc
+    {
+        public override void ExplosionStart(Explosion explosion, List<IntVec3> cellsToAffect)
+        {
+            if (this.def.explosionHeatEnergyPerCell > 1.401298E-45f)
+            {
+                GenTemperature.PushHeat(explosion.Position, explosion.Map, this.def.explosionHeatEnergyPerCell * (float)cellsToAffect.Count);
+            }
+            MoteMaker.MakeStaticMote(explosion.Position, explosion.Map, ThingDefOf.Mote_ExplosionFlash, explosion.radius * 6f);
+
+            this.ExplosionVisualEffectCenter(explosion);
+        }
+    }
+
+    public class DamageWorker_noShake : DamageWorker
+    {
+        public override void ExplosionStart(Explosion explosion, List<IntVec3> cellsToAffect)
+        {
+            if (this.def.explosionHeatEnergyPerCell > 1.401298E-45f)
+            {
+                GenTemperature.PushHeat(explosion.Position, explosion.Map, this.def.explosionHeatEnergyPerCell * (float)cellsToAffect.Count);
+            }
+            MoteMaker.MakeStaticMote(explosion.Position, explosion.Map, ThingDefOf.Mote_ExplosionFlash, explosion.radius * 6f);
+
+            this.ExplosionVisualEffectCenter(explosion);
+        }
+    }
+
+    public class DamageWorker_AddInjury_noShake : DamageWorker_AddInjury
+    {
+        public override void ExplosionStart(Explosion explosion, List<IntVec3> cellsToAffect)
+        {
+            if (this.def.explosionHeatEnergyPerCell > 1.401298E-45f)
+            {
+                GenTemperature.PushHeat(explosion.Position, explosion.Map, this.def.explosionHeatEnergyPerCell * (float)cellsToAffect.Count);
+            }
+            MoteMaker.MakeStaticMote(explosion.Position, explosion.Map, ThingDefOf.Mote_ExplosionFlash, explosion.radius * 6f);
+
+            this.ExplosionVisualEffectCenter(explosion);
+        }
+    }
+
 
     public class DamageWorker_Disolve_Riot : DamageWorker
     {
@@ -380,14 +420,13 @@ namespace Submunition
                     DamageWorker.DamageResult damageResult = pawn.TakeDamage(damage);
                     //if (pawn.Dead)
                     //{
-                    //    PawnKindDef varKind = PawnKindDef.Named("Mech_Scyther");
-                    //    Faction varFac = Find.FactionManager.OfMechanoids;
-                    //    Pawn varPawn = PawnGenerator.GeneratePawn(varKind, varFac);
-                    //    varPawn.mindState.duty = new Verse.AI.PawnDuty(DutyDefOf.HuntEnemiesIndividual);
+                    //    Map map = Find.CurrentMap;
+                    //    PawnKindDef varKind = PawnKindDef.Named("Thrumbo");
+                    //    PawnGenerationRequest request = new PawnGenerationRequest(varKind, null, PawnGenerationContext.NonPlayer, map.Tile);
+                    //    Pawn varPawn = PawnGenerator.GeneratePawn(request);
+                    //    GenSpawn.Spawn(varPawn, pawn.Position, map, Rot4.Random, WipeMode.Vanish, false);
 
-                    //    LordToil_HuntEnemies x = new LordToil_HuntEnemies(pawn.Position);
-
-                    //    GenSpawn.Spawn(varPawn, pawn.Position, Find.CurrentMap);
+                    //    varPawn.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.ManhunterPermanent, null, false, false, null, false);
                     //}                    
                 }
             }

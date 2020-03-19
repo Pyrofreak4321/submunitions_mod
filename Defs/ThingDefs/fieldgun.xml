@@ -79,8 +79,8 @@
     <building>
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>SM_Gun_FieldGun</turretGunDef>
-      <turretBurstWarmupTime>15.0</turretBurstWarmupTime>
-      <turretBurstCooldownTime>0</turretBurstCooldownTime>
+      <turretBurstWarmupTime>7.0</turretBurstWarmupTime>
+      <turretBurstCooldownTime>3</turretBurstCooldownTime>
       <turretTopGraphicPath>Submunition/Item/SM_Gun_FieldGun</turretTopGraphicPath>
       <turretTopDrawSize>3.5</turretTopDrawSize>
       <turretTopOffset>(0, 0)</turretTopOffset>
@@ -142,7 +142,7 @@
         <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>SM_Bullet_FieldGun</defaultProjectile>
-        <warmupTime>15</warmupTime>
+        <warmupTime>7</warmupTime>
         <minRange>4</minRange>
         <range>150</range>
         <ticksBetweenBurstShots>0</ticksBetweenBurstShots>

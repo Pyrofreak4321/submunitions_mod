@@ -7,80 +7,10 @@
 		<li>1.1</li>
 	</supportedVersions>
   <packageId>ifp.advancedmunitions</packageId>
+  <loadBefore>
+    <li>VanillaExpanded.VWE</li>
+  </loadBefore>
 	<description>
-Adds Air-burst, White Phosphorus, Nerve Agent, Minelet, Sabot, Tear gas, NARQ and Napalm Shells/IEDs and grenades
-
-Air-burst (Shells only) peppers a large area with micro munitions.
-
-Napalm (Shells and IEDS) creates a field of napalm that ignites on contact and inflicts minor damage, lasts for an 30-60 seconds and cannot be extinguished.
-
-White Phosphorus (Shells, IEDs and grenades) detonates in a cloud of white phosphorus. WP explosions wil not only blind but also embed burning shrapnel in the target that will continue to reignite and cause additional damage, burning WP also generates a toxic gas
-
-Nerve Agent (Shells and IEDs) are loaded with R-NDY nerve agent, banned on almost all planets capable of impossing said ban. R-NDY causes chemical burns, cancer and dementa. It must be flushed from each part with a treatment quality of 70% or better, or it will only slow down the contamination.
-
-Minelet (Shells only) create a field of minelets with high Armor penitration. Minelets are unstable and can detonate without warning.
-
-Tear Gas (Shells, IEDs and grenades) releases a cloud of Tear gas. Tear gas affects breathing and sight and causes vomiting in biologinal pawns.
-
-Sabot (Shells only) Uranium and Plasteel slug that causes Extreme damage with absolut armor penetration. highly effective aginst centipedes, but requires a bit of luck to connect with the target as it requires a direct hit.
-
-NARQ (Shells, IEDs, grenades, guns) Sedatives either aerosolized or loaded into darts to incapacitate pawns, sedatives can also be administered/taken directly to reduce mental break threshold and pain at the cost of rest and consciousness.
-
-Shrapnel Damage has a chance to leave behind shapnel in the victim that will cause pain and bleeding untill it is removed (has a chance to fail when tended)
-
-
-!! Warning !! white phosphorus and R-NDY phials are volatile and prone to rupture/self ignition if handled improperly
-
-
--CE compatibility: Nope
-
-
-Almost any feedback is welcome
-
-+1 human leather hat for (CMFL) Frying_Dutchman for his feedback!
-
-TO DO:
-  - Modular Rocket Launch System
-  - Grenade launchers in all the flavors
-  - Light Roof checks for submunitions
-[strike]  - LOS checks for submunitions[/strike]
-  - ????
-  - CE Patch
-  
-V1.6.1 - updated for Rimworld v1.1
-            tweeeked to try and save framerates with "gas"
-
-V1.5.12 - Tweeked Roid effects
-            Added Recipe for GW Riot shells
-
-V1.5.7 - Fixed Misc shells not showing up in sieges
-
-V1.5.3 - Roid weapons
-          Mechinoid, Glittterworld Riot Shells
-
-V1.4.0 - NARQ weapons(sedatives)
-            tweeked nerve agent and white phosphorus treatment and effects
-            changed Air-burst shells and minelets to shrapnel damage type
-            made air-burst and minelet shells true submunitions
-            added tear gas pellet item for crafting tear gas munitions
-            
-V1.3.0 - Tear gas, IEDs and grenades
-            general tweeks and balancing
-
-V1.2.0 - Minelet shells
-            
-V1.1.2 - Fix missing category for white phosphorus and nerve agent items
-            added resistance to gas 
-  
-V1.1.1 - Nerve Agent and White Phosphorus tweeks
-            added white phosphorus and nerve agent items and recipes
-            made WP round more leathal
-  
-V1.1.0 - Nerve Agent and White Phosphorus shells
-  
-V1.0.3 - Rimefeller patch -
-                napalm shell now takes napalm if rimefeller is installed
-                
-[url=https://ko-fi.com/A0A7YVO3] [img]https://i.imgur.com/HUp6iZT.png?1[/img] [/url]
+  All kinds of shiny advanced weapons that are generally frowned upon by civilized folk. check the steam page for details.
 	</description>
 </ModMetaData>

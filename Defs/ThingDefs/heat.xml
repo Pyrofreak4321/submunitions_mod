@@ -5,7 +5,7 @@
     <label>HEAT shell</label>
     <description>Standard Anti-Armor HEAT shell.</description>
     <graphicData>
-      <texPath>Things/Item/Resource/Shell/Shell_HighExplosive</texPath>
+      <texPath>Submunition/Item/Shell_Napalm</texPath>
       <graphicClass>Graphic_StackCount</graphicClass>
     </graphicData>
     <comps>
@@ -39,39 +39,43 @@
     </statBases>
   </ThingDef>
  
-  <ThingDef ParentName="BaseBullet">
+ <ThingDef ParentName="BaseBullet">
     <defName>SM_Bullet_Shell_HEAT</defName>
     <label>HEAT shell</label>
     <graphicData>
-      <texPath>Things/Projectile/Bullet_big</texPath>
+      <texPath>Submunition/Item/Bullet_Shell_Napalm</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <shaderType>TransparentPostLight</shaderType>
     </graphicData>
     <thingClass>Submunition.Projectile_Submunition</thingClass>
     <projectile>
-      <damageDef>SM_Shrapnel</damageDef>
+      <damageDef>Bomb</damageDef>
       <speed>41</speed>
-      <damageAmountBase>10</damageAmountBase>
-      <explosionRadius>.5</explosionRadius>
+      <damageAmountBase>400</damageAmountBase>
+      <explosionRadius>2</explosionRadius>
+      <postExplosionSpawnThingDef>SM_Gas_Nerve</postExplosionSpawnThingDef>
+      <postExplosionSpawnChance>1.0</postExplosionSpawnChance>
       <flyOverhead>true</flyOverhead>
       <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
       <soundExplode>MortarBomb_Explode</soundExplode>
       <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
       <soundAmbient>MortarRound_Ambient</soundAmbient>
+      <ai_IsIncendiary>true</ai_IsIncendiary>
     </projectile>
     <modExtensions>
       <li Class="Submunition.DefSubmunitionExtension">
-        <submunitionPopSize>4</submunitionPopSize>
         <submunitionCount>1</submunitionCount>
-        <submunitionExplosionRadius>.5</submunitionExplosionRadius>
-        <submunitionDelay>0</submunitionDelay>
-        <submunitionPreDetonation>1</submunitionPreDetonation>
-        <submunitionDuration>1</submunitionDuration>
-        <submunitionInterval>1</submunitionInterval>
-        <submunitionDamageDef>SM_AP_Bomb</submunitionDamageDef>
-        <submunitionDamageAmount>200</submunitionDamageAmount>
-        <submunitionDestroyOnImpact>false</submunitionDestroyOnImpact>
+        <submunitionExplosionRadius>2</submunitionExplosionRadius>
+        <submunitionDelay>1</submunitionDelay>
+        <submunitionPreDetonation>0</submunitionPreDetonation>
+        <submunitionDuration>0</submunitionDuration>
+        <submunitionInterval>0</submunitionInterval>
+        <submunitionDamageDef>Bomb</submunitionDamageDef>
+<!--         <submunitionDestroyOnImpact>true</submunitionDestroyOnImpact>
+        <submunitionSpawnThingDef>SM_Gas_Napalm</submunitionSpawnThingDef>
+        <submunitionSpawnThingChance>1</submunitionSpawnThingChance> -->
       </li>
     </modExtensions>
   </ThingDef>
+
 </Defs>

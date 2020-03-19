@@ -102,6 +102,23 @@
     </additionalHediffs>
  </DamageDef>
 
+  <DamageDef>
+    <defName>SM_WhitePhospherBullet</defName>
+    <label>burn</label>
+    <workerClass>Submunition.DamageWorker_Inc_noShake</workerClass>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0} has burned to death.</deathMessage>
+    <hediff>SM_WP_Burn</hediff>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Bullet</impactSoundType>
+    <armorCategory>Sharp</armorCategory>
+    <overkillPctToDestroyPart>0~0.7</overkillPctToDestroyPart>
+    <soundExplosion>BulletImpact_Ground</soundExplosion>
+    <isRanged>true</isRanged>
+    <makesAnimalsFlee>true</makesAnimalsFlee>
+ </DamageDef>
+
+
   <ThingDef ParentName="ResourceBase">
     <defName>SM_partWP</defName>
     <label>White Phosphorus</label>
@@ -345,5 +362,194 @@
       <postExplosionSpawnChance>0.55</postExplosionSpawnChance>
 		</projectile>
 	</ThingDef>
+  
+  <ThingDef ParentName="BaseHumanMakeableGun">
+    <defName>SM_Gun_DBShotgun</defName>
+    <label>dragon breath shotgun</label>
+    <description>An ancient design of shotgun that emits a tight-packed spray of pellets. Deadly, but short range. This one is loaded with Dragon Breath shells, resulting in looser pattern of white phosphorus pellets</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponRanged/Shotgun</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Interact_Shotgun</soundInteract>
+    <statBases>
+      <WorkToMake>1200</WorkToMake>
+      <Mass>3.4</Mass>
+      <AccuracyTouch>0.80</AccuracyTouch>
+      <AccuracyShort>0.87</AccuracyShort>
+      <AccuracyMedium>0.77</AccuracyMedium>
+      <AccuracyLong>0.64</AccuracyLong>
+      <RangedWeapon_Cooldown>1.25</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Gun_PumpShotgun>1</Gun_PumpShotgun>
+      <SM_partWP>100</SM_partWP>
+    </costList>
+    <recipeMaker>
+      <skillRequirements>
+        <Crafting>8</Crafting>
+      </skillRequirements>
+    </recipeMaker>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>SM_Bullet_DBShotgun_Blast</defaultProjectile>
+        <warmupTime>0.9</warmupTime>
+        <range>15.9</range>
+        <soundCast>Shot_Shotgun</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+    <tools>
+      <li>
+        <label>stock</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>9</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+      <li>
+        <label>barrel</label>
+        <capacities>
+          <li>Blunt</li>
+          <li>Poke</li>
+        </capacities>
+        <power>9</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+  <ThingDef ParentName="BaseBullet">
+    <defName>SM_Bullet_DBShotgun_Blast</defName>
+    <label>dragon breath shotgun blast</label>
+    <graphicData>
+      <texPath>Submunition/Item/Bullet_Shell_AirBurst</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+    <thingClass>Submunition.Projectile_Submunition</thingClass>
+    <projectile>
+      <damageDef>SM_Smoke_noShake</damageDef>
+      <explosionDelay>0</explosionDelay>
+      <speed>55</speed>
+      <explosionRadius>1.5</explosionRadius>
+      <flyOverhead>false</flyOverhead>
+    </projectile>
+    <modExtensions>
+      <li Class="Submunition.DefSubmunitionExtension">
+        <submunitionPopSize>1</submunitionPopSize>
+        <submunitionCount>10</submunitionCount>
+        <submunitionMultiplier>0</submunitionMultiplier>
+        <submunitionPreDetonation>999</submunitionPreDetonation>
+        <submunitionDuration>1</submunitionDuration>
+        <submunitionInterval>1</submunitionInterval>
+        <submunitionFragment>true</submunitionFragment>
+        <submunitionFragmentThingDef>SM_Bullet_DBShotgun</submunitionFragmentThingDef>
+      </li>
+    </modExtensions>
+  </ThingDef>  
+  <ThingDef ParentName="BaseBullet">
+    <defName>SM_Bullet_DBShotgun</defName>
+    <label>dragon breath shotgun blast</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(254,151,58)</color>
+    </graphicData>
+    <thingClass>Projectile_Explosive</thingClass>
+    <projectile>
+      <damageAmountBase>1</damageAmountBase>
+      <explosionRadius>.9</explosionRadius>
+      <explosionDelay>0</explosionDelay>
+      <flyOverhead>false</flyOverhead>
+      <damageDef>SM_WhitePhospherBullet</damageDef>
+      <speed>55</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseHumanMakeableGun">
+    <defName>SM_Gun_Minigun_HF</defName>
+    <label>hellfire minigun</label>
+    <description>A multi-barrel machine gun. It's unwieldy, but once it starts firing it fires very fast. Where most self-loading guns are powered by the energy from the gunpowder, the minigun uses an electric motor to rapidly cycle cartridges through the weapon. This one is loaded with white phosphorus tipped cartridges, reducing initial damage but igniting anything they hit.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponRanged/Minigun</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <thingSetMakerTags><li>RewardStandardQualitySuper</li></thingSetMakerTags>
+    <statBases>
+      <WorkToMake>6000</WorkToMake>
+      <Mass>10</Mass>
+      <AccuracyTouch>0.15</AccuracyTouch>
+      <AccuracyShort>0.25</AccuracyShort>
+      <AccuracyMedium>0.25</AccuracyMedium>
+      <AccuracyLong>0.18</AccuracyLong>
+      <RangedWeapon_Cooldown>2.3</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Gun_Minigun>1</Gun_Minigun>
+      <SM_partWP>200</SM_partWP>
+    </costList>
+    <recipeMaker>
+      <skillRequirements>
+        <Crafting>8</Crafting>
+      </skillRequirements>
+    </recipeMaker>
+    <techLevel>Industrial</techLevel>
+    <weaponTags>
+      <li>GunHeavy</li>
+    </weaponTags>
+    <equippedStatOffsets>
+      <MoveSpeed>-0.25</MoveSpeed>
+    </equippedStatOffsets>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>SM_Bullet_Minigun_HF</defaultProjectile>
+        <warmupTime>2.5</warmupTime>
+        <range>30.9</range>
+        <burstShotCount>25</burstShotCount>
+        <ticksBetweenBurstShots>5</ticksBetweenBurstShots>
+        <soundCast>Shot_Minigun</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+    <tools>
+      <li>
+        <label>barrels</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>11.7</power>
+        <cooldownTime>2.6</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+  <ThingDef ParentName="BaseBullet">
+    <defName>SM_Bullet_Minigun_HF</defName>
+    <label>minigun bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(254,151,58)</color>
+    </graphicData>
+    <thingClass>Projectile_Explosive</thingClass>
+    <projectile>
+      <damageDef>SM_WhitePhospherBullet</damageDef>
+      <damageAmountBase>2</damageAmountBase>
+      <explosionDelay>0</explosionDelay>
+      <explosionRadius>.25</explosionRadius>
+      <flyOverhead>false</flyOverhead>
+      <speed>70</speed>
+    </projectile>
+  </ThingDef>
+  
   
 </Defs>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[@ParentName="TrapIEDBase"][not(designatorDropdown)]</xpath>
+		<value>
+			<designatorDropdown>SM_IEDddd</designatorDropdown>
+		</value>
+	</Operation>
+  
+	<Operation Class="PatchOperationAdd">
+		<xpath>*/ThingDef[defName="Wall"]/damageMultipliers</xpath>
+		<value>
+		  <li>
+			<damageDef>Bullet</damageDef>
+			<multiplier>0.1</multiplier>
+		  </li>
+		  <li>
+			<damageDef>SM_Shrapnel</damageDef>
+			<multiplier>0.1</multiplier>
+		  </li>
+		  <li>
+			<damageDef>Arrow</damageDef>
+			<multiplier>0</multiplier>
+		  </li>
+		  <li>
+			<damageDef>Blunt</damageDef>
+			<multiplier>1.5</multiplier>
+		  </li>
+		</value>
+	</Operation>
+  
+	<Operation Class="PatchOperationAdd">
+		<xpath>*/ThingDef[defName="Barricade"][not(damageMultipliers)]</xpath>
+		<value>
+      <damageMultipliers>
+        <li>
+        <damageDef>Bomb</damageDef>
+        <multiplier>2</multiplier>
+        </li>
+      </damageMultipliers>
+    </value>
+	</Operation>
+  <Operation Class="PatchOperationAdd">
+		<xpath>*/ThingDef[defName="Barricade"]/damageMultipliers</xpath>
+		<value>
+		  <li>
+			<damageDef>Bullet</damageDef>
+			<multiplier>0.5</multiplier>
+		  </li>
+		  <li>
+			<damageDef>SM_Shrapnel</damageDef>
+			<multiplier>0.1</multiplier>
+		  </li>
+		  <li>
+			<damageDef>Arrow</damageDef>
+			<multiplier>0.1</multiplier>
+		  </li>
+		  <li>
+			<damageDef>Blunt</damageDef>
+			<multiplier>0</multiplier>
+		  </li>
+		</value>
+	</Operation>
+  
+  <Operation Class="PatchOperationAdd">
+		<xpath>*/ThingDef[defName="Sandbags"][not(damageMultipliers)]</xpath>
+		<value>
+      <damageMultipliers>
+        <li>
+        <damageDef>Bomb</damageDef>
+        <multiplier>2</multiplier>
+        </li>
+      </damageMultipliers>
+    </value>
+	</Operation>
+  <Operation Class="PatchOperationAdd">
+		<xpath>*/ThingDef[defName="Sandbags"]/damageMultipliers</xpath>
+		<value>
+		  <li>
+			<damageDef>Bullet</damageDef>
+			<multiplier>0.5</multiplier>
+		  </li>
+		  <li>
+			<damageDef>SM_Shrapnel</damageDef>
+			<multiplier>0.1</multiplier>
+		  </li>
+		  <li>
+			<damageDef>Arrow</damageDef>
+			<multiplier>0.1</multiplier>
+		  </li>
+		  <li>
+			<damageDef>Blunt</damageDef>
+			<multiplier>0</multiplier>
+		  </li>
+		  <li>
+			<damageDef>Cut</damageDef>
+			<multiplier>1.5</multiplier>
+		  </li>
+		</value>
+	</Operation>
+  
+  <Operation Class="PatchOperationReplace">
+		<xpath>*/ThingDef[defName="Weapon_GrenadeFrag"]/label</xpath>
+		<value>
+			<label>HE grenades</label>
+		</value>
+	</Operation>
+  <Operation Class="PatchOperationReplace">
+		<xpath>*/ThingDef[defName="Weapon_GrenadeFrag"]/description</xpath>
+		<value>
+			<description>Old-school high-explosive grenades. They can be thrown a short distance, where they'll explode, damaging anything and anyone nearby.</description>
+		</value>
+	</Operation>
+  <Operation Class="PatchOperationReplace">
+		<xpath>*/ThingDef[defName="Proj_GrenadeFrag"]/label</xpath>
+		<value>
+			<label>HE grenade</label>
+		</value>
+	</Operation>
+  
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+		  <li>ED-Embrasures</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<success>Always</success>
+			<operations>
+				<li Class="PatchOperationAdd">
+					<xpath>*/ThingDef[defName="ED-Embrasure-Wall"]/damageMultipliers</xpath>
+					<value>
+					  <li>
+              <damageDef>Bullet</damageDef>
+              <multiplier>0.1</multiplier>
+					  </li>
+            <li>
+            <damageDef>SM_Shrapnel</damageDef>
+            <multiplier>0.1</multiplier>
+            </li>
+					  <li>
+              <damageDef>Arrow</damageDef>
+              <multiplier>0</multiplier>
+					  </li>
+					  <li>
+              <damageDef>Blunt</damageDef>
+              <multiplier>1.5</multiplier>
+					  </li>
+					</value>
+				</li>
+			</operations>
+		</match>
+	</Operation>
+</Patch>	 
