@@ -386,6 +386,7 @@
       <SM_partWP>100</SM_partWP>
     </costList>
     <recipeMaker>
+      <researchPrerequisite>Submunitions</researchPrerequisite>
       <skillRequirements>
         <Crafting>8</Crafting>
       </skillRequirements>
@@ -495,6 +496,7 @@
       <SM_partWP>200</SM_partWP>
     </costList>
     <recipeMaker>
+      <researchPrerequisite>Submunitions</researchPrerequisite>
       <skillRequirements>
         <Crafting>8</Crafting>
       </skillRequirements>
