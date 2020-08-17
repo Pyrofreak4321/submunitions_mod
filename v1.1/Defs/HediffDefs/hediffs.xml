@@ -1,72 +1,27 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-  <DamageDef Name="SM_Danger_Smoke">
-    <defName>SM_Danger_Smoke</defName>
-    <label>smoke</label>
-    <externalViolence>true</externalViolence>
-    <harmsHealth>true</harmsHealth>
-    <canInterruptJobs>false</canInterruptJobs>
-    <makesBlood>false</makesBlood>
-    <defaultDamage>0</defaultDamage>
-    <explosionCellMote>Mote_BlastExtinguisher</explosionCellMote>
-    <explosionColorEdge>(1, 1, 1, 0.05)</explosionColorEdge>
-    <soundExplosion>Explosion_Smoke</soundExplosion>
-    <combatLogRules>Damage_Smoke</combatLogRules>
-  </DamageDef>
+  <!-- rubber -->
+  <HediffDef ParentName="InjuryBase">
+    <defName>SM_painBruise</defName>
+    <label>bruise</label>
+    <labelNoun>a bruise</labelNoun>
+    <description>A bruise.</description>
+    <comps>
+      <li Class="HediffCompProperties_TendDuration">
+        <labelTendedWell>bandaged</labelTendedWell>
+        <labelTendedWellInner>tended</labelTendedWellInner>
+        <labelSolidTendedWell>set</labelSolidTendedWell>
+      </li>
+    </comps>
+    <injuryProps>
+      <painPerSeverity>0.15</painPerSeverity>
+      <averagePainPerSeverityPermanent>0.00625</averagePainPerSeverityPermanent>
+      <canMerge>false</canMerge>
+      <destroyedLabel>Destroyed</destroyedLabel>
+    </injuryProps>
+  </HediffDef>
 
-  <DamageDef ParentName="SM_Danger_Smoke">
-    <defName>SM_Danger_Smoke_noShake</defName>
-    <workerClass>Submunition.DamageWorker_noShake</workerClass>
-  </DamageDef>
-
-  <DamageDef>
-    <defName>SM_Smoke_noShake</defName>
-    <label>smoke</label>
-    <canInterruptJobs>false</canInterruptJobs>
-    <workerClass>Submunition.DamageWorker_noShake</workerClass>
-    <makesBlood>false</makesBlood>
-    <defaultDamage>0</defaultDamage>
-    <explosionCellMote>Mote_BlastExtinguisher</explosionCellMote>
-    <explosionColorEdge>(1, 1, 1, 0.05)</explosionColorEdge>
-    <harmsHealth>false</harmsHealth>
-    <soundExplosion>Explosion_Smoke</soundExplosion>
-    <combatLogRules>Damage_Smoke</combatLogRules>
-  </DamageDef>
-
-  <DamageDef ParentName="Bomb" Name="SM_Shrapnel">
-    <defName>SM_Shrapnel</defName>
-    <label>shrapnel</label>
-    <isExplosive>true</isExplosive>
-    <minDamageToFragment>1</minDamageToFragment>
-    <defaultDamage>12</defaultDamage>
-    <defaultArmorPenetration>0.01</defaultArmorPenetration>
-    <overkillPctToDestroyPart>0~0.7</overkillPctToDestroyPart>
-    <isRanged>true</isRanged>
-    <hediff>SM_Shrapnel_Shredded</hediff>
-    <makesAnimalsFlee>true</makesAnimalsFlee>
-    <buildingDamageFactor>.5</buildingDamageFactor>
-    <plantDamageFactor>2</plantDamageFactor>
-    <explosionHeatEnergyPerCell>0</explosionHeatEnergyPerCell>
-    <explosionCellMote>Mote_ShotHit_Dirt</explosionCellMote>
-    <explosionColorCenter>(1, 1, 1)</explosionColorCenter>
-    <explosionColorEdge>(1, 1, 1)</explosionColorEdge>
-    <soundExplosion>BulletImpact_Ground</soundExplosion>
-    <impactSoundType>Bullet</impactSoundType>
-  </DamageDef>
-  
-  <DamageDef ParentName="SM_Shrapnel">
-    <defName>SM_Shrapnel_noShake</defName>
-    <workerClass>Submunition.DamageWorker_AddInjury_noShake</workerClass>
-  </DamageDef>
-  
-  <DamageDef ParentName="Bomb">
-    <defName>SM_AP_Bomb</defName>
-    <defaultStoppingPower>20.0</defaultStoppingPower>
-    <defaultArmorPenetration>9999</defaultArmorPenetration>
-    <minDamageToFragment>100</minDamageToFragment>
-  </DamageDef>
-  
   <!-- shrapnel -->
   <HediffDef ParentName="InjuryBase">
     <defName>SM_Shrapnel_Shredded</defName>
@@ -136,7 +91,7 @@
     </modExtensions>
   </HediffDef>
 
-
+  <!-- mech -->
   <HediffDef ParentName="InjuryBase">
     <defName>SM_Hediff_Mech_All</defName>
     <hediffClass>Submunition.AdvHediff</hediffClass>
@@ -155,8 +110,7 @@
       </li>
     </modExtensions>
   </HediffDef>
-  
-  
+ 
   <!-- wp flash/burn/frag -->
   <HediffDef>
     <defName>FlashBlind</defName>
@@ -468,7 +422,7 @@
     </stages>
     <modExtensions>
       <li Class="Submunition.DefAdvHediffExtension">
-        <advHediffDamageDef>Toxic</advHediffDamageDef>
+        <advHediffDamageDef>SM_Toxic</advHediffDamageDef>
         <advHediffDamageStrength>-1</advHediffDamageStrength>
         <advHediffDamageScale>10</advHediffDamageScale>
         <advHediffDamageInterval>240</advHediffDamageInterval>
@@ -625,6 +579,7 @@
     </stages>
   </HediffDef> 
 
+  <!-- dart -->
   <HediffDef ParentName="InjuryBase" Name="SM_Dart" Abstract="True">
     <defName>SM_Dart</defName>
     <label>dart</label>
@@ -665,9 +620,9 @@
   </HediffDef>
   <HediffDef>
     <defName>SM_Seditive</defName>
-    <label>Seditive</label>
+    <label>Sedative</label>
     <description>pocket of strong sedative, will seep into the bloodstream over time</description>
-    <labelNoun>Seditive</labelNoun>
+    <labelNoun>Sedative</labelNoun>
     <tendable>false</tendable>
     <displayWound>false</displayWound>
     <hediffClass>Submunition.AdvHediff</hediffClass>
@@ -1236,5 +1191,4 @@
     </stages>
   </HediffDef>
   
-
 </Defs>

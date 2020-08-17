@@ -1,45 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-
-  <DamageDef>
-    <defName>SM_Danger_Smoke</defName>
-    <label>smoke</label>
-    <externalViolence>true</externalViolence>
-    <harmsHealth>true</harmsHealth>
-    <canInterruptJobs>false</canInterruptJobs>
-    <makesBlood>false</makesBlood>
-    <defaultDamage>0</defaultDamage>
-    <explosionCellMote>Mote_BlastExtinguisher</explosionCellMote>
-    <explosionColorEdge>(1, 1, 1, 0.05)</explosionColorEdge>
-    <soundExplosion>Explosion_Smoke</soundExplosion>
-    <combatLogRules>Damage_Smoke</combatLogRules>
-  </DamageDef>
-
-  <DamageDef ParentName="Bomb">
-    <defName>SM_Shrapnel</defName>
-    <label>shrapnel</label>
-    <isExplosive>true</isExplosive>
-    <minDamageToFragment>1</minDamageToFragment>
-    <defaultDamage>12</defaultDamage>
-    <defaultArmorPenetration>0.50</defaultArmorPenetration>
-    <overkillPctToDestroyPart>0~0.7</overkillPctToDestroyPart>
-    <isRanged>true</isRanged>
-    <hediff>SM_Shrapnel_Shredded</hediff>
-    <makesAnimalsFlee>true</makesAnimalsFlee>
-    <buildingDamageFactor>.25</buildingDamageFactor>
-    <plantDamageFactor>1</plantDamageFactor>
-    <explosionHeatEnergyPerCell>0</explosionHeatEnergyPerCell>
-    <explosionCellMote>Mote_ShotHit_Dirt</explosionCellMote>
-    <explosionColorCenter>(1, 1, 1)</explosionColorCenter>
-    <explosionColorEdge>(1, 1, 1)</explosionColorEdge>
-    <soundExplosion>BulletImpact_Ground</soundExplosion>
-    <impactSoundType>Bullet</impactSoundType>
-  </DamageDef>
-
   <!-- shrapnel -->
   <HediffDef ParentName="InjuryBase">
     <defName>SM_Shrapnel_Shredded</defName>
     <label>shredded</label>
+    <description>a grizzly wound caused by high velocity shrapnel</description>
     <labelNoun>a shredded wound</labelNoun>
     <hediffClass>Submunition.AdvHediff_Injury</hediffClass>
     <comps>
@@ -77,6 +42,7 @@
   <HediffDef ParentName="InjuryBase">
     <defName>SM_Shrapnel_hediff</defName>
     <label>shrapnel</label>
+    <description>A sharp jagged piece of embedded metal, causes constant bleeding and pain until removed</description>
     <labelNoun>a piece of shrapnel</labelNoun>
     <hediffClass>Submunition.AdvHediff_Injury</hediffClass>
     <comps>
@@ -103,16 +69,17 @@
     </modExtensions>
   </HediffDef>
 
-
+  <!-- mech -->
   <HediffDef ParentName="InjuryBase">
     <defName>SM_Hediff_Mech_All</defName>
     <hediffClass>Submunition.AdvHediff</hediffClass>
     <defaultLabelColor>(0.5, 1.0, 0.5)</defaultLabelColor>
     <label>Mechinites</label>
+    <description>mechinite contamination the will constantly destroy surrounding tissue</description>
     <makesSickThought>true</makesSickThought>
     <modExtensions>
       <li Class="Submunition.DefAdvHediffExtension">
-        <advHediffDamageDef>Burn</advHediffDamageDef>
+        <advHediffDamageDef>SM_Mech_All</advHediffDamageDef>
         <advHediffDamageStrength>1</advHediffDamageStrength>
         <advHediffDamageScale>1</advHediffDamageScale>
         <advHediffDamageInterval>30</advHediffDamageInterval>
@@ -121,14 +88,14 @@
       </li>
     </modExtensions>
   </HediffDef>
-  
-  
+ 
   <!-- wp flash/burn/frag -->
   <HediffDef>
     <defName>FlashBlind</defName>
     <hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(1.0, 0.7, 0.7)</defaultLabelColor>
     <label>Flash Blindness</label>
+    <description>Eye damage due to exposure to extremely bright light</description>
     <makesSickThought>true</makesSickThought>
     <scenarioCanAdd>false</scenarioCanAdd>
     <comps>
@@ -220,6 +187,7 @@
     <defName>SM_WP_Burn</defName>
     <hediffClass>Submunition.AdvHediff_Injury</hediffClass>
     <label>burn</label>
+    <description>burns caused by exposure to white phosphorus</description>
     <labelNoun>a burn</labelNoun>
     <comps>
       <li Class="HediffCompProperties_TendDuration">
@@ -267,6 +235,7 @@
   <HediffDef>
     <defName>SM_WP_debries</defName>
     <label>White Phosphorus shrapnel</label>
+    <description>a piece of embedded white phosphorus... still burning</description>
     <labelNoun>White Phosphorus shrapnel</labelNoun>
     <tendable>true</tendable>
     <displayWound>false</displayWound>
@@ -303,6 +272,7 @@
   <HediffDef ParentName="InjuryBase">
     <defName>SM_Chem_Burn</defName>
     <label>chemical burn</label>
+    <description>burns from exposure to caustic chemicals</description>
     <labelNoun>a chemical burn</labelNoun>
     <comps>
       <li Class="HediffCompProperties_TendDuration">
@@ -330,6 +300,7 @@
     <hediffClass>Submunition.AdvHediff</hediffClass>
     <defaultLabelColor>(0.5, 1.0, 0.5)</defaultLabelColor>
     <label>R-NDY</label>
+    <description>contamination from the nerve agent R-NDY</description>
     <makesSickThought>true</makesSickThought>
     <tendable>true</tendable>
     <comps>
@@ -454,6 +425,7 @@
     <hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(1.0, 0.7, 0.7)</defaultLabelColor>
     <label>Tear Gas</label>
+    <description>contamination from tear gas. causes extreme nausea, difficulty seeing and breathing</description>
     <makesSickThought>true</makesSickThought>
     <scenarioCanAdd>false</scenarioCanAdd>
     <maxSeverity>10</maxSeverity>
@@ -479,7 +451,7 @@
       </li>
       <li>
         <vomitMtbDays>0.3</vomitMtbDays>
-        <painOffset>0.1</painOffset>
+        <painOffset>0.2</painOffset>
         <minSeverity>0.10</minSeverity>
         <capMods>
           <li>
@@ -494,7 +466,7 @@
       </li>
       <li>
         <vomitMtbDays>0.2</vomitMtbDays>
-        <painOffset>0.2</painOffset>
+        <painOffset>0.3</painOffset>
         <minSeverity>0.20</minSeverity>
         <capMods>
           <li>
@@ -509,7 +481,7 @@
       </li>
       <li>
         <vomitMtbDays>0.1</vomitMtbDays>
-        <painOffset>0.2</painOffset>
+        <painOffset>0.4</painOffset>
         <minSeverity>0.30</minSeverity>
         <capMods>
           <li>
@@ -524,7 +496,7 @@
       </li>
       <li>
         <vomitMtbDays>0.05</vomitMtbDays>
-        <painOffset>0.3</painOffset>
+        <painOffset>0.5</painOffset>
         <minSeverity>0.40</minSeverity>
         <capMods>
           <li>
@@ -539,7 +511,7 @@
       </li>
       <li>
         <vomitMtbDays>0.01</vomitMtbDays>
-        <painOffset>0.3</painOffset>
+        <painOffset>0.6</painOffset>
         <minSeverity>0.50</minSeverity>
         <capMods>
           <li>
@@ -554,7 +526,7 @@
       </li>
       <li>
         <vomitMtbDays>0.01</vomitMtbDays>
-        <painOffset>0.3</painOffset>
+        <painOffset>0.6</painOffset>
         <minSeverity>0.60</minSeverity>
         <capMods>
           <li>
@@ -569,7 +541,7 @@
       </li>
       <li>
         <vomitMtbDays>0.01</vomitMtbDays>
-        <painOffset>0.4</painOffset>
+        <painOffset>0.8</painOffset>
         <minSeverity>0.70</minSeverity>
         <capMods>
           <li>
@@ -585,9 +557,11 @@
     </stages>
   </HediffDef> 
 
+  <!-- dart -->
   <HediffDef ParentName="InjuryBase" Name="SM_Dart" Abstract="True">
     <defName>SM_Dart</defName>
     <label>dart</label>
+    <description>site of a dart injection point</description>
     <labelNoun>a dart wound</labelNoun>
     <hediffClass>Submunition.AdvHediff_Injury</hediffClass>
     <comps>
@@ -625,6 +599,7 @@
   <HediffDef>
     <defName>SM_Seditive</defName>
     <label>Seditive</label>
+    <description>pocket of strong sedative, will seep into the bloodstream over time</description>
     <labelNoun>Seditive</labelNoun>
     <tendable>false</tendable>
     <displayWound>false</displayWound>
@@ -651,6 +626,7 @@
     <hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(1.0, 0.7, 0.7)</defaultLabelColor>
     <label>Sedated</label>
+    <description>a strong sedative, relaxing and soothing. In large doses can cause unconsciousness</description>
     <makesSickThought>false</makesSickThought>
     <scenarioCanAdd>true</scenarioCanAdd>
     <maxSeverity>1.0</maxSeverity>
@@ -749,6 +725,7 @@
     <defName>SM_SeditiveHigh</defName>
     <hediffClass>HediffWithComps</hediffClass>
     <label>Sedated</label>
+    <description>a strong sedative, relaxing and soothing. In large doses can cause unconsciousness</description>
     <defaultLabelColor>(1.0, 0.7, 0.7)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
     <isBad>false</isBad>
@@ -833,6 +810,7 @@
   <HediffDef>
     <defName>SM_Berserk</defName>
     <label>Roid</label>
+    <description>pocket of Roid combat stimulant, will seep into the bloodstream over time</description>
     <labelNoun>Roid</labelNoun>
     <tendable>false</tendable>
     <displayWound>false</displayWound>
@@ -859,6 +837,7 @@
     <hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(1.0, 0.7, 0.7)</defaultLabelColor>
     <label>Raging</label>
+    <description>a powerful combat stimulant, can cause extreme aggression</description>
     <makesSickThought>false</makesSickThought>
     <scenarioCanAdd>true</scenarioCanAdd>
     <maxSeverity>2.0</maxSeverity>
@@ -897,7 +876,7 @@
         <mentalStateGivers>
           <li>
             <mentalState>Berserk</mentalState>
-            <mtbDays>1.5</mtbDays>
+            <mtbDays>1</mtbDays>
           </li>
         </mentalStateGivers>
       </li>
@@ -931,7 +910,7 @@
         <mentalStateGivers>
           <li>
             <mentalState>Berserk</mentalState>
-            <mtbDays>1</mtbDays>
+            <mtbDays>.1</mtbDays>
           </li>
         </mentalStateGivers>
       </li>
@@ -975,6 +954,7 @@
     <defName>SM_RagingHigh</defName>
     <hediffClass>HediffWithComps</hediffClass>
     <label>High on Roid</label>
+    <description>a powerful combat stimulant, can cause extreme aggression</description>
     <labelNoun>a Roid high</labelNoun>
     <defaultLabelColor>(1,0,0.5)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
@@ -1109,6 +1089,7 @@
   <HediffDef ParentName="DrugToleranceBase">
     <defName>RoidTolerance</defName>
     <label>Roid tolerance</label>
+    <description>resistance to Roid</description>
     <comps>
       <li Class="HediffCompProperties_SeverityPerDay">
         <severityPerDay>-0.01</severityPerDay>
@@ -1133,6 +1114,7 @@
     <defName>RoidAddiction</defName>
     <hediffClass>Hediff_Addiction</hediffClass>
     <label>roid addiction</label>
+    <description>addiction to Roid</description>
     <causesNeed>Chemical_Roid</causesNeed>
     <comps>
       <li Class="HediffCompProperties_SeverityPerDay">
@@ -1187,5 +1169,4 @@
     </stages>
   </HediffDef>
   
-
 </Defs>

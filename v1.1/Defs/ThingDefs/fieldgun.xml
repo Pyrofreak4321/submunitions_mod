@@ -1,73 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-  <ThingDef ParentName="MakeableShellBase">
-    <defName>SM_Shell_Sabot</defName>
-    <label>APDS shell</label>
-    <description>A Uranium slug wraped in a plasteel jacket with a wooden sabot. Has extreme armor penetration and damage but requires a direct hit. Designed for use with field guns to counter heavy mechanoid armor, can still be used with a mortar and a bit of luck.</description>
-    <graphicData>
-      <texPath>Submunition/Item/SM_Shell_Sabot</texPath>
-      <graphicClass>Graphic_StackCount</graphicClass>
-    </graphicData>
-    <comps>
-      <li Class="CompProperties_Explosive">
-        <explosiveRadius>.5</explosiveRadius>
-        <explosiveDamageType>Bomb</explosiveDamageType>
-        <explosiveExpandPerStackcount>.01</explosiveExpandPerStackcount>
-        <startWickHitPointsPercent>0.7</startWickHitPointsPercent>
-        <wickTicks>
-          <min>30</min>
-          <max>60</max>
-        </wickTicks>
-      </li>
-    </comps>
-    <projectileWhenLoaded>SM_Bullet_Shell_Sabot</projectileWhenLoaded>
-    <costList>
-      <WoodLog>4</WoodLog>
-      <Plasteel>10</Plasteel>
-      <Uranium>20</Uranium>
-      <Steel>10</Steel>
-      <Chemfuel>10</Chemfuel>
-    </costList>
-    <recipeMaker>
-      <workAmount>2000</workAmount>
-      <researchPrerequisite>Submunitions</researchPrerequisite>
-      <skillRequirements>
-        <Crafting>6</Crafting>
-      </skillRequirements>
-    </recipeMaker>
-    <statBases>
-      <MaxHitPoints>60</MaxHitPoints>
-      <MarketValue>200</MarketValue>
-      <Mass>15</Mass>
-    </statBases>
-    <thingSetMakerTags>
-      <li>RewardSpecial</li>
-    </thingSetMakerTags>
-  </ThingDef>
-  <ThingDef ParentName="BaseBullet">
-    <defName>SM_Bullet_Shell_Sabot</defName>
-    <label>APDS shell</label>
-    <graphicData>
-      <texPath>Things/Projectile/Bullet_big</texPath>
-      <graphicClass>Graphic_Single</graphicClass> 
-    </graphicData>
-    <thingClass>Projectile_Explosive</thingClass>
-    <projectile>
-      <damageDef>Bullet</damageDef>
-      <damageAmountBase>400</damageAmountBase>
-      <armorPenetrationBase>9999</armorPenetrationBase>
-      <stoppingPower>40.0</stoppingPower>
-      <explosionDelay>0</explosionDelay>
-      <speed>100</speed>
-      <explosionRadius>.5</explosionRadius>
-      <flyOverhead>true</flyOverhead>
-      <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
-      <soundExplode>MortarBomb_Explode</soundExplode>
-      <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
-      <soundAmbient>MortarRound_Ambient</soundAmbient>
-    </projectile>
-  </ThingDef>
-  
   <ThingDef Abstract="True" ParentName="BuildingBase" Name="SM_Turret_FieldGun_Base">
     <defName>SM_Turret_FieldGun_Base</defName>
     <label>Field Gun</label>
@@ -149,6 +81,7 @@
     <defName>SM_Gun_FieldGun_Base</defName>
     <label>field gun</label>
     <description>A large-bore cannon calibrated to fire APDS shells. may explode when damaged.</description>
+    <ignoreConfigErrors>true</ignoreConfigErrors>
     <graphicData>
       <texPath>Submunition/Item/SM_Gun_FieldGun</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -162,8 +95,8 @@
     <statBases>
       <AccuracyTouch>0.10</AccuracyTouch>
       <AccuracyShort>0.30</AccuracyShort>
-      <AccuracyMedium>1</AccuracyMedium>
-      <AccuracyLong>1.5</AccuracyLong>
+      <AccuracyMedium>.9</AccuracyMedium>
+      <AccuracyLong>1</AccuracyLong>
       <RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
       <DeteriorationRate>0</DeteriorationRate>
       <Mass>40</Mass>
@@ -316,9 +249,8 @@
     <verbs>
       <li>
         <verbClass>Verb_Shoot</verbClass>
-        <!-- <hasStandardCommand>true</hasStandardCommand> -->
+        <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>SM_Bullet_FieldGun_HEAT</defaultProjectile>
-        <!-- <forcedMissRadius>1</forcedMissRadius> -->
         <warmupTime>4</warmupTime>
         <minRange>4</minRange>
         <range>75</range>
@@ -405,9 +337,8 @@
     <verbs>
       <li>
         <verbClass>Verb_Shoot</verbClass>
-        <!-- <hasStandardCommand>true</hasStandardCommand> -->
+        <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>SM_Bullet_FieldGun_AirBurst</defaultProjectile>
-        <!-- <forcedMissRadius>1</forcedMissRadius> -->
         <warmupTime>4</warmupTime>
         <minRange>4</minRange>
         <range>75</range>
@@ -478,9 +409,8 @@
     <verbs>
       <li>
         <verbClass>Verb_Shoot</verbClass>
-        <!-- <hasStandardCommand>true</hasStandardCommand> -->
+        <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>SM_Bullet_FieldGun_HE</defaultProjectile>
-        <!-- <forcedMissRadius>1</forcedMissRadius> -->
         <warmupTime>4</warmupTime>
         <minRange>4</minRange>
         <range>75</range>
@@ -554,9 +484,88 @@
     <verbs>
       <li>
         <verbClass>Verb_Shoot</verbClass>
-        <!-- <hasStandardCommand>true</hasStandardCommand> -->
+        <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>SM_Bullet_FieldGun_Incendiary</defaultProjectile>
-        <!-- <forcedMissRadius>1</forcedMissRadius> -->
+        <warmupTime>4</warmupTime>
+        <minRange>4</minRange>
+        <range>75</range>
+        <ticksBetweenBurstShots>0</ticksBetweenBurstShots>
+        <burstShotCount>1</burstShotCount>
+        <soundCast>MortarBomb_Explode</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>16</muzzleFlashScale>
+        <consumeFuelPerShot>1</consumeFuelPerShot>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+      </li>
+    </verbs>
+  </ThingDef>
+
+<!-- WP -->
+  <ThingDef ParentName="SM_Turret_FieldGun_Base">
+    <defName>SM_Turret_FieldGun_WP</defName>
+    <label>Field Gun (white phosphorus)</label>
+    <description>A large-bore cannon calibrated to fire white phosphorus shells, equipped with a 10 round feeder box to reduce reload times. May explode when damaged.</description>
+    <comps>
+      <li Class="CompProperties_Refuelable">
+        <fuelLabel>Shells</fuelLabel>
+        <fuelGizmoLabel>Shells</fuelGizmoLabel>
+        <fuelFilter>
+          <thingDefs>
+            <li>Shell_White_Phospher</li>
+          </thingDefs>
+        </fuelFilter>
+        <fuelCapacity>10</fuelCapacity>
+        <initialFuelPercent>0</initialFuelPercent>
+        <autoRefuelPercent>0.25</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <minimumFueledThreshold>1</minimumFueledThreshold>
+        <fuelMultiplier>1</fuelMultiplier>
+        <factorByDifficulty>false</factorByDifficulty>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <outOfFuelMessage>Cannot shoot: Out of ammo</outOfFuelMessage>
+        <fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+      </li>
+    </comps>
+    <building>
+      <turretGunDef>SM_Gun_FieldGun_WP</turretGunDef>
+    </building>
+  </ThingDef>
+  
+  <ThingDef ParentName="BaseBullet">
+    <defName>SM_Bullet_FieldGun_WP</defName>
+    <label>WP shell</label>
+    <graphicData>
+      <texPath>Submunition/Item/Bullet_Shell_WP</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+    <thingClass>Projectile_Explosive</thingClass>
+    <projectile>
+      <damageDef>WhitePhospherFlash</damageDef>
+      <speed>100</speed>
+      <explosionRadius>6</explosionRadius>
+      <postExplosionSpawnThingDef>SM_Gas_WP</postExplosionSpawnThingDef>
+      <postExplosionSpawnChance>0.15</postExplosionSpawnChance>
+      <flyOverhead>true</flyOverhead>
+      <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+      <soundExplode>MortarBomb_Explode</soundExplode>
+      <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+      <soundAmbient>MortarRound_Ambient</soundAmbient>
+      <ai_IsIncendiary>true</ai_IsIncendiary>
+    </projectile>
+  </ThingDef>
+  
+  <ThingDef ParentName="SM_Gun_FieldGun_Base">
+    <defName>SM_Gun_FieldGun_WP</defName>
+    <label>field gun (white phosphorus)</label>
+    <description>A large-bore cannon calibrated to fire white phosphorus shells. may explode when damaged.</description>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>SM_Bullet_FieldGun_WP</defaultProjectile>
         <warmupTime>4</warmupTime>
         <minRange>4</minRange>
         <range>75</range>

@@ -99,10 +99,34 @@
 		</value>
 	</Operation>
   
+  
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+        <li>[XND] Proper Shotguns</li>
+    </mods>
+    <nomatch Class="PatchOperationAddModExtension">
+      <xpath>*/ThingDef[defName="Bullet_Shotgun"]</xpath>
+      <value>
+        <li Class="Submunition.DefClusterExtension">
+          <pelletCount>6</pelletCount>
+          <pelletSpread>1</pelletSpread>
+          <pelletDef>SM_Bullet_Shotgun_pellet</pelletDef>
+        </li>
+      </value>
+    </nomatch>
+  </Operation>
+  
+  
   <Operation Class="PatchOperationReplace">
 		<xpath>*/ThingDef[defName="Weapon_GrenadeFrag"]/label</xpath>
 		<value>
 			<label>HE grenades</label>
+		</value>
+	</Operation>
+  <Operation Class="PatchOperationAdd">
+		<xpath>*/ThingDef[defName="Weapon_GrenadeFrag"]/verbs/li</xpath>
+		<value>
+			<requireLineOfSight>false</requireLineOfSight>
 		</value>
 	</Operation>
   <Operation Class="PatchOperationReplace">
@@ -115,6 +139,12 @@
 		<xpath>*/ThingDef[defName="Proj_GrenadeFrag"]/label</xpath>
 		<value>
 			<label>HE grenade</label>
+		</value>
+	</Operation>
+  <Operation Class="PatchOperationAdd">
+		<xpath>*/ThingDef[defName="Proj_GrenadeFrag"]/projectile</xpath>
+		<value>
+			<flyOverhead>true</flyOverhead>
 		</value>
 	</Operation>
   
@@ -148,5 +178,165 @@
 				</li>
 			</operations>
 		</match>
-	</Operation>
+  </Operation>
+  
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Vanilla Furniture Expanded - Security</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <success>Always</success>
+      <operations>
+        <li Class="PatchOperationAddModExtension">
+          <xpath>/Defs/ThingDef[defName="Bullet_Shell_Minelet"]</xpath>
+          <value>
+              <li Class="VFESecurity.ThingDefExtension">
+                  <incomingSkyfallerGraphicData>
+                      <texPath>Submunition/Item/Bullet_Shell_Minelet</texPath>
+                      <graphicClass>Graphic_Single</graphicClass>
+                      <shaderType>CutoutFlying</shaderType>
+                  </incomingSkyfallerGraphicData>
+              </li>
+          </value>
+        </li>
+        <li Class="PatchOperationAddModExtension">
+            <xpath>/Defs/ThingDef[defName="SM_Bullet_Shell_Napalm"]</xpath>
+            <value>
+                <li Class="VFESecurity.ThingDefExtension">
+                    <incomingSkyfallerGraphicData>
+                        <texPath>Submunition/Item/Bullet_Shell_Napalm</texPath>
+                        <graphicClass>Graphic_Single</graphicClass>
+                        <shaderType>CutoutFlying</shaderType>
+                    </incomingSkyfallerGraphicData>
+                </li>
+            </value>
+        </li>
+        <li Class="PatchOperationAddModExtension">
+            <xpath>/Defs/ThingDef[defName="SM_Bullet_Shell_Narq_Gas"]</xpath>
+            <value>
+                <li Class="VFESecurity.ThingDefExtension">
+                    <incomingSkyfallerGraphicData>
+                        <texPath>Submunition/Item/Bullet_Shell_Narq_Gas</texPath>
+                        <graphicClass>Graphic_Single</graphicClass>
+                        <shaderType>CutoutFlying</shaderType>
+                    </incomingSkyfallerGraphicData>
+                </li>
+            </value>
+        </li>
+        <li Class="PatchOperationAddModExtension">
+          <xpath>/Defs/ThingDef[defName="Bullet_Shell_Nerve_Agent"]</xpath>
+          <value>
+              <li Class="VFESecurity.ThingDefExtension">
+                  <incomingSkyfallerGraphicData>
+                      <texPath>Submunition/Item/Bullet_Shell_Nerve</texPath>
+                      <graphicClass>Graphic_Single</graphicClass>
+                      <shaderType>CutoutFlying</shaderType>
+                  </incomingSkyfallerGraphicData>
+              </li>
+          </value>
+        </li>
+        <li Class="PatchOperationAddModExtension">
+          <xpath>/Defs/ThingDef[defName="SM_Bullet_Shell_Roid_Gas"]</xpath>
+          <value>
+              <li Class="VFESecurity.ThingDefExtension">
+                  <incomingSkyfallerGraphicData>
+                      <texPath>Submunition/Item/Bullet_Shell_Roid_Gas</texPath>
+                      <graphicClass>Graphic_Single</graphicClass>
+                      <shaderType>CutoutFlying</shaderType>
+                  </incomingSkyfallerGraphicData>
+              </li>
+          </value>
+        </li>
+        <li Class="PatchOperationAddModExtension">
+          <xpath>/Defs/ThingDef[defName="SM_Bullet_Shell_Tear_Gas"]</xpath>
+          <value>
+              <li Class="VFESecurity.ThingDefExtension">
+                  <incomingSkyfallerGraphicData>
+                      <texPath>Submunition/Item/Bullet_Shell_Tear_Gas</texPath>
+                      <graphicClass>Graphic_Single</graphicClass>
+                      <shaderType>CutoutFlying</shaderType>
+                  </incomingSkyfallerGraphicData>
+              </li>
+          </value>
+        </li>
+        <li Class="PatchOperationAddModExtension">
+          <xpath>/Defs/ThingDef[defName="Bullet_Shell_White_Phospher"]</xpath>
+          <value>
+              <li Class="VFESecurity.ThingDefExtension">
+                  <incomingSkyfallerGraphicData>
+                      <texPath>Submunition/Item/Bullet_Shell_WP</texPath>
+                      <graphicClass>Graphic_Single</graphicClass>
+                      <shaderType>CutoutFlying</shaderType>
+                  </incomingSkyfallerGraphicData>
+              </li>
+          </value>
+        </li>
+        <li Class="PatchOperationAddModExtension">
+          <xpath>/Defs/ThingDef[defName="Bullet_Shell_AirBurst"]</xpath>
+          <value>
+              <li Class="VFESecurity.ThingDefExtension">
+                  <incomingSkyfallerGraphicData>
+                      <texPath>Submunition/Item/Bullet_Shell_AirBurst</texPath>
+                      <graphicClass>Graphic_Single</graphicClass>
+                      <shaderType>CutoutFlying</shaderType>
+                  </incomingSkyfallerGraphicData>
+              </li>
+          </value>
+        </li>
+        <li Class="PatchOperationAddModExtension">
+          <xpath>/Defs/ThingDef[defName="SM_Bullet_Shell_Mech_Riot"]</xpath>
+          <value>
+              <li Class="VFESecurity.ThingDefExtension">
+                  <incomingSkyfallerGraphicData>
+                      <texPath>Submunition/Item/Bullet_Shell_Mech_Riot</texPath>
+                      <graphicClass>Graphic_Single</graphicClass>
+                      <shaderType>CutoutFlying</shaderType>
+                  </incomingSkyfallerGraphicData>
+              </li>
+          </value>
+        </li>
+        <li Class="PatchOperationAddModExtension">
+          <xpath>/Defs/ThingDef[defName="SM_Bullet_Shell_Mech_All"]</xpath>
+          <value>
+              <li Class="VFESecurity.ThingDefExtension">
+                  <incomingSkyfallerGraphicData>
+                      <texPath>Submunition/Item/Bullet_Shell_Mech_All</texPath>
+                      <graphicClass>Graphic_Single</graphicClass>
+                      <shaderType>CutoutFlying</shaderType>
+                  </incomingSkyfallerGraphicData>
+              </li>
+          </value>
+        </li>
+        <li Class="PatchOperationAddModExtension">
+          <xpath>/Defs/ThingDef[defName="SM_Bullet_Shell_HEAT"]</xpath>
+          <value>
+              <li Class="VFESecurity.ThingDefExtension">
+                  <incomingSkyfallerGraphicData>
+                      <texPath>Things/Projectile/Bullet_big</texPath>
+                      <graphicClass>Graphic_Single</graphicClass>
+                      <shaderType>CutoutFlying</shaderType>
+                  </incomingSkyfallerGraphicData>
+              </li>
+          </value>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+        <li>Mortar Accuracy</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <success>Always</success>
+      <operations>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[@ParentName="SM_Gun_FieldGun_Base"]/verbs/li/verbClass</xpath>
+          <value>
+            <verbClass>MortarAccuracy.Verb_LaunchProjectile_MortarMod</verbClass>
+          </value>
+        </li>
+      </operations>
+    </match>
+  </Operation>
 </Patch>	 

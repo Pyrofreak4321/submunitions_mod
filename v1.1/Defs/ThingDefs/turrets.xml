@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<!-- narq -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>SM_Turret_NarqTurret</defName>
+    <label>NARQ mini-turret</label>
+    <description>A portable semi-automatic turret. Fires darts loaded with strong sedatives, must be refueled regularly. Its dumb AI brain can't be directly controlled, so beware of friendly fire.</description>
+    <thingClass>Building_TurretGun</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Security/TurretMini_Base</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3,3)</drawSize>
+      <damageData>
+        <rect>(0.2,0.2,0.6,0.6)</rect>
+      </damageData>
+      <shadowData>
+        <volume>(0.27,0.25,0.27)</volume>
+        <offset>(0,0,0)</offset>
+      </shadowData>
+    </graphicData>
+    <uiIconPath>Submunition/Item/TurretNarq_MenuIcon</uiIconPath>
+    <uiIconScale>0.90</uiIconScale>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <altitudeLayer>Building</altitudeLayer>
+    <stealable>false</stealable>
+    <rotatable>false</rotatable>
+    <thingCategories>
+      <li>BuildingsSecurity</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Flammability>0.7</Flammability>
+      <WorkToBuild>1800</WorkToBuild>
+      <Mass>8</Mass>
+      <Beauty>-20</Beauty>
+      <ShootingAccuracyTurret>0.96</ShootingAccuracyTurret>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>80</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Breakdownable"/>
+      <li Class="CompProperties_Refuelable">
+        <fuelLabel>Remaining ammo</fuelLabel>
+        <fuelGizmoLabel>Ammo</fuelGizmoLabel>
+        <fuelFilter>
+          <thingDefs>
+            <li>SM_partNarq</li>
+          </thingDefs>
+        </fuelFilter>
+        <fuelCapacity>120</fuelCapacity>
+        <initialFuelPercent>1</initialFuelPercent>
+        <autoRefuelPercent>0.75</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <minimumFueledThreshold>1</minimumFueledThreshold>
+        <fuelMultiplier>10</fuelMultiplier>
+        <factorByDifficulty>true</factorByDifficulty>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <outOfFuelMessage>Cannot shoot: Out of ammo</outOfFuelMessage>
+        <fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+      </li>
+    </comps>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.4</fillPercent>
+    <hasTooltip>true</hasTooltip>
+    <stuffCategories>
+      <li>Metallic</li>
+    </stuffCategories>
+    <costStuffCount>30</costStuffCount>
+    <costList>
+      <Steel>70</Steel>
+      <SM_partNarq>20</SM_partNarq>
+      <ComponentIndustrial>3</ComponentIndustrial>
+    </costList>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <designationCategory>Security</designationCategory>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+    <building>
+      <combatPower>45</combatPower>   <!-- same as a scavenger -->
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>SM_Gun_NarqTurret</turretGunDef>
+      <turretBurstCooldownTime>1.5</turretBurstCooldownTime>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+      <li>PlaceWorker_ShowTurretRadius</li>
+    </placeWorkers>
+    <designationHotKey>Misc2</designationHotKey>
+    <researchPrerequisites>
+      <li>GunTurrets</li>
+    </researchPrerequisites>
+  </ThingDef>
+  <ThingDef ParentName="BaseBullet">
+    <defName>SM_Bullet_NarqTurret</defName>
+    <label>NARQ turret dart</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <flyOverhead>false</flyOverhead>
+      <damageDef>SM_Narq</damageDef>
+      <damageAmountBase>2</damageAmountBase>
+      <stoppingPower>0</stoppingPower>
+      <armorPenetrationBase>0</armorPenetrationBase>
+      <speed>70</speed>
+    </projectile>
+  </ThingDef>
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>SM_Gun_NarqTurret</defName>
+    <label>NARQ mini-turret gun</label>
+    <description>A simple semi-automatic air-gun made to be mounted on a turret.</description>
+    <graphicData>
+      <texPath>Submunition/Item/TurretNarq_Top</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <AccuracyTouch>0.80</AccuracyTouch>
+      <AccuracyShort>0.64</AccuracyShort>
+      <AccuracyMedium>0.38</AccuracyMedium>
+      <AccuracyLong>0.12</AccuracyLong>
+      <RangedWeapon_Cooldown>1.5</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>5</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <defaultProjectile>SM_Bullet_NarqTurret</defaultProjectile>
+        <warmupTime>0</warmupTime>
+        <range>23.9</range>
+        <ticksBetweenBurstShots>0</ticksBetweenBurstShots>
+        <burstShotCount>1</burstShotCount>
+        <soundCast>GunShotA</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>0</muzzleFlashScale>
+        <consumeFuelPerShot>1</consumeFuelPerShot>
+      </li>
+    </verbs>
+  </ThingDef>
+  
+  <ThingDef ParentName="BuildingBase">
+    <defName>SM_Turret_mgmt</defName>
+    <label>mini-gun mini-turret</label>
+    <description>A portable semi-automatic turret. Some nut job hooked up 3 mini-guns to a simple AI targeting system. Its dumb AI brain can't be directly controlled, so beware of friendly fire.</description>
+    <thingClass>Building_TurretGun</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Security/TurretMini_Base</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3,3)</drawSize>
+      <damageData>
+        <rect>(0.2,0.2,0.6,0.6)</rect>
+      </damageData>
+      <shadowData>
+        <volume>(0.27,0.25,0.27)</volume>
+        <offset>(0,0,0)</offset>
+      </shadowData>
+    </graphicData>
+    <uiIconPath>Submunition/Item/TurretMGMT_MenuIcon</uiIconPath>
+    <uiIconScale>0.90</uiIconScale>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <altitudeLayer>Building</altitudeLayer>
+    <stealable>false</stealable>
+    <rotatable>false</rotatable>
+    <thingCategories>
+      <li>BuildingsSecurity</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Flammability>0.7</Flammability>
+      <WorkToBuild>1800</WorkToBuild>
+      <Mass>8</Mass>
+      <Beauty>-20</Beauty>
+      <ShootingAccuracyTurret>0.96</ShootingAccuracyTurret>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>200</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Breakdownable"/>
+      <li Class="CompProperties_Refuelable">
+        <fuelLabel>Shots until barrel change</fuelLabel>
+        <fuelGizmoLabel>Barrel durability</fuelGizmoLabel>
+        <fuelFilter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </fuelFilter>
+        <fuelCapacity>2000</fuelCapacity>
+        <initialFuelPercent>1</initialFuelPercent>
+        <autoRefuelPercent>0.75</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <minimumFueledThreshold>1</minimumFueledThreshold>
+        <fuelMultiplier>10</fuelMultiplier>
+        <factorByDifficulty>true</factorByDifficulty>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <outOfFuelMessage>Cannot shoot: Needs new barrel</outOfFuelMessage>
+        <fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+      </li>
+    </comps>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.4</fillPercent>
+    <hasTooltip>true</hasTooltip>
+    <stuffCategories>
+      <li>Metallic</li>
+    </stuffCategories>
+    <costStuffCount>30</costStuffCount>
+    <costList>
+      <Steel>50</Steel>
+      <Gun_Minigun>3</Gun_Minigun>
+      <ComponentIndustrial>3</ComponentIndustrial>
+    </costList>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <designationCategory>Security</designationCategory>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+    <building>
+      <combatPower>45</combatPower>   <!-- same as a scavenger -->
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>SM_Gun_mgmt</turretGunDef>
+      <turretBurstCooldownTime>.01</turretBurstCooldownTime>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+      <li>PlaceWorker_ShowTurretRadius</li>
+    </placeWorkers>
+    <designationHotKey>Misc2</designationHotKey>
+    <researchPrerequisites>
+      <li>GunTurrets</li>
+    </researchPrerequisites>
+  </ThingDef>
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>SM_Gun_mgmt</defName>
+    <label>mini-gun mini-turret gun</label>
+    <description>Some nut job hooked up 3 mini-guns.</description>
+    <graphicData>
+      <texPath>Submunition/Item/TurretMGMT_Top</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <AccuracyTouch>0.25</AccuracyTouch>
+      <AccuracyShort>0.45</AccuracyShort>
+      <AccuracyMedium>0.25</AccuracyMedium>
+      <AccuracyLong>0.18</AccuracyLong>
+      <RangedWeapon_Cooldown>.01</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>5</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <defaultProjectile>SM_Bullet_compensator</defaultProjectile>
+        <warmupTime>.01</warmupTime>
+        <range>30.9</range>
+        <burstShotCount>10</burstShotCount>
+        <ticksBetweenBurstShots>5</ticksBetweenBurstShots>
+        <soundCast>Shot_Minigun</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+        <consumeFuelPerShot>1</consumeFuelPerShot>
+      </li>
+    </verbs>
+  </ThingDef>
+  <ThingDef ParentName="BaseBullet">
+    <defName>SM_Bullet_compensator</defName>
+    <label>minigun bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>30</damageAmountBase>
+      <speed>70</speed>
+    </projectile>
+    <modExtensions>
+      <li Class="Submunition.DefClusterExtension">
+        <pelletCount>3</pelletCount>
+        <pelletSpread>1.0</pelletSpread>
+        <pelletDef>Bullet_Minigun</pelletDef>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <!-- <ThingDef Abstract="True" Name="BaseWeaponAdv"> -->
+    <!-- <thingClass>ThingWithComps</thingClass> -->
+    <!-- <category>Item</category> -->
+    <!-- <drawGUIOverlay>true</drawGUIOverlay> -->
+    <!-- <altitudeLayer>Item</altitudeLayer> -->
+    <!-- <alwaysHaulable>true</alwaysHaulable> -->
+    <!-- <tickerType>Never</tickerType> -->
+    <!-- <equipmentType>Primary</equipmentType> -->
+    <!-- <useHitPoints>true</useHitPoints> -->
+    <!-- <pathCost>10</pathCost> -->
+    <!-- <selectable>true</selectable> -->
+    <!-- <statBases> -->
+      <!-- <MaxHitPoints>100</MaxHitPoints> -->
+      <!-- <Flammability>1.0</Flammability> -->
+      <!-- <DeteriorationRate>2</DeteriorationRate> -->
+      <!-- <Beauty>-3</Beauty> -->
+      <!-- <SellPriceFactor>0.20</SellPriceFactor> -->
+    <!-- </statBases> -->
+    <!-- <comps> -->
+      <!-- <li Class="CompProperties_Forbiddable"/>       -->
+      <!-- <li> -->
+        <!-- <compClass>Submunition.AdvCompEquippable</compClass> -->
+      <!-- </li> -->
+    <!-- </comps> -->
+    <!-- <graphicData> -->
+      <!-- <onGroundRandomRotateAngle>35</onGroundRandomRotateAngle> -->
+    <!-- </graphicData> -->
+  <!-- </ThingDef> -->
+  <!-- <ThingDef Abstract="True" Name="BaseWeaponAdvTurret" ParentName="BaseWeaponAdv"> -->
+    <!-- <destroyOnDrop>True</destroyOnDrop> -->
+    <!-- <menuHidden>true</menuHidden> -->
+    <!-- <tradeability>None</tradeability> -->
+    <!-- <useHitPoints>false</useHitPoints> -->
+    <!-- <weaponTags> -->
+      <!-- <li>TurretGun</li> -->
+    <!-- </weaponTags> -->
+    <!-- <graphicData> -->
+      <!-- <graphicClass>Graphic_Single</graphicClass> -->
+    <!-- </graphicData> -->
+  <!-- </ThingDef> -->
+  <!-- <ThingDef Abstract="True" Name="BaseArtilleryAdvWeapon" ParentName="BaseWeaponAdvTurret"> -->
+    <!-- <weaponTags Inherit="False"> -->
+      <!-- <li>Artillery</li> -->
+    <!-- </weaponTags> -->
+  <!-- </ThingDef> -->
+  <!-- <ThingDef ParentName="BaseArtilleryBuilding"> -->
+    <!-- <defName>SM_Turret_MRLS</defName> -->
+    <!-- <label>MRLS</label> -->
+    <!-- <description>A manned mortar that launches all kinds of shells. While it can inflict devastating damage, the mortar's inherent inaccuracy makes it more useful for attacking large fortifications than groups of enemies in the field.</description> -->
+    <!-- <comps> -->
+      <!-- <li Class="CompProperties_Explosive"> -->
+        <!-- <wickTicks>240</wickTicks> -->
+        <!-- <explosiveRadius>4.9</explosiveRadius> -->
+        <!-- <explosiveDamageType>Bomb</explosiveDamageType> -->
+      <!-- </li> -->
+    <!-- </comps> -->
+    <!-- <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded> -->
+    <!-- <building> -->
+      <!-- <turretGunDef>SM_Artillery_MRLS</turretGunDef> -->
+      <!-- <buildingTags> -->
+        <!-- <li>Artillery_BaseDestroyer</li> -->
+        <!-- <li>Artillery_MannedMortar</li> -->
+      <!-- </buildingTags> -->
+    <!-- </building> -->
+  <!-- <uiIconPath>Things/Building/Security/TurretMortar_MenuIcon</uiIconPath> -->
+  <!-- <uiIconScale>0.9</uiIconScale> -->
+  <!-- </ThingDef> -->
+  <!-- <ThingDef ParentName="BaseArtilleryAdvWeapon"> -->
+    <!-- <defName>SM_Artillery_MRLS</defName> -->
+    <!-- <label>MRLS</label> -->
+    <!-- <description>Mortar launcher. Lobs bombs over walls. Very inaccurate but long-ranged.</description> -->
+    <!-- <graphicData> -->
+      <!-- <texPath>Things/Building/Security/TurretMortar_Top</texPath> -->
+    <!-- </graphicData> -->
+    <!-- <weaponTags> -->
+      <!-- <li>Artillery_BaseDestroyer</li> -->
+    <!-- </weaponTags> -->
+    <!-- <verbs> -->
+      <!-- <li> -->
+        <!-- <verbClass>Verb_Shoot</verbClass> -->
+        <!-- <forceNormalTimeSpeed>false</forceNormalTimeSpeed> -->
+        <!-- <warmupTime>4.0</warmupTime> -->
+        <!-- <forcedMissRadius>13</forcedMissRadius> -->
+        <!-- <requireLineOfSight>false</requireLineOfSight> -->
+        <!-- <minRange>29.9</minRange> -->
+        <!-- <range>500</range> -->
+        <!-- <burstShotCount>1</burstShotCount> -->
+        <!-- <soundCast>Mortar_LaunchA</soundCast> -->
+        <!-- <muzzleFlashScale>16</muzzleFlashScale> -->
+        <!-- <targetParams> -->
+          <!-- <canTargetLocations>true</canTargetLocations> -->
+        <!-- </targetParams> -->
+      <!-- </li> -->
+    <!-- </verbs> -->
+    <!-- <comps> -->
+      <!-- <li Class="CompProperties_ChangeableProjectile" /> -->
+    <!-- </comps> -->
+    <!-- <building> -->
+      <!-- <fixedStorageSettings> -->
+        <!-- <filter> -->
+          <!-- <categories> -->
+            <!-- <li>SM_Rockets</li> -->
+          <!-- </categories> -->
+        <!-- </filter> -->
+      <!-- </fixedStorageSettings> -->
+      <!-- <defaultStorageSettings> -->
+        <!-- <filter> -->
+          <!-- <categories> -->
+            <!-- <li>SM_Rockets</li> -->
+          <!-- </categories> -->
+        <!-- </filter> -->
+      <!-- </defaultStorageSettings> -->
+    <!-- </building> -->
+  <!-- </ThingDef> -->
+
+<!-- HE -->
+  <!-- <ThingDef ParentName="MakeableShellBase"> -->
+    <!-- <defName>SM_rocket_HighExplosive</defName> -->
+    <!-- <label>high-explosive rocket</label> -->
+    <!-- <description>A shell filled with high explosives. Can be fired from mortars or installed as a trap. Explodes when damaged.</description> -->
+    <!-- <graphicData> -->
+      <!-- <texPath>Things/Item/Resource/Shell/Shell_HighExplosive</texPath> -->
+      <!-- <graphicClass>Graphic_StackCount</graphicClass> -->
+    <!-- </graphicData> -->
+    <!-- <comps> -->
+      <!-- <li Class="CompProperties_Explosive"> -->
+        <!-- <explosiveRadius>2.9</explosiveRadius> -->
+        <!-- <explosiveDamageType>Bomb</explosiveDamageType> -->
+        <!-- <explosiveExpandPerStackcount>0.4</explosiveExpandPerStackcount> -->
+        <!-- <startWickHitPointsPercent>0.7</startWickHitPointsPercent> -->
+        <!-- <wickTicks>30~60</wickTicks> -->
+      <!-- </li> -->
+    <!-- </comps> -->
+    <!-- <projectileWhenLoaded>SM_Bullet_rocket_HighExplosive</projectileWhenLoaded> -->
+    <!-- <costList> -->
+      <!-- <Steel>25</Steel> -->
+      <!-- <Chemfuel>15</Chemfuel> -->
+    <!-- </costList> -->
+    <!-- <recipeMaker> -->
+      <!-- <researchPrerequisite>Mortars</researchPrerequisite> -->
+    <!-- </recipeMaker> -->
+    <!-- <thingCategories> -->
+      <!-- <li>SM_Rockets</li> -->
+    <!-- </thingCategories> -->
+  <!-- </ThingDef> -->
+  <!-- <ThingDef ParentName="BaseBullet"> -->
+    <!-- <defName>SM_Bullet_rocket_HighExplosive</defName> -->
+    <!-- <label>high-explosive shell</label> -->
+    <!-- <graphicData> -->
+      <!-- <texPath>Things/Projectile/ShellHighExplosive</texPath> -->
+      <!-- <graphicClass>Graphic_Single</graphicClass> -->
+      <!-- <shaderType>TransparentPostLight</shaderType> -->
+    <!-- </graphicData> -->
+    <!-- <thingClass>Projectile_Explosive</thingClass> -->
+    <!-- <verbs> -->
+      <!-- <li> -->
+        <!-- <verbClass>Verb_Shoot</verbClass> -->
+        <!-- <forceNormalTimeSpeed>false</forceNormalTimeSpeed> -->
+        <!-- <warmupTime>1</warmupTime> -->
+        <!-- <forcedMissRadius>1</forcedMissRadius> -->
+        <!-- <requireLineOfSight>false</requireLineOfSight> -->
+        <!-- <minRange>29.9</minRange> -->
+        <!-- <range>500</range> -->
+        <!-- <ticksBetweenBurstShots>8</ticksBetweenBurstShots> -->
+        <!-- <burstShotCount>3</burstShotCount> -->
+        <!-- <soundCast>Shot_IncendiaryLauncher</soundCast> -->
+        <!-- <muzzleFlashScale>16</muzzleFlashScale> -->
+        <!-- <targetParams> -->
+          <!-- <canTargetLocations>true</canTargetLocations> -->
+        <!-- </targetParams> -->
+      <!-- </li> -->
+    <!-- </verbs> -->
+    <!-- <projectile> -->
+      <!-- <damageDef>Bomb</damageDef> 
+      damage amount is the damage def default
+      <speed>41</speed> -->
+      <!-- <explosionRadius>3.5</explosionRadius> -->
+      <!-- <flyOverhead>true</flyOverhead> -->
+      <!-- <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof> -->
+      <!-- <soundExplode>MortarBomb_Explode</soundExplode> -->
+      <!-- <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate> -->
+      <!-- <soundAmbient>MortarRound_Ambient</soundAmbient> -->
+    <!-- </projectile> -->
+  <!-- </ThingDef> -->
+</Defs>
+

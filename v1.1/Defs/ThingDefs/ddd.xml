@@ -6,4 +6,11 @@
   <DesignatorDropdownGroupDef>
 		<defName>SM_IEDddd</defName> 
 	</DesignatorDropdownGroupDef>
+  
+  <ThingCategoryDef>
+    <defName>SM_Rockets</defName>
+    <label>rockets</label>
+    <parent>Manufactured</parent>
+    <iconPath>UI/Icons/ThingCategories/MortarShells</iconPath>
+  </ThingCategoryDef>
 </Defs>
