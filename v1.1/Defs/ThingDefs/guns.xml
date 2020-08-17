@@ -251,7 +251,7 @@
       <SM_partRoid>30</SM_partRoid>
     </costList>
     <recipeMaker>
-      <researchPrerequisite>Submunitions</researchPrerequisite>
+      <researchPrerequisite>SM_chem_weapons</researchPrerequisite>
       <skillRequirements>
         <Crafting>6</Crafting>
         <Intellectual>6</Intellectual>
@@ -333,7 +333,7 @@
       <SM_partRoid>10</SM_partRoid>
     </costList>
     <recipeMaker>
-      <researchPrerequisite>Submunitions</researchPrerequisite>
+      <researchPrerequisite>SM_chem_weapons</researchPrerequisite>
       <skillRequirements>
         <Crafting>6</Crafting>
         <Intellectual>6</Intellectual>
@@ -412,7 +412,7 @@
       <SM_partNarq>30</SM_partNarq>
     </costList>
     <recipeMaker>
-      <researchPrerequisite>Submunitions</researchPrerequisite>
+      <researchPrerequisite>SM_chem_weapons</researchPrerequisite>
       <skillRequirements>
         <Crafting>6</Crafting>
         <Intellectual>6</Intellectual>
@@ -494,7 +494,7 @@
       <SM_partNarq>10</SM_partNarq>
     </costList>
     <recipeMaker>
-      <researchPrerequisite>Submunitions</researchPrerequisite>
+      <researchPrerequisite>SM_chem_weapons</researchPrerequisite>
       <skillRequirements>
         <Crafting>6</Crafting>
         <Intellectual>6</Intellectual>
@@ -1278,6 +1278,7 @@
       <Chemfuel>200</Chemfuel>
     </costList>
     <recipeMaker>
+      <researchPrerequisite>Submunitions</researchPrerequisite>
       <skillRequirements>
         <Crafting>4</Crafting>
       </skillRequirements>
@@ -1328,28 +1329,25 @@
       <shaderType>TransparentPostLight</shaderType>
       <color>(254,189,58)</color>
     </graphicData>
-    <thingClass>Submunition.Projectile_Submunition</thingClass>
+    <thingClass>Submunition.Projectile_Advanced</thingClass>
     <projectile>
       <speed>40</speed>
-      <damageAmountBase>1</damageAmountBase>
+      <damageAmountBase>0</damageAmountBase>
       <damageDef>SM_Smoke_Silent</damageDef>
-      <explosionRadius>.75</explosionRadius>
+      <explosionRadius>-1</explosionRadius>
       <ai_IsIncendiary>true</ai_IsIncendiary>
       <explosionDelay>0</explosionDelay>
     </projectile>
     <modExtensions>
-      <li Class="Submunition.DefSubmunitionExtension">
-        <submunitionPopSize>-1</submunitionPopSize>
-        <submunitionCount>1</submunitionCount>
-        <submunitionExplosionRadius>0</submunitionExplosionRadius>
-        <submunitionPreDetonation>9999</submunitionPreDetonation>
-        <submunitionDuration>9999</submunitionDuration>
-        <submunitionInterval>3</submunitionInterval>
-        <submunitionDelay>10</submunitionDelay>
-        <submunitionDamageDef>SM_Napalm_Hiss</submunitionDamageDef>
-        <submunitionDestroyOnImpact>true</submunitionDestroyOnImpact>
-        <submunitionSpawnThingDef>SM_Gas_Napalm</submunitionSpawnThingDef>
-        <submunitionEmit>true</submunitionEmit>
+      <li Class="Submunition.DefAdvancedProjectileExtension">
+        <spawnSpreadRadius>.25</spawnSpreadRadius>
+        <spawnCount>1</spawnCount>
+        <preImpactDetonation>9999</preImpactDetonation>
+        <duration>9999</duration>
+        <interval>3</interval>
+        <secondaryDelay>10</secondaryDelay>
+        <spawnThingDef>SM_Gas_Napalm</spawnThingDef>
+        <spawner>true</spawner>
       </li>
     </modExtensions>
   </ThingDef>
@@ -1384,6 +1382,7 @@
       <SM_partNerveAgent>50</SM_partNerveAgent>
     </costList>
     <recipeMaker>
+      <researchPrerequisite>SM_chem_weapons</researchPrerequisite>
       <skillRequirements>
         <Crafting>4</Crafting>
       </skillRequirements>
@@ -1434,29 +1433,25 @@
       <shaderType>TransparentPostLight</shaderType>
       <color>(51,102,0)</color>
     </graphicData>
-    <thingClass>Submunition.Projectile_Submunition</thingClass>
+    <thingClass>Submunition.Projectile_Advanced</thingClass>
     <projectile>
       <speed>40</speed>
-      <damageAmountBase>1</damageAmountBase>
+      <damageAmountBase>0</damageAmountBase>
       <damageDef>SM_Smoke_Silent</damageDef>
-      <explosionRadius>.75</explosionRadius>
+      <explosionRadius>-1</explosionRadius>
       <ai_IsIncendiary>true</ai_IsIncendiary>
       <explosionDelay>0</explosionDelay>
     </projectile>
     <modExtensions>
-      <li Class="Submunition.DefSubmunitionExtension">
-        <submunitionPopSize>-1</submunitionPopSize>
-        <submunitionCount>1</submunitionCount>
-        <submunitionBypassPawn>true</submunitionBypassPawn>
-        <submunitionExplosionRadius>0</submunitionExplosionRadius>
-        <submunitionPreDetonation>9999</submunitionPreDetonation>
-        <submunitionDuration>9999</submunitionDuration>
-        <submunitionInterval>3</submunitionInterval>
-        <submunitionDelay>10</submunitionDelay>
-        <submunitionDamageDef>SM_Toxic_Hiss</submunitionDamageDef>
-        <submunitionDestroyOnImpact>true</submunitionDestroyOnImpact>
-        <submunitionSpawnThingDef>SM_Gas_Nerve</submunitionSpawnThingDef>
-        <submunitionEmit>true</submunitionEmit>
+      <li Class="Submunition.DefAdvancedProjectileExtension">
+        <spawnSpreadRadius>.25</spawnSpreadRadius>
+        <spawnCount>1</spawnCount>
+        <preImpactDetonation>9999</preImpactDetonation>
+        <duration>9999</duration>
+        <interval>3</interval>
+        <secondaryDelay>10</secondaryDelay>
+        <spawnThingDef>SM_Gas_Nerve</spawnThingDef>
+        <spawner>true</spawner>
       </li>
     </modExtensions>
   </ThingDef>

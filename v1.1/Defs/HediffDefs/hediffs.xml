@@ -46,7 +46,7 @@
       <painPerSeverity>0.0125</painPerSeverity>
       <averagePainPerSeverityPermanent>0.00625</averagePainPerSeverityPermanent>
       <bleedRate>0.1</bleedRate>
-      <canMerge>false</canMerge>
+      <canMerge>true</canMerge>
       <destroyedLabel>Torn off</destroyedLabel>
       <destroyedOutLabel>Torn out</destroyedOutLabel>
     </injuryProps>
@@ -58,6 +58,7 @@
         <advHediffChainHediffScale>1</advHediffChainHediffScale>
         <advHediffChainHediffRandomPart>false</advHediffChainHediffRandomPart>
         <advHediffChainHediffWholeBody>false</advHediffChainHediffWholeBody>
+        <advHediffChainHediffMerge>false</advHediffChainHediffMerge>
       </li>
     </modExtensions>
   </HediffDef>

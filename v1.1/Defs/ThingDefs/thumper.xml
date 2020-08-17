@@ -84,6 +84,25 @@
           <canTargetLocations>true</canTargetLocations>
         </targetParams>
       </li>
+      <li Class="AdditionalVerb.VerbProperties_Custom">
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>SM_Bullet_Launcher_HE_IND</defaultProjectile>
+        <warmupTime>3.5</warmupTime>
+        <range>45.8</range>
+        <forcedMissRadius>4</forcedMissRadius>
+        <burstShotCount>1</burstShotCount>
+        <soundCast>Shot_IncendiaryLauncher</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>14</muzzleFlashScale>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+        <requireLineOfSight>false</requireLineOfSight>
+        <desc>lobs shots farther and over walls but with less accuracy and speed</desc>
+        <label>Indirect Fire</label>
+        <texPath>Submunition/UI/indirect</texPath>
+      </li>
     </verbs>
   </ThingDef>
   <ThingDef ParentName="BaseBullet">
@@ -147,6 +166,25 @@
           <canTargetLocations>true</canTargetLocations>
         </targetParams>
       </li>
+      <li Class="AdditionalVerb.VerbProperties_Custom">
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>SM_Bullet_Launcher_EMP_IND</defaultProjectile>
+        <warmupTime>3.5</warmupTime>
+        <range>45.8</range>
+        <forcedMissRadius>4</forcedMissRadius>
+        <burstShotCount>1</burstShotCount>
+        <soundCast>Shot_IncendiaryLauncher</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>14</muzzleFlashScale>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+        <requireLineOfSight>false</requireLineOfSight>
+        <desc>lobs shots farther and over walls but with less accuracy and speed</desc>
+        <label>Indirect Fire</label>
+        <texPath>Submunition/UI/indirect</texPath>
+      </li>
     </verbs>
   </ThingDef>
   <ThingDef ParentName="BaseBullet">
@@ -208,6 +246,25 @@
           <canTargetLocations>true</canTargetLocations>
         </targetParams>
       </li>
+      <li Class="AdditionalVerb.VerbProperties_Custom">
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>SM_Bullet_Launcher_rubber_IND</defaultProjectile>
+        <warmupTime>3.5</warmupTime>
+        <range>45.8</range>
+        <forcedMissRadius>4</forcedMissRadius>
+        <burstShotCount>1</burstShotCount>
+        <soundCast>Shot_IncendiaryLauncher</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>14</muzzleFlashScale>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+        <requireLineOfSight>false</requireLineOfSight>
+        <desc>lobs shots farther and over walls but with less accuracy and speed</desc>
+        <label>Indirect Fire</label>
+        <texPath>Submunition/UI/indirect</texPath>
+      </li>
     </verbs>
   </ThingDef>
   <ThingDef ParentName="BaseBullet">
@@ -219,18 +276,21 @@
       <shaderType>TransparentPostLight</shaderType>
       <color>(51,102,0)</color>
     </graphicData>
-    <thingClass>Submunition.Projectile_Submunition</thingClass>
+    <thingClass>Submunition.Projectile_Advanced</thingClass>
     <projectile>
       <speed>40</speed>
-      <explosionRadius>7</explosionRadius>
-      <damageDef>Smoke</damageDef>
+      <explosionRadius>2</explosionRadius>
+      <damageAmountBase>0</damageAmountBase>
+      <explosionDelay>0</explosionDelay>
+      <damageDef>SM_Danger_Smoke</damageDef>
     </projectile>
     <modExtensions>
-      <li Class="Submunition.DefSubmunitionExtension">
-        <submunitionPopSize>2</submunitionPopSize>
-        <submunitionCount>50</submunitionCount>
-        <submunitionFragment>true</submunitionFragment>
-        <submunitionFragmentThingDef>SM_Proj_GrenadeRubber_Fragment</submunitionFragmentThingDef>
+      <li Class="Submunition.DefAdvancedProjectileExtension">
+        <fragSpreadRadius>5</fragSpreadRadius>
+        <fragCount>50</fragCount>
+        <fragMultiplier>0</fragMultiplier>
+        <fragment>true</fragment>
+        <fragThingDef>SM_Proj_GrenadeRubber_Fragment</fragThingDef>
       </li>
     </modExtensions>
   </ThingDef>
@@ -243,19 +303,20 @@
       <shaderType>TransparentPostLight</shaderType>
       <color>(51,102,0)</color>
     </graphicData>
-    <thingClass>Submunition.Projectile_Submunition</thingClass>
+    <thingClass>Submunition.Projectile_Advanced</thingClass>
     <projectile>
       <speed>25</speed>
-      <explosionRadius>7</explosionRadius>
-      <damageDef>Smoke</damageDef>
+      <explosionRadius>2</explosionRadius>
+      <damageDef>SM_Danger_Smoke</damageDef>
       <flyOverhead>true</flyOverhead>
     </projectile>
     <modExtensions>
-      <li Class="Submunition.DefSubmunitionExtension">
-        <submunitionPopSize>2</submunitionPopSize>
-        <submunitionCount>50</submunitionCount>
-        <submunitionFragment>true</submunitionFragment>
-        <submunitionFragmentThingDef>SM_Proj_GrenadeRubber_Fragment</submunitionFragmentThingDef>
+      <li Class="Submunition.DefAdvancedProjectileExtension">
+        <fragSpreadRadius>5</fragSpreadRadius>
+        <fragCount>50</fragCount>
+        <fragMultiplier>0</fragMultiplier>
+        <fragment>true</fragment>
+        <fragThingDef>SM_Proj_GrenadeRubber_Fragment</fragThingDef>
       </li>
     </modExtensions>
   </ThingDef>
@@ -286,6 +347,25 @@
           <canTargetLocations>true</canTargetLocations>
         </targetParams>
       </li>
+      <li Class="AdditionalVerb.VerbProperties_Custom">
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>SM_Bullet_Launcher_frag_IND</defaultProjectile>
+        <warmupTime>3.5</warmupTime>
+        <range>45.8</range>
+        <forcedMissRadius>4</forcedMissRadius>
+        <burstShotCount>1</burstShotCount>
+        <soundCast>Shot_IncendiaryLauncher</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>14</muzzleFlashScale>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+        <requireLineOfSight>false</requireLineOfSight>
+        <desc>lobs shots farther and over walls but with less accuracy and speed</desc>
+        <label>Indirect Fire</label>
+        <texPath>Submunition/UI/indirect</texPath>
+      </li>
     </verbs>
   </ThingDef>
   <ThingDef ParentName="BaseBullet">
@@ -297,18 +377,19 @@
       <shaderType>TransparentPostLight</shaderType>
       <color>(51,102,0)</color>
     </graphicData>
-    <thingClass>Submunition.Projectile_Submunition</thingClass>
+    <thingClass>Submunition.Projectile_Advanced</thingClass>
     <projectile>
       <speed>40</speed>
-      <explosionRadius>7</explosionRadius>
+      <explosionRadius>2</explosionRadius>
       <damageDef>Smoke</damageDef>
     </projectile>
     <modExtensions>
-      <li Class="Submunition.DefSubmunitionExtension">
-        <submunitionPopSize>2</submunitionPopSize>
-        <submunitionCount>50</submunitionCount>
-        <submunitionFragment>true</submunitionFragment>
-        <submunitionFragmentThingDef>SM_Proj_GrenadeFrag_Fragment</submunitionFragmentThingDef>
+      <li Class="Submunition.DefAdvancedProjectileExtension">
+        <fragSpreadRadius>5</fragSpreadRadius>
+        <fragCount>15</fragCount>
+        <fragMultiplier>0</fragMultiplier>
+        <fragment>true</fragment>
+        <fragThingDef>SM_Proj_GrenadeFrag_Fragment</fragThingDef>
       </li>
     </modExtensions>
   </ThingDef>
@@ -321,19 +402,20 @@
       <shaderType>TransparentPostLight</shaderType>
       <color>(51,102,0)</color>
     </graphicData>
-    <thingClass>Submunition.Projectile_Submunition</thingClass>
+    <thingClass>Submunition.Projectile_Advanced</thingClass>
     <projectile>
       <speed>25</speed>
-      <explosionRadius>7</explosionRadius>
+      <explosionRadius>2</explosionRadius>
       <damageDef>Smoke</damageDef>
       <flyOverhead>true</flyOverhead>
     </projectile>
     <modExtensions>
-      <li Class="Submunition.DefSubmunitionExtension">
-        <submunitionPopSize>2</submunitionPopSize>
-        <submunitionCount>50</submunitionCount>
-        <submunitionFragment>true</submunitionFragment>
-        <submunitionFragmentThingDef>SM_Proj_GrenadeFrag_Fragment</submunitionFragmentThingDef>
+      <li Class="Submunition.DefAdvancedProjectileExtension">
+        <fragSpreadRadius>5</fragSpreadRadius>
+        <fragCount>15</fragCount>
+        <fragMultiplier>0</fragMultiplier>
+        <fragment>true</fragment>
+        <fragThingDef>SM_Proj_GrenadeFrag_Fragment</fragThingDef>
       </li>
     </modExtensions>
   </ThingDef>
@@ -357,7 +439,7 @@
         <range>27.9</range>
         <!-- <forcedMissRadius>2</forcedMissRadius> -->
         <burstShotCount>1</burstShotCount>
-        <soundCast>Shot_IncendiaryLauncher</soundCast>
+        <soundCast>MortarBomb_Explode</soundCast>
         <soundCastTail>GunTail_Medium</soundCastTail>
         <muzzleFlashScale>14</muzzleFlashScale>
         <targetParams>
@@ -375,20 +457,17 @@
       <shaderType>TransparentPostLight</shaderType>
       <color>(51,102,0)</color>
     </graphicData>
-    <thingClass>Submunition.Projectile_Submunition</thingClass>
     <projectile>
       <speed>40</speed>
-      <explosionRadius>3</explosionRadius>
-      <damageDef>Smoke</damageDef>
+      <explosionRadius>1</explosionRadius>
+      <damageDef>Bomb</damageDef>
       <explosionDelay>5</explosionDelay>
     </projectile>
     <modExtensions>
-      <li Class="Submunition.DefSubmunitionExtension">
-        <submunitionPopSize>2</submunitionPopSize>
-        <submunitionCount>50</submunitionCount>
-        <submunitionPreDetonation>99999</submunitionPreDetonation>
-        <submunitionFragment>true</submunitionFragment>
-        <submunitionFragmentThingDef>SM_Proj_GrenadeFrag_Fragment</submunitionFragmentThingDef>
+      <li Class="Submunition.DefClusterExtension">
+        <pelletCount>20</pelletCount>
+        <pelletSpread>3</pelletSpread>
+        <pelletDef>SM_Proj_GrenadeFrag_Fragment</pelletDef>
       </li>
     </modExtensions>
   </ThingDef>
@@ -419,6 +498,25 @@
           <canTargetLocations>true</canTargetLocations>
         </targetParams>
       </li>
+      <li Class="AdditionalVerb.VerbProperties_Custom">
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>SM_Bullet_Launcher_HEAT_IND</defaultProjectile>
+        <warmupTime>3.5</warmupTime>
+        <range>45.8</range>
+        <forcedMissRadius>4</forcedMissRadius>
+        <burstShotCount>1</burstShotCount>
+        <soundCast>Shot_IncendiaryLauncher</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>14</muzzleFlashScale>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+        <requireLineOfSight>false</requireLineOfSight>
+        <desc>lobs shots farther and over walls but with less accuracy and speed</desc>
+        <label>Indirect Fire</label>
+        <texPath>Submunition/UI/indirect</texPath>
+      </li>
     </verbs>
   </ThingDef>
   <ThingDef ParentName="BaseBullet">
@@ -428,25 +526,20 @@
       <texPath>Things/Projectile/LauncherShot</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <thingClass>Submunition.Projectile_Submunition</thingClass>
+    <thingClass>Submunition.Projectile_Advanced</thingClass>
     <projectile>
-      <damageDef>SM_Shrapnel</damageDef>
+      <damageDef>SM_AP_Bomb</damageDef>
       <speed>40</speed>
-      <damageAmountBase>10</damageAmountBase>
-      <explosionRadius>.5</explosionRadius>
+      <damageAmountBase>100</damageAmountBase>
+      <explosionRadius>.25</explosionRadius>
     </projectile>
     <modExtensions>
-      <li Class="Submunition.DefSubmunitionExtension">
-        <submunitionPopSize>2.5</submunitionPopSize>
-        <submunitionCount>1</submunitionCount>
-        <submunitionExplosionRadius>.5</submunitionExplosionRadius>
-        <submunitionDelay>0</submunitionDelay>
-        <submunitionPreDetonation>1</submunitionPreDetonation>
-        <submunitionDuration>1</submunitionDuration>
-        <submunitionInterval>1</submunitionInterval>
-        <submunitionDamageDef>SM_AP_Bomb</submunitionDamageDef>
-        <submunitionDamageAmount>100</submunitionDamageAmount>
-        <submunitionDestroyOnImpact>false</submunitionDestroyOnImpact>
+      <li Class="Submunition.DefAdvancedProjectileExtension">
+        <fragment>true</fragment>
+        <fragCount>0</fragCount>
+        <fragMultiplier>.25</fragMultiplier>
+        <fragSpreadRadius>5</fragSpreadRadius>
+        <fragThingDef>SM_Proj_GrenadeFrag_Fragment</fragThingDef>
       </li>
     </modExtensions>
   </ThingDef>
@@ -457,26 +550,21 @@
       <texPath>Things/Projectile/LauncherShot</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <thingClass>Submunition.Projectile_Submunition</thingClass>
+    <thingClass>Submunition.Projectile_Advanced</thingClass>
     <projectile>
-      <damageDef>SM_Shrapnel</damageDef>
+      <damageDef>SM_AP_Bomb</damageDef>
       <speed>25</speed>
-      <damageAmountBase>10</damageAmountBase>
-      <explosionRadius>.5</explosionRadius>
+      <damageAmountBase>100</damageAmountBase>
+      <explosionRadius>.25</explosionRadius>
       <flyOverhead>true</flyOverhead>
     </projectile>
     <modExtensions>
-      <li Class="Submunition.DefSubmunitionExtension">
-        <submunitionPopSize>2.5</submunitionPopSize>
-        <submunitionCount>1</submunitionCount>
-        <submunitionExplosionRadius>.5</submunitionExplosionRadius>
-        <submunitionDelay>0</submunitionDelay>
-        <submunitionPreDetonation>1</submunitionPreDetonation>
-        <submunitionDuration>1</submunitionDuration>
-        <submunitionInterval>1</submunitionInterval>
-        <submunitionDamageDef>SM_AP_Bomb</submunitionDamageDef>
-        <submunitionDamageAmount>100</submunitionDamageAmount>
-        <submunitionDestroyOnImpact>false</submunitionDestroyOnImpact>
+      <li Class="Submunition.DefAdvancedProjectileExtension">
+        <fragment>true</fragment>
+        <fragCount>0</fragCount>
+        <fragMultiplier>.25</fragMultiplier>
+        <fragSpreadRadius>5</fragSpreadRadius>
+        <fragThingDef>SM_Proj_GrenadeFrag_Fragment</fragThingDef>
       </li>
     </modExtensions>
   </ThingDef>
@@ -506,6 +594,25 @@
         <targetParams>
           <canTargetLocations>true</canTargetLocations>
         </targetParams>
+      </li>
+      <li Class="AdditionalVerb.VerbProperties_Custom">
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>SM_Bullet_Launcher_inc_IND</defaultProjectile>
+        <warmupTime>3.5</warmupTime>
+        <range>45.8</range>
+        <forcedMissRadius>4</forcedMissRadius>
+        <burstShotCount>1</burstShotCount>
+        <soundCast>Shot_IncendiaryLauncher</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>14</muzzleFlashScale>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+        <requireLineOfSight>false</requireLineOfSight>
+        <desc>lobs shots farther and over walls but with less accuracy and speed</desc>
+        <label>Indirect Fire</label>
+        <texPath>Submunition/UI/indirect</texPath>
       </li>
     </verbs>
   </ThingDef>
@@ -573,6 +680,25 @@
           <canTargetLocations>true</canTargetLocations>
         </targetParams>
       </li>
+      <li Class="AdditionalVerb.VerbProperties_Custom">
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>SM_Bullet_Launcher_WP_IND</defaultProjectile>
+        <warmupTime>3.5</warmupTime>
+        <range>45.8</range>
+        <forcedMissRadius>4</forcedMissRadius>
+        <burstShotCount>1</burstShotCount>
+        <soundCast>Shot_IncendiaryLauncher</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>14</muzzleFlashScale>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+        <requireLineOfSight>false</requireLineOfSight>
+        <desc>lobs shots farther and over walls but with less accuracy and speed</desc>
+        <label>Indirect Fire</label>
+        <texPath>Submunition/UI/indirect</texPath>
+      </li>
     </verbs>
   </ThingDef>
   <ThingDef ParentName="BaseBullet">
@@ -636,6 +762,25 @@
         <targetParams>
           <canTargetLocations>true</canTargetLocations>
         </targetParams>
+      </li>
+      <li Class="AdditionalVerb.VerbProperties_Custom">
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>SM_Bullet_Launcher_Tear_Gas_IND</defaultProjectile>
+        <warmupTime>3.5</warmupTime>
+        <range>45.8</range>
+        <forcedMissRadius>4</forcedMissRadius>
+        <burstShotCount>1</burstShotCount>
+        <soundCast>Shot_IncendiaryLauncher</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>14</muzzleFlashScale>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+        <requireLineOfSight>false</requireLineOfSight>
+        <desc>lobs shots farther and over walls but with less accuracy and speed</desc>
+        <label>Indirect Fire</label>
+        <texPath>Submunition/UI/indirect</texPath>
       </li>
     </verbs>
   </ThingDef>
@@ -705,6 +850,25 @@
           <canTargetLocations>true</canTargetLocations>
         </targetParams>
       </li>
+      <li Class="AdditionalVerb.VerbProperties_Custom">
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>SM_Bullet_Launcher_NARQ_Gas_IND</defaultProjectile>
+        <warmupTime>3.5</warmupTime>
+        <range>45.8</range>
+        <forcedMissRadius>4</forcedMissRadius>
+        <burstShotCount>1</burstShotCount>
+        <soundCast>Shot_IncendiaryLauncher</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>14</muzzleFlashScale>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+        <requireLineOfSight>false</requireLineOfSight>
+        <desc>lobs shots farther and over walls but with less accuracy and speed</desc>
+        <label>Indirect Fire</label>
+        <texPath>Submunition/UI/indirect</texPath>
+      </li>
     </verbs>
   </ThingDef>
   <ThingDef ParentName="BaseBullet">
@@ -772,6 +936,25 @@
         <targetParams>
           <canTargetLocations>true</canTargetLocations>
         </targetParams>
+      </li>
+      <li Class="AdditionalVerb.VerbProperties_Custom">
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>SM_Bullet_Launcher_Roid_Gas_IND</defaultProjectile>
+        <warmupTime>3.5</warmupTime>
+        <range>45.8</range>
+        <forcedMissRadius>4</forcedMissRadius>
+        <burstShotCount>1</burstShotCount>
+        <soundCast>Shot_IncendiaryLauncher</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>14</muzzleFlashScale>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+        <requireLineOfSight>false</requireLineOfSight>
+        <desc>lobs shots farther and over walls but with less accuracy and speed</desc>
+        <label>Indirect Fire</label>
+        <texPath>Submunition/UI/indirect</texPath>
       </li>
     </verbs>
   </ThingDef>
