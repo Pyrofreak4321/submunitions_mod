@@ -166,7 +166,7 @@ namespace Submunition
             return new DamageWorker.DamageResult();
         }
     }
-
+     
 
 
     public class DefAdvHediffExtension : DefModExtension
@@ -425,7 +425,7 @@ namespace Submunition
             }
         }
 
-        public void Tended(HediffWithComps main, float quality, int batchPosition = 0)
+        public void Tended_NewTemp(HediffWithComps main, float quality, float maxQuality, int batchPosition = 0)
         {
             if (advHediffExtension.advHediffTendReducesSeverity > 0)
             {
@@ -471,10 +471,10 @@ namespace Submunition
             base.Tick();
         }
 
-        public override void Tended(float quality, int batchPosition = 0)
+        public override void Tended_NewTemp(float quality, float maxQuality, int batchPosition = 0)
         {
-            worker.Tended(this, quality, batchPosition);
-            base.Tended(quality, batchPosition);
+            worker.Tended_NewTemp(this, quality, maxQuality, batchPosition);
+            base.Tended_NewTemp(quality, maxQuality, batchPosition);
         }
 
     }
@@ -496,10 +496,10 @@ namespace Submunition
             base.Tick();
         }
 
-        public override void Tended(float quality, int batchPosition = 0)
+        public override void Tended_NewTemp(float quality, float maxQuality, int batchPosition = 0)
         {
-            worker.Tended(this, quality, batchPosition);
-            base.Tended(quality, batchPosition);
+            worker.Tended_NewTemp(this, quality, maxQuality, batchPosition);
+            base.Tended_NewTemp(quality, maxQuality, batchPosition);
         }
 
     }

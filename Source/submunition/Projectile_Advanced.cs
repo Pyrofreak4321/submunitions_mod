@@ -28,10 +28,11 @@ namespace Submunition
             {
                 DefAdvancedProjectileExtension ext = __instance.Projectile.GetModExtension<DefAdvancedProjectileExtension>();
                 __result = Math.Max(Math.Max(ext.fragSpreadRadius, ext.spawnSpreadRadius), ext.explosionSpreadRadius);
-            }
+            } 
         }
     }
 
+    /*
     [HarmonyPatch(typeof(Projectile), "StartingTicksToImpact")]
     class fieldgunSpeedFix
     {
@@ -44,6 +45,7 @@ namespace Submunition
             }
         }
     }
+    */
 
     [HarmonyPatch(typeof(Projectile), nameof(Projectile.Launch), new Type[] { typeof(Thing), typeof(Vector3), typeof(LocalTargetInfo), typeof(LocalTargetInfo), typeof(ProjectileHitFlags), typeof(Thing), typeof(ThingDef) })]
     public static class fireCluster
@@ -85,6 +87,8 @@ namespace Submunition
 
                     pellet.Launch(launcher, origin, target, intendedTarget, pellet.HitFlags, equipment, null);
                 }
+
+                __instance.Destroy();
 
                 return false;
             }
