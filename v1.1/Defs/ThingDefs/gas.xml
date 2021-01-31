@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-<!-- Riot -->  
+<!-- Riot -->
   <ThingDef ParentName="BaseGas">
     <thingClass>Submunition.Gas_Toxic</thingClass>
     <defName>SM_Gas_Mech_Riot</defName>
@@ -34,8 +34,8 @@
       </li>
     </modExtensions>
   </ThingDef>
- 
-<!-- mech -->  
+
+<!-- mech -->
   <ThingDef ParentName="BaseGas">
     <thingClass>Submunition.Gas_Toxic</thingClass>
     <defName>SM_Gas_Mech_All</defName>
@@ -74,7 +74,7 @@
     </modExtensions>
   </ThingDef>
 
-<!-- WP -->  
+<!-- WP -->
   <ThingDef ParentName="BaseGas">
     <thingClass>Submunition.Gas_Toxic</thingClass>
     <defName>SM_Gas_WP</defName>
@@ -97,7 +97,7 @@
       <li Class="Submunition.DefToxicGasExtension">
         <toxicGasSmokey>10</toxicGasSmokey>
         <toxicGasHot>true</toxicGasHot>
-        
+
         <toxicGasDamageChance>1</toxicGasDamageChance>
         <toxicGasDamageStrength>5</toxicGasDamageStrength>
         <toxicGasDamageDef>WhitePhospher</toxicGasDamageDef>
@@ -107,8 +107,8 @@
       </li>
     </modExtensions>
   </ThingDef>
- 
-<!-- TG -->  
+
+<!-- TG -->
   <ThingDef ParentName="BaseGas">
     <thingClass>Submunition.Gas_Toxic</thingClass>
     <defName>SM_Gas_Tear</defName>
@@ -141,7 +141,7 @@
     </modExtensions>
   </ThingDef>
 
-<!-- Rage -->  
+<!-- Rage -->
   <ThingDef ParentName="BaseGas">
     <thingClass>Submunition.Gas_Toxic</thingClass>
     <defName>SM_Gas_Roid</defName>
@@ -175,7 +175,7 @@
     </modExtensions>
   </ThingDef>
 
-<!-- nerve -->  
+<!-- nerve -->
   <ThingDef ParentName="BaseGas">
     <thingClass>Submunition.Gas_Toxic</thingClass>
     <defName>SM_Gas_Nerve</defName>
@@ -207,7 +207,7 @@
     </modExtensions>
   </ThingDef>
 
-<!-- narq -->  
+<!-- narq -->
   <ThingDef ParentName="BaseGas">
     <thingClass>Submunition.Gas_Toxic</thingClass>
     <defName>SM_Gas_Narq</defName>
@@ -233,7 +233,7 @@
         <toxicGasHediffToAdd>SM_Sedated</toxicGasHediffToAdd>
         <toxicGasHediffResist>ToxicSensitivity</toxicGasHediffResist>
         <toxicGasHediffBodyScaling>true</toxicGasHediffBodyScaling>
-        <toxicGasWholeBody>true</toxicGasWholeBody> 
+        <toxicGasWholeBody>true</toxicGasWholeBody>
         <toxicGasMote>SM_Mote_Gas_Narq</toxicGasMote>
         <toxicGasMoteRate>100</toxicGasMoteRate>
         <toxicGasArea>true</toxicGasArea>
@@ -241,7 +241,7 @@
     </modExtensions>
   </ThingDef>
 
-<!-- napalm -->  
+<!-- napalm -->
   <ThingDef ParentName="BaseGas">
     <thingClass>Submunition.Gas_Toxic</thingClass>
     <defName>SM_Gas_Napalm</defName>
@@ -264,12 +264,11 @@
       <li Class="Submunition.DefToxicGasExtension">
         <toxicGasSmokey>20</toxicGasSmokey>
         <toxicGasHot>true</toxicGasHot>
-        <toxicGasArea>true</toxicGasArea>        
+        <toxicGasArea>true</toxicGasArea>
         <toxicGasDamageChance>1</toxicGasDamageChance>
         <toxicGasDamageStrength>1</toxicGasDamageStrength>
         <toxicGasDamageDef>SM_Napalm</toxicGasDamageDef>
       </li>
     </modExtensions>
   </ThingDef>
-  
 </Defs>

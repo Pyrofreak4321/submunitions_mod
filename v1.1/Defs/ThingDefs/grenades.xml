@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-<!-- NARQ -->  
+<!-- NARQ -->
 	<ThingDef ParentName="BaseMakeableGrenade">
 		<defName>SM_Weapon_Grenade_Narq_Gas</defName>
 		<label>NARQ grenades</label>
@@ -75,13 +75,12 @@
       <damageDef>SM_Danger_Smoke_noShake</damageDef>
       <damageAmountBase>0</damageAmountBase>
       <explosionRadius>4</explosionRadius>
-      <flyOverhead>true</flyOverhead>
       <postExplosionSpawnThingDef>SM_Gas_Narq</postExplosionSpawnThingDef>
       <postExplosionSpawnChance>1.0</postExplosionSpawnChance>
 		</projectile>
 	</ThingDef>
-  
-<!-- ROID --> 
+
+<!-- ROID -->
 	<ThingDef ParentName="BaseMakeableGrenade">
 		<defName>SM_Weapon_Grenade_Roid_Gas</defName>
 		<label>Rage grenades</label>
@@ -156,13 +155,12 @@
       <damageDef>SM_Danger_Smoke_noShake</damageDef>
       <damageAmountBase>0</damageAmountBase>
       <explosionRadius>4</explosionRadius>
-      <flyOverhead>true</flyOverhead>
       <postExplosionSpawnThingDef>SM_Gas_Roid</postExplosionSpawnThingDef>
       <postExplosionSpawnChance>1.0</postExplosionSpawnChance>
 		</projectile>
 	</ThingDef>
-  
-<!-- TG -->   
+
+<!-- TG -->
 	<ThingDef ParentName="BaseMakeableGrenade">
 		<defName>SM_Weapon_Grenade_Tear_Gas</defName>
 		<label>tear gas grenades</label>
@@ -239,13 +237,12 @@
       <damageDef>SM_Danger_Smoke_noShake</damageDef>
       <damageAmountBase>0</damageAmountBase>
       <explosionRadius>4</explosionRadius>
-      <flyOverhead>true</flyOverhead>
       <postExplosionSpawnThingDef>SM_Gas_Tear</postExplosionSpawnThingDef>
       <postExplosionSpawnChance>1.0</postExplosionSpawnChance>
 		</projectile>
 	</ThingDef>
-  
-<!-- WP --> 
+
+<!-- WP -->
 	<ThingDef ParentName="BaseMakeableGrenade">
 		<defName>SM_Weapon_Grenade_WP</defName>
 		<label>white phosphorus grenades</label>
@@ -318,16 +315,15 @@
 		</graphicData>
 		<projectile>
       <!-- Use default damage from explosion def -->
-			<explosionDelay>50</explosionDelay>    
+			<explosionDelay>50</explosionDelay>
       <damageDef>WhitePhospherFlash</damageDef>
       <explosionRadius>2</explosionRadius>
-      <flyOverhead>true</flyOverhead>
       <postExplosionSpawnThingDef>SM_Gas_WP</postExplosionSpawnThingDef>
       <postExplosionSpawnChance>0.55</postExplosionSpawnChance>
 		</projectile>
 	</ThingDef>
-   
-<!-- FRAG --> 
+
+<!-- FRAG -->
   <ThingDef ParentName="BaseMakeableGrenade">
     <defName>SM_Weapon_GrenadeFrag</defName>
     <label>frag grenades</label>
@@ -393,7 +389,6 @@
     </graphicData>
     <projectile>
       <explosionRadius>10</explosionRadius>
-      <flyOverhead>true</flyOverhead>
       <damageDef>Smoke</damageDef>
       <explosionDelay>100</explosionDelay>
     </projectile>
@@ -412,7 +407,7 @@
     <label>shrapnel</label>
     <graphicData>
       <texPath>Things/Projectile/Bullet_Small</texPath>
-      <graphicClass>Graphic_Single</graphicClass> 
+      <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <projectile>
       <alwaysFreeIntercept>true</alwaysFreeIntercept>
@@ -421,8 +416,8 @@
       <speed>120</speed>
     </projectile>
   </ThingDef>
-  
-<!-- rubber --> 
+
+<!-- rubber -->
   <ThingDef ParentName="BaseMakeableGrenade">
     <defName>SM_Weapon_GrenadeRubber</defName>
     <label>sting-ball grenades</label>
@@ -477,8 +472,7 @@
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <projectile>
-      <explosionRadius>10</explosionRadius> 
-      <flyOverhead>true</flyOverhead>
+      <explosionRadius>10</explosionRadius>
       <damageDef>Smoke</damageDef>
       <explosionDelay>100</explosionDelay>
     </projectile>
@@ -497,7 +491,7 @@
     <label>shrapnel</label>
     <graphicData>
       <texPath>Things/Projectile/Bullet_Small</texPath>
-      <graphicClass>Graphic_Single</graphicClass> 
+      <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <projectile>
       <alwaysFreeIntercept>true</alwaysFreeIntercept>
