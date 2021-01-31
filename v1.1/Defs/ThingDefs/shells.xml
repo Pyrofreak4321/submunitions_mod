@@ -613,10 +613,10 @@
     <thingClass>Projectile_Explosive</thingClass>
     <projectile>
       <damageDef>SM_Shrapnel_noShake</damageDef>
-      <damageAmountBase>5</damageAmountBase>
+      <damageAmountBase>2</damageAmountBase>
       <explosionDelay>0</explosionDelay>
       <speed>60</speed>
-      <explosionRadius>2</explosionRadius>
+      <explosionRadius>1</explosionRadius>
       <flyOverhead>true</flyOverhead>
       <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
       <soundExplode>BulletImpact_Ground</soundExplode>

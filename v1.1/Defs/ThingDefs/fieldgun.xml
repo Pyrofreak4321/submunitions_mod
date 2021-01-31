@@ -325,9 +325,28 @@
         <submunitionDuration>15</submunitionDuration>
         <submunitionInterval>5</submunitionInterval>
         <submunitionFragment>true</submunitionFragment>
-        <submunitionFragmentThingDef>SM_Bullet_Shell_AirBurst_Fragment</submunitionFragmentThingDef>
+        <submunitionFragmentThingDef>SM_Bullet_FieldGun_AirBurst_Fragment</submunitionFragmentThingDef>
       </li>
     </modExtensions>
+  </ThingDef>
+    <ThingDef ParentName="BaseBullet">
+    <defName>SM_Bullet_FieldGun_AirBurst_Fragment</defName>
+    <label>shrapnel</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass> 
+    </graphicData>
+    <thingClass>Projectile_Explosive</thingClass>
+    <projectile>
+      <damageDef>SM_Shrapnel_noShake</damageDef>
+      <damageAmountBase>2</damageAmountBase>
+      <explosionDelay>0</explosionDelay>
+      <speed>60</speed>
+      <explosionRadius>1</explosionRadius> 
+      <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+      <soundExplode>BulletImpact_Ground</soundExplode>
+      <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+    </projectile>
   </ThingDef>
   
   <ThingDef ParentName="SM_Gun_FieldGun_Base">
