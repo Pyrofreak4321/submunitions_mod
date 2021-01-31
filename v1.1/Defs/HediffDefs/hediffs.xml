@@ -105,12 +105,12 @@
         <advHediffDamageStrength>1</advHediffDamageStrength>
         <advHediffDamageScale>1</advHediffDamageScale>
         <advHediffDamageInterval>30</advHediffDamageInterval>
-        <advHediffDamageRandomPart>false</advHediffDamageRandomPart>        
+        <advHediffDamageRandomPart>false</advHediffDamageRandomPart>
         <advHediffTendReducesSeverity>-1</advHediffTendReducesSeverity>
       </li>
     </modExtensions>
   </HediffDef>
- 
+
   <!-- wp flash/burn/frag -->
   <HediffDef>
     <defName>FlashBlind</defName>
@@ -238,14 +238,14 @@
         <!-- <advHediffDamageInterval>60</advHediffDamageInterval>-->
         <!-- <advHediffDamageRandomPart>false</advHediffDamageRandomPart> -->
         <!-- <advHediffDamageResist> </advHediffDamageResist> -->
-        
+
         <!-- <advHediffHediffToAdd>ToxicBuildup</advHediffHediffToAdd> -->
         <!-- <advHediffHediffInterval>20</advHediffHediffInterval> -->
         <!-- <advHediffHediffStrength>0.01</advHediffHediffStrength> -->
         <!-- <advHediffHediffRandomPart>false</advHediffHediffRandomPart> -->
         <!-- <advHediffHediffWholeBody>true</advHediffHediffWholeBody> -->
         <!-- <advHediffHediffResist>ToxicSensitivity</advHediffHediffResist> -->
-        
+
         <advHediffChainHediffToAdd>SM_WP_debries</advHediffChainHediffToAdd>
         <advHediffChainHediffStrength>-1</advHediffChainHediffStrength>
         <advHediffChainHediffRandomPart>false</advHediffChainHediffRandomPart>
@@ -273,23 +273,23 @@
         <advHediffDamageInterval>60</advHediffDamageInterval>
         <advHediffDamageRandomPart>false</advHediffDamageRandomPart>
         <!-- <advHediffDamageResist> </advHediffDamageResist> -->
-        
+
         <!-- <advHediffHediffToAdd>ToxicBuildup</advHediffHediffToAdd> -->
         <!-- <advHediffHediffInterval>20</advHediffHediffInterval> -->
         <!-- <advHediffHediffStrength>0.01</advHediffHediffStrength> -->
         <!-- <advHediffHediffRandomPart>false</advHediffHediffRandomPart> -->
         <!-- <advHediffHediffWholeBody>true</advHediffHediffWholeBody> -->
         <!-- <advHediffHediffResist>ToxicSensitivity</advHediffHediffResist> -->
-        
+
         <advHediffSeverityInterval>60</advHediffSeverityInterval>
         <advHediffSeverityOffset>-0.1</advHediffSeverityOffset>
-        
+
         <advHediffTendReducesSeverity>999</advHediffTendReducesSeverity>
         <advHediffTendDificulty>0.5</advHediffTendDificulty>
       </li>
     </modExtensions>
   </HediffDef>
-  
+
   <!-- chem burn/nerve -->
   <HediffDef ParentName="InjuryBase">
     <defName>SM_Chem_Burn</defName>
@@ -428,19 +428,19 @@
         <advHediffDamageInterval>240</advHediffDamageInterval>
         <advHediffDamageRandomPart>false</advHediffDamageRandomPart>
         <!-- <advHediffDamageResist> </advHediffDamageResist> -->
-        
+
         <!-- <advHediffHediffToAdd>ToxicBuildup</advHediffHediffToAdd>
         <advHediffHediffInterval>480</advHediffHediffInterval>
         <advHediffHediffStrength>0.01</advHediffHediffStrength>
         <advHediffHediffRandomPart>false</advHediffHediffRandomPart>
         <advHediffHediffWholeBody>true</advHediffHediffWholeBody> -->
         <!-- <advHediffHediffResist>ToxicSensitivity</advHediffHediffResist> -->
-        
+
         <advHediffTendReducesSeverity>-1</advHediffTendReducesSeverity>
       </li>
     </modExtensions>
   </HediffDef>
-  
+
   <!-- tear gas -->
   <HediffDef>
     <defName>SM_Teargas</defName>
@@ -453,7 +453,7 @@
     <maxSeverity>10</maxSeverity>
     <comps>
       <li Class="HediffCompProperties_SeverityPerDay">
-        <severityPerDay>-120.0</severityPerDay>
+        <severityPerDay>-100.0</severityPerDay>
       </li>
     </comps>
     <stages>
@@ -577,7 +577,7 @@
         </capMods>
       </li>
     </stages>
-  </HediffDef> 
+  </HediffDef>
 
   <!-- dart -->
   <HediffDef ParentName="InjuryBase" Name="SM_Dart" Abstract="True">
@@ -604,7 +604,7 @@
       <destroyedOutLabel>Shot out</destroyedOutLabel>
     </injuryProps>
   </HediffDef>
- 
+
   <!-- narq darts -->
   <HediffDef ParentName="SM_Dart">
     <defName>SM_SeditiveDart</defName>
@@ -637,7 +637,7 @@
         <advHediffHediffRandomPart>false</advHediffHediffRandomPart>
         <advHediffHediffWholeBody>true</advHediffHediffWholeBody>
         <advHediffHediffBodyScaling>true</advHediffHediffBodyScaling>
-        
+
         <advHediffSeverityInterval>60</advHediffSeverityInterval>
         <advHediffSeverityOffset>-0.1</advHediffSeverityOffset>
       </li>
@@ -742,7 +742,7 @@
         </statOffsets>
       </li>
     </stages>
-  </HediffDef> 
+  </HediffDef>
   <HediffDef>
     <defName>SM_SeditiveHigh</defName>
     <hediffClass>HediffWithComps</hediffClass>
@@ -848,7 +848,7 @@
         <advHediffHediffRandomPart>false</advHediffHediffRandomPart>
         <advHediffHediffWholeBody>true</advHediffHediffWholeBody>
         <advHediffHediffBodyScaling>true</advHediffHediffBodyScaling>
-        
+
         <advHediffSeverityInterval>60</advHediffSeverityInterval>
         <advHediffSeverityOffset>-0.1</advHediffSeverityOffset>
       </li>
@@ -971,7 +971,7 @@
         </mentalStateGivers>
       </li>
     </stages>
-  </HediffDef> 
+  </HediffDef>
   <HediffDef>
     <defName>SM_RagingHigh</defName>
     <hediffClass>HediffWithComps</hediffClass>
@@ -1091,7 +1091,7 @@
       </li>
     </stages>
   </HediffDef>
-  
+
   <ChemicalDef>
     <defName>Roid</defName>
     <label>roid</label>
@@ -1099,7 +1099,7 @@
     <toleranceHediff>RoidTolerance</toleranceHediff>
 		<onGeneratedAddictedToleranceChance>0.8</onGeneratedAddictedToleranceChance>
 	</ChemicalDef>
-  
+
   <NeedDef ParentName="DrugAddictionNeedBase">
     <defName>Chemical_Roid</defName>
     <needClass>Need_Chemical</needClass>
@@ -1190,5 +1190,5 @@
       </li>
     </stages>
   </HediffDef>
-  
+
 </Defs>

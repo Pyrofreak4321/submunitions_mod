@@ -130,7 +130,7 @@
     <modExtensions>
       <li Class="Submunition.DefToxicGasExtension">
         <toxicGasHediffChance>1</toxicGasHediffChance>
-        <toxicGasHediffStrength>.05</toxicGasHediffStrength>
+        <toxicGasHediffStrength>.08</toxicGasHediffStrength>
         <toxicGasHediffToAdd>SM_Teargas</toxicGasHediffToAdd>
         <toxicGasWholeBody>true</toxicGasWholeBody>
         <toxicGasHediffResist>ToxicSensitivity</toxicGasHediffResist>
@@ -229,7 +229,7 @@
     <modExtensions>
       <li Class="Submunition.DefToxicGasExtension">
         <toxicGasHediffChance>1</toxicGasHediffChance>
-        <toxicGasHediffStrength>0.05</toxicGasHediffStrength>
+        <toxicGasHediffStrength>0.03</toxicGasHediffStrength>
         <toxicGasHediffToAdd>SM_Sedated</toxicGasHediffToAdd>
         <toxicGasHediffResist>ToxicSensitivity</toxicGasHediffResist>
         <toxicGasHediffBodyScaling>true</toxicGasHediffBodyScaling>
