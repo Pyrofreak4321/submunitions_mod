@@ -76,7 +76,7 @@
       <turretTopOffset>(0, 0)</turretTopOffset>
     </building>
   </ThingDef>
-  
+
   <ThingDef Abstract="True" ParentName="BaseWeaponTurret" Name="SM_Gun_FieldGun_Base">
     <defName>SM_Gun_FieldGun_Base</defName>
     <label>field gun</label>
@@ -106,7 +106,7 @@
       <li>TurretGun</li>
     </weaponTags>
   </ThingDef>
-  
+
 <!-- APDS -->
   <ThingDef ParentName="SM_Turret_FieldGun_Base">
     <defName>SM_Turret_FieldGun</defName>
@@ -154,7 +154,7 @@
       <speed>300</speed>
     </projectile>
   </ThingDef>
-  
+
   <ThingDef ParentName="SM_Gun_FieldGun_Base">
     <defName>SM_Gun_FieldGun</defName>
     <label>field gun (APDS)</label>
@@ -210,7 +210,7 @@
       <turretGunDef>SM_Gun_FieldGun_HEAT</turretGunDef>
     </building>
   </ThingDef>
-  
+
   <ThingDef ParentName="BaseBullet">
     <defName>SM_Bullet_FieldGun_HEAT</defName>
     <label>HEAT shell</label>
@@ -241,7 +241,7 @@
       </li>
     </modExtensions>
   </ThingDef>
-  
+
   <ThingDef ParentName="SM_Gun_FieldGun_Base">
     <defName>SM_Gun_FieldGun_HEAT</defName>
     <label>field gun (HEAT)</label>
@@ -266,7 +266,7 @@
       </li>
     </verbs>
   </ThingDef>
-  
+
 <!-- AB -->
   <ThingDef ParentName="SM_Turret_FieldGun_Base">
     <defName>SM_Turret_FieldGun_AirBurst</defName>
@@ -297,7 +297,7 @@
       <turretGunDef>SM_Gun_FieldGun_AirBurst</turretGunDef>
     </building>
   </ThingDef>
-  
+
   <ThingDef ParentName="BaseBullet">
     <defName>SM_Bullet_FieldGun_AirBurst</defName>
     <label>air-burst shell</label>
@@ -334,7 +334,7 @@
     <label>shrapnel</label>
     <graphicData>
       <texPath>Things/Projectile/Bullet_Small</texPath>
-      <graphicClass>Graphic_Single</graphicClass> 
+      <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <thingClass>Projectile_Explosive</thingClass>
     <projectile>
@@ -342,13 +342,13 @@
       <damageAmountBase>2</damageAmountBase>
       <explosionDelay>0</explosionDelay>
       <speed>60</speed>
-      <explosionRadius>1</explosionRadius> 
+      <explosionRadius>1</explosionRadius>
       <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
       <soundExplode>BulletImpact_Ground</soundExplode>
       <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
     </projectile>
   </ThingDef>
-  
+
   <ThingDef ParentName="SM_Gun_FieldGun_Base">
     <defName>SM_Gun_FieldGun_AirBurst</defName>
     <label>field gun (Air-burst)</label>
@@ -404,7 +404,7 @@
       <turretGunDef>SM_Gun_FieldGun_HE</turretGunDef>
     </building>
   </ThingDef>
-  
+
   <ThingDef ParentName="BaseBullet">
     <defName>SM_Bullet_FieldGun_HE</defName>
     <label>HE shell</label>
@@ -420,7 +420,7 @@
       <explosionRadius>3.5</explosionRadius>
     </projectile>
   </ThingDef>
-  
+
   <ThingDef ParentName="SM_Gun_FieldGun_Base">
     <defName>SM_Gun_FieldGun_HE</defName>
     <label>field gun (HE)</label>
@@ -476,7 +476,7 @@
       <turretGunDef>SM_Gun_FieldGun_Incendiary</turretGunDef>
     </building>
   </ThingDef>
-  
+
   <ThingDef ParentName="BaseBullet">
     <defName>SM_Bullet_FieldGun_Incendiary</defName>
     <label>HE shell</label>
@@ -495,7 +495,7 @@
       <ai_IsIncendiary>true</ai_IsIncendiary>
     </projectile>
   </ThingDef>
-  
+
   <ThingDef ParentName="SM_Gun_FieldGun_Base">
     <defName>SM_Gun_FieldGun_Incendiary</defName>
     <label>field gun (Incendiary)</label>
@@ -551,7 +551,7 @@
       <turretGunDef>SM_Gun_FieldGun_WP</turretGunDef>
     </building>
   </ThingDef>
-  
+
   <ThingDef ParentName="BaseBullet">
     <defName>SM_Bullet_FieldGun_WP</defName>
     <label>WP shell</label>
@@ -575,7 +575,7 @@
       <ai_IsIncendiary>true</ai_IsIncendiary>
     </projectile>
   </ThingDef>
-  
+
   <ThingDef ParentName="SM_Gun_FieldGun_Base">
     <defName>SM_Gun_FieldGun_WP</defName>
     <label>field gun (white phosphorus)</label>

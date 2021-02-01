@@ -74,9 +74,9 @@
 			<explosionDelay>10</explosionDelay>
       <damageDef>SM_Danger_Smoke_noShake</damageDef>
       <damageAmountBase>0</damageAmountBase>
-      <explosionRadius>4</explosionRadius>
+      <explosionRadius>3</explosionRadius>
       <postExplosionSpawnThingDef>SM_Gas_Narq</postExplosionSpawnThingDef>
-      <postExplosionSpawnChance>1.0</postExplosionSpawnChance>
+      <postExplosionSpawnChance>.75</postExplosionSpawnChance>
 		</projectile>
 	</ThingDef>
 

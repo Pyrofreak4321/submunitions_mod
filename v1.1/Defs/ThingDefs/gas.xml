@@ -120,8 +120,8 @@
     </graphicData>
     <gas>
       <expireSeconds>
-        <min>60</min>
-        <max>90</max>
+        <min>20</min>
+        <max>60</max>
       </expireSeconds>
       <blockTurretTracking>false</blockTurretTracking>
       <accuracyPenalty>0</accuracyPenalty>
@@ -153,8 +153,8 @@
     </graphicData>
     <gas>
       <expireSeconds>
-        <min>60</min>
-        <max>90</max>
+        <min>15</min>
+        <max>30</max>
       </expireSeconds>
       <blockTurretTracking>false</blockTurretTracking>
       <accuracyPenalty>0</accuracyPenalty>
@@ -187,8 +187,8 @@
     </graphicData>
     <gas>
       <expireSeconds>
-        <min>60</min>
-        <max>90</max>
+        <min>15</min>
+        <max>30</max>
       </expireSeconds>
       <blockTurretTracking>false</blockTurretTracking>
       <accuracyPenalty>0</accuracyPenalty>
@@ -197,8 +197,7 @@
     <modExtensions>
       <li Class="Submunition.DefToxicGasExtension">
         <toxicGasHediffChance>1</toxicGasHediffChance>
-        <toxicGasHediffStrength>0.01</toxicGasHediffStrength>
-        <toxicGasHediffToAdd>NerveAgent</toxicGasHediffToAdd>
+
         <toxicGasHediffResist>ToxicSensitivity</toxicGasHediffResist>
         <toxicGasMote>SM_Mote_Gas_Nerve</toxicGasMote>
         <toxicGasMoteRate>100</toxicGasMoteRate>
@@ -219,8 +218,8 @@
     </graphicData>
     <gas>
       <expireSeconds>
-        <min>60</min>
-        <max>90</max>
+        <min>15</min>
+        <max>30</max>
       </expireSeconds>
       <blockTurretTracking>false</blockTurretTracking>
       <accuracyPenalty>0</accuracyPenalty>

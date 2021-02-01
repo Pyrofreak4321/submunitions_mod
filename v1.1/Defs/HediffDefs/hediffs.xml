@@ -106,7 +106,7 @@
         <advHediffDamageScale>1</advHediffDamageScale>
         <advHediffDamageInterval>30</advHediffDamageInterval>
         <advHediffDamageRandomPart>false</advHediffDamageRandomPart>
-        <advHediffTendReducesSeverity>-1</advHediffTendReducesSeverity>
+        <advHediffTendReducesSeverity>-.05</advHediffTendReducesSeverity>
       </li>
     </modExtensions>
   </HediffDef>
@@ -429,14 +429,14 @@
         <advHediffDamageRandomPart>false</advHediffDamageRandomPart>
         <!-- <advHediffDamageResist> </advHediffDamageResist> -->
 
-        <!-- <advHediffHediffToAdd>ToxicBuildup</advHediffHediffToAdd>
-        <advHediffHediffInterval>480</advHediffHediffInterval>
+        <advHediffHediffToAdd>NerveAgent</advHediffHediffToAdd>
+        <advHediffHediffInterval>240</advHediffHediffInterval>
         <advHediffHediffStrength>0.01</advHediffHediffStrength>
-        <advHediffHediffRandomPart>false</advHediffHediffRandomPart>
-        <advHediffHediffWholeBody>true</advHediffHediffWholeBody> -->
+        <advHediffHediffRandomPart>true</advHediffHediffRandomPart>
+        <!-- <advHediffHediffWholeBody>false</advHediffHediffWholeBody> -->
         <!-- <advHediffHediffResist>ToxicSensitivity</advHediffHediffResist> -->
 
-        <advHediffTendReducesSeverity>-1</advHediffTendReducesSeverity>
+        <advHediffTendReducesSeverity>-.1</advHediffTendReducesSeverity>
       </li>
     </modExtensions>
   </HediffDef>
@@ -654,17 +654,17 @@
     <maxSeverity>1.0</maxSeverity>
     <comps>
       <li Class="HediffCompProperties_SeverityPerDay">
-        <severityPerDay>-1.0</severityPerDay>
+        <severityPerDay>-2</severityPerDay>
       </li>
     </comps>
     <stages>
       <li>
-        <restFallFactor>2</restFallFactor>
+        <restFallFactor>5</restFallFactor>
         <painFactor>0.90</painFactor>
         <capMods>
           <li>
             <capacity>Consciousness</capacity>
-            <offset>-0.10</offset>
+            <offset>-0.30</offset>
           </li>
         </capMods>
         <statOffsets>
@@ -672,23 +672,9 @@
         </statOffsets>
       </li>
       <li>
-        <restFallFactor>4</restFallFactor>
+        <restFallFactor>10</restFallFactor>
         <minSeverity>0.2</minSeverity>
         <painFactor>0.90</painFactor>
-        <capMods>
-          <li>
-            <capacity>Consciousness</capacity>
-            <offset>-0.20</offset>
-          </li>
-        </capMods>
-        <statOffsets>
-          <MentalBreakThreshold>-0.05</MentalBreakThreshold>
-        </statOffsets>
-      </li>
-      <li>
-        <restFallFactor>8</restFallFactor>
-        <minSeverity>0.4</minSeverity>
-        <painFactor>0.85</painFactor>
         <capMods>
           <li>
             <capacity>Consciousness</capacity>
@@ -696,11 +682,25 @@
           </li>
         </capMods>
         <statOffsets>
+          <MentalBreakThreshold>-0.05</MentalBreakThreshold>
+        </statOffsets>
+      </li>
+      <li>
+        <restFallFactor>20</restFallFactor>
+        <minSeverity>0.4</minSeverity>
+        <painFactor>0.85</painFactor>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.50</offset>
+          </li>
+        </capMods>
+        <statOffsets>
           <MentalBreakThreshold>-0.1</MentalBreakThreshold>
         </statOffsets>
       </li>
       <li>
-        <restFallFactor>12</restFallFactor>
+        <restFallFactor>40</restFallFactor>
         <minSeverity>0.6</minSeverity>
         <painFactor>0.80</painFactor>
         <capMods>
@@ -714,13 +714,13 @@
         </statOffsets>
       </li>
       <li>
-        <restFallFactor>16</restFallFactor>
+        <restFallFactor>80</restFallFactor>
         <minSeverity>0.8</minSeverity>
         <painFactor>0.75</painFactor>
         <capMods>
           <li>
             <capacity>Consciousness</capacity>
-            <offset>-0.80</offset>
+            <offset>-0.70</offset>
           </li>
         </capMods>
         <statOffsets>
@@ -728,8 +728,8 @@
         </statOffsets>
       </li>
       <li>
-        <restFallFactor>100</restFallFactor>
-        <minSeverity>1</minSeverity>
+        <restFallFactor>160</restFallFactor>
+        <minSeverity>.95</minSeverity>
         <painFactor>0.70</painFactor>
         <capMods>
           <li>

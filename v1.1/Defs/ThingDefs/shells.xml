@@ -81,7 +81,7 @@
     <label>shrapnel</label>
     <graphicData>
       <texPath>Things/Projectile/Bullet_Big</texPath>
-      <graphicClass>Graphic_Single</graphicClass> 
+      <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <thingClass>Projectile_Explosive</thingClass>
     <projectile>
@@ -99,7 +99,7 @@
       <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
     </projectile>
   </ThingDef>
-  
+
 <!-- Napalm -->
   <ThingDef ParentName="MakeableShellBase">
     <defName>SM_Shell_Napalm</defName>
@@ -168,18 +168,18 @@
         <submunitionCount>0</submunitionCount>
         <submunitionMultiplier>25</submunitionMultiplier>
         <submunitionExplosionRadius>0</submunitionExplosionRadius>
-        <submunitionPreDetonation>60</submunitionPreDetonation>
-        <submunitionDuration>60</submunitionDuration>
+        <submunitionPreDetonation>30</submunitionPreDetonation>
+        <submunitionDuration>30</submunitionDuration>
         <submunitionInterval>3</submunitionInterval>
         <submunitionDamageDef>SM_Napalm</submunitionDamageDef>
         <submunitionDestroyOnImpact>true</submunitionDestroyOnImpact>
         <submunitionSpawnThingDef>SM_Gas_Napalm</submunitionSpawnThingDef>
         <submunitionEmit>true</submunitionEmit>
-        <expanding>.25</expanding>
+        <expanding>.5</expanding>
       </li>
     </modExtensions>
   </ThingDef>
-  
+
 <!-- NARQ -->
   <ThingDef ParentName="MakeableShellBase">
     <defName>SM_Shell_Narq_Gas</defName>
@@ -315,8 +315,8 @@
       <ai_IsIncendiary>true</ai_IsIncendiary>
     </projectile>
   </ThingDef>
-  
-<!-- ROID -->  
+
+<!-- ROID -->
   <ThingDef ParentName="MakeableShellBase">
     <defName>SM_Shell_Roid_Gas</defName>
     <label>Rage shell</label>
@@ -452,7 +452,7 @@
     </projectile>
   </ThingDef>
 
-<!-- WP -->  
+<!-- WP -->
   <ThingDef ParentName="MakeableShellBase">
     <defName>Shell_White_Phospher</defName>
     <label>white phosphorus shell</label>
@@ -520,7 +520,7 @@
       <ai_IsIncendiary>true</ai_IsIncendiary>
     </projectile>
   </ThingDef>
-   
+
 <!-- AIR BURST -->
   <ThingDef ParentName="MakeableShellBase">
     <defName>Shell_AirBurst</defName>
@@ -594,7 +594,7 @@
         <submunitionPreDetonation>70</submunitionPreDetonation>
         <submunitionDuration>15</submunitionDuration>
         <submunitionInterval>5</submunitionInterval>
-<!--    <submunitionDamageDef>Bullet</submunitionDamageDef>
+        <!-- <submunitionDamageDef>Bullet</submunitionDamageDef>
         <submunitionSoundExplode>BulletImpact_Ground</submunitionSoundExplode>
         <submunitionSpawnThingDef>Filth_RubbleRock</submunitionSpawnThingDef>
         <submunitionSpawnThingChance>0.25</submunitionSpawnThingChance> -->
@@ -608,7 +608,7 @@
     <label>shrapnel</label>
     <graphicData>
       <texPath>Things/Projectile/Bullet_Small</texPath>
-      <graphicClass>Graphic_Single</graphicClass> 
+      <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <thingClass>Projectile_Explosive</thingClass>
     <projectile>
@@ -623,8 +623,8 @@
       <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
     </projectile>
   </ThingDef>
-    
-<!-- RIOT -->      
+
+<!-- RIOT -->
   <ThingDef ParentName="MakeableShellBase">
     <defName>SM_Shell_Mech_Riot</defName>
     <label>GlitterTech Riot Shell</label>
@@ -743,8 +743,8 @@
       <ai_IsIncendiary>true</ai_IsIncendiary>
     </projectile>
   </ThingDef>
- 
-<!-- HEAT -->  
+
+<!-- HEAT -->
   <ThingDef ParentName="MakeableShellBase">
     <defName>SM_Shell_HEAT</defName>
     <label>HEAT shell</label>
@@ -818,7 +818,7 @@
       </li>
     </modExtensions>
   </ThingDef>
- 
+
 <!-- APDS -->
   <ThingDef ParentName="MakeableShellBase">
     <defName>SM_Shell_Sabot</defName>
@@ -869,7 +869,7 @@
     <label>APDS shell</label>
     <graphicData>
       <texPath>Things/Projectile/Bullet_big</texPath>
-      <graphicClass>Graphic_Single</graphicClass> 
+      <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <thingClass>Projectile_Explosive</thingClass>
     <projectile>
@@ -887,6 +887,6 @@
       <soundAmbient>MortarRound_Ambient</soundAmbient>
     </projectile>
   </ThingDef>
-  
-  
+
+
 </Defs>

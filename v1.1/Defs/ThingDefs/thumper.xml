@@ -57,7 +57,7 @@
       </li>
     </tools>
   </ThingDef>
- 
+
  <!-- HE -->
   <ThingDef ParentName="SM_Gun_Launcher">
     <defName>SM_Gun_Launcher_HE</defName>
@@ -120,7 +120,7 @@
       <explosionRadius>1.9</explosionRadius>
     </projectile>
   </ThingDef>
-  
+
  <!-- EMP -->
   <ThingDef ParentName="SM_Gun_Launcher">
     <defName>SM_Gun_Launcher_EMP</defName>
@@ -259,7 +259,7 @@
       </li>
     </modExtensions>
   </ThingDef>
-  
+
 <!-- frag -->
   <ThingDef ParentName="SM_Gun_Launcher">
     <defName>SM_Gun_Launcher_frag</defName>
@@ -546,7 +546,7 @@
       <ai_IsIncendiary>true</ai_IsIncendiary>
     </projectile>
   </ThingDef>
-  
+
 <!-- WP -->
   <ThingDef ParentName="SM_Gun_Launcher">
     <defName>SM_Gun_Launcher_WP</defName>
@@ -584,7 +584,7 @@
     </graphicData>
     <thingClass>Projectile_Explosive</thingClass>
     <projectile>
-      <speed>40</speed>    
+      <speed>40</speed>
       <damageDef>WhitePhospherFlash</damageDef>
       <explosionRadius>2</explosionRadius>
       <postExplosionSpawnThingDef>SM_Gas_WP</postExplosionSpawnThingDef>
@@ -601,7 +601,7 @@
     </graphicData>
     <thingClass>Projectile_Explosive</thingClass>
     <projectile>
-      <speed>25</speed>    
+      <speed>25</speed>
       <damageDef>WhitePhospherFlash</damageDef>
       <explosionRadius>2</explosionRadius>
       <flyOverhead>true</flyOverhead>
@@ -678,7 +678,7 @@
       <postExplosionSpawnChance>1.0</postExplosionSpawnChance>
     </projectile>
   </ThingDef>
-  
+
  <!-- narq gas -->
   <ThingDef ParentName="SM_Gun_Launcher">
     <defName>SM_Gun_Launcher_NARQ_Gas</defName>
@@ -721,9 +721,9 @@
       <speed>40</speed>
       <damageDef>SM_Danger_Smoke_noShake</damageDef>
       <damageAmountBase>0</damageAmountBase>
-      <explosionRadius>4</explosionRadius>
+      <explosionRadius>3</explosionRadius>
       <postExplosionSpawnThingDef>SM_Gas_Narq</postExplosionSpawnThingDef>
-      <postExplosionSpawnChance>1.0</postExplosionSpawnChance>
+      <postExplosionSpawnChance>0.75</postExplosionSpawnChance>
     </projectile>
   </ThingDef>
   <ThingDef ParentName="BaseBullet">
@@ -741,12 +741,12 @@
       <damageDef>SM_Danger_Smoke_noShake</damageDef>
       <flyOverhead>true</flyOverhead>
       <damageAmountBase>0</damageAmountBase>
-      <explosionRadius>4</explosionRadius>
+      <explosionRadius>3</explosionRadius>
       <postExplosionSpawnThingDef>SM_Gas_Narq</postExplosionSpawnThingDef>
-      <postExplosionSpawnChance>1.0</postExplosionSpawnChance>
+      <postExplosionSpawnChance>0.75</postExplosionSpawnChance>
     </projectile>
   </ThingDef>
-  
+
  <!-- roid gas -->
   <ThingDef ParentName="SM_Gun_Launcher">
     <defName>SM_Gun_Launcher_Roid_Gas</defName>

@@ -449,7 +449,7 @@ namespace Submunition
             }
             else if (advHediffExtension.advHediffTendReducesSeverity < 0)
             {
-                main.Severity -= quality;
+                main.Severity -= (quality*Math.Abs(advHediffExtension.advHediffTendReducesSeverity));
             }
         }
     }
