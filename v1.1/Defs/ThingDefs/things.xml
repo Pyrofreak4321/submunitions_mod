@@ -159,7 +159,7 @@
       <recipeUsers>
         <li>DrugLab</li>
       </recipeUsers>
-      <researchPrerequisite>Submunitions</researchPrerequisite>
+      <researchPrerequisite>SM_chem_weapons</researchPrerequisite>
       <skillRequirements>
 				<Crafting>12</Crafting>
         <Intellectual>12</Intellectual>
@@ -224,7 +224,7 @@
       <recipeUsers>
         <li>DrugLab</li>
       </recipeUsers>
-      <researchPrerequisite>GoJuiceProduction</researchPrerequisite>
+      <researchPrerequisite>SM_chem_weapons</researchPrerequisite>
       <skillRequirements>
 				<Crafting>6</Crafting>
         <Intellectual>6</Intellectual>
@@ -286,7 +286,7 @@
       <recipeUsers>
         <li>DrugLab</li>
       </recipeUsers>
-      <researchPrerequisite>DrugProduction</researchPrerequisite>
+      <researchPrerequisite>SM_chem_weapons</researchPrerequisite>
       <skillRequirements>
 				<Crafting>6</Crafting>
         <Intellectual>6</Intellectual>

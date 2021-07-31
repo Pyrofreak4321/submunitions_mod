@@ -6,7 +6,9 @@
   <DesignatorDropdownGroupDef>
 		<defName>SM_IEDddd</defName> 
 	</DesignatorDropdownGroupDef>
-  
+  <DesignatorDropdownGroupDef>
+		<defName>SM_MMG</defName> 
+	</DesignatorDropdownGroupDef>
   <ThingCategoryDef>
     <defName>SM_Rockets</defName>
     <label>rockets</label>

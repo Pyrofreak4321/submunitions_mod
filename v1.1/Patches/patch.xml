@@ -6,7 +6,7 @@
 			<designatorDropdown>SM_IEDddd</designatorDropdown>
 		</value>
 	</Operation>
-
+  
 	<Operation Class="PatchOperationAdd">
 		<xpath>*/ThingDef[defName="Wall"]/damageMultipliers</xpath>
 		<value>
@@ -28,7 +28,7 @@
 		  </li>
 		</value>
 	</Operation>
-
+  
 	<Operation Class="PatchOperationAdd">
 		<xpath>*/ThingDef[defName="Barricade"][not(damageMultipliers)]</xpath>
 		<value>
@@ -61,7 +61,7 @@
 		  </li>
 		</value>
 	</Operation>
-
+  
   <Operation Class="PatchOperationAdd">
 		<xpath>*/ThingDef[defName="Sandbags"][not(damageMultipliers)]</xpath>
 		<value>
@@ -98,8 +98,8 @@
 		  </li>
 		</value>
 	</Operation>
-
-
+  
+  
   <Operation Class="PatchOperationFindMod">
     <mods>
         <li>[XND] Proper Shotguns</li>
@@ -115,8 +115,8 @@
       </value>
     </nomatch>
   </Operation>
-
-
+  
+  
   <Operation Class="PatchOperationReplace">
 		<xpath>*/ThingDef[defName="Weapon_GrenadeFrag"]/label</xpath>
 		<value>
@@ -141,7 +141,13 @@
 			<label>HE grenade</label>
 		</value>
 	</Operation>
- 
+  <Operation Class="PatchOperationAdd">
+		<xpath>*/ThingDef[defName="Proj_GrenadeFrag"]/projectile</xpath>
+		<value>
+			<flyOverhead>true</flyOverhead>
+		</value>
+	</Operation>
+  
 	<Operation Class="PatchOperationFindMod">
 		<mods>
 		  <li>ED-Embrasures</li>
@@ -173,7 +179,7 @@
 			</operations>
 		</match>
   </Operation>
-
+  
   <Operation Class="PatchOperationFindMod">
     <mods>
       <li>Vanilla Furniture Expanded - Security</li>
@@ -333,4 +339,4 @@
       </operations>
     </match>
   </Operation>
-</Patch>
+</Patch>	 

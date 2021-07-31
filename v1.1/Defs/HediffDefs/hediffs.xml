@@ -46,7 +46,7 @@
       <painPerSeverity>0.0125</painPerSeverity>
       <averagePainPerSeverityPermanent>0.00625</averagePainPerSeverityPermanent>
       <bleedRate>0.1</bleedRate>
-      <canMerge>false</canMerge>
+      <canMerge>true</canMerge>
       <destroyedLabel>Torn off</destroyedLabel>
       <destroyedOutLabel>Torn out</destroyedOutLabel>
     </injuryProps>
@@ -58,6 +58,7 @@
         <advHediffChainHediffScale>1</advHediffChainHediffScale>
         <advHediffChainHediffRandomPart>false</advHediffChainHediffRandomPart>
         <advHediffChainHediffWholeBody>false</advHediffChainHediffWholeBody>
+        <advHediffChainHediffMerge>false</advHediffChainHediffMerge>
       </li>
     </modExtensions>
   </HediffDef>
@@ -105,12 +106,12 @@
         <advHediffDamageStrength>1</advHediffDamageStrength>
         <advHediffDamageScale>1</advHediffDamageScale>
         <advHediffDamageInterval>30</advHediffDamageInterval>
-        <advHediffDamageRandomPart>false</advHediffDamageRandomPart>
-        <advHediffTendReducesSeverity>-.05</advHediffTendReducesSeverity>
+        <advHediffDamageRandomPart>false</advHediffDamageRandomPart>        
+        <advHediffTendReducesSeverity>-1</advHediffTendReducesSeverity>
       </li>
     </modExtensions>
   </HediffDef>
-
+ 
   <!-- wp flash/burn/frag -->
   <HediffDef>
     <defName>FlashBlind</defName>
@@ -238,14 +239,14 @@
         <!-- <advHediffDamageInterval>60</advHediffDamageInterval>-->
         <!-- <advHediffDamageRandomPart>false</advHediffDamageRandomPart> -->
         <!-- <advHediffDamageResist> </advHediffDamageResist> -->
-
+        
         <!-- <advHediffHediffToAdd>ToxicBuildup</advHediffHediffToAdd> -->
         <!-- <advHediffHediffInterval>20</advHediffHediffInterval> -->
         <!-- <advHediffHediffStrength>0.01</advHediffHediffStrength> -->
         <!-- <advHediffHediffRandomPart>false</advHediffHediffRandomPart> -->
         <!-- <advHediffHediffWholeBody>true</advHediffHediffWholeBody> -->
         <!-- <advHediffHediffResist>ToxicSensitivity</advHediffHediffResist> -->
-
+        
         <advHediffChainHediffToAdd>SM_WP_debries</advHediffChainHediffToAdd>
         <advHediffChainHediffStrength>-1</advHediffChainHediffStrength>
         <advHediffChainHediffRandomPart>false</advHediffChainHediffRandomPart>
@@ -273,23 +274,23 @@
         <advHediffDamageInterval>60</advHediffDamageInterval>
         <advHediffDamageRandomPart>false</advHediffDamageRandomPart>
         <!-- <advHediffDamageResist> </advHediffDamageResist> -->
-
+        
         <!-- <advHediffHediffToAdd>ToxicBuildup</advHediffHediffToAdd> -->
         <!-- <advHediffHediffInterval>20</advHediffHediffInterval> -->
         <!-- <advHediffHediffStrength>0.01</advHediffHediffStrength> -->
         <!-- <advHediffHediffRandomPart>false</advHediffHediffRandomPart> -->
         <!-- <advHediffHediffWholeBody>true</advHediffHediffWholeBody> -->
         <!-- <advHediffHediffResist>ToxicSensitivity</advHediffHediffResist> -->
-
+        
         <advHediffSeverityInterval>60</advHediffSeverityInterval>
         <advHediffSeverityOffset>-0.1</advHediffSeverityOffset>
-
+        
         <advHediffTendReducesSeverity>999</advHediffTendReducesSeverity>
         <advHediffTendDificulty>0.5</advHediffTendDificulty>
       </li>
     </modExtensions>
   </HediffDef>
-
+  
   <!-- chem burn/nerve -->
   <HediffDef ParentName="InjuryBase">
     <defName>SM_Chem_Burn</defName>
@@ -428,19 +429,19 @@
         <advHediffDamageInterval>240</advHediffDamageInterval>
         <advHediffDamageRandomPart>false</advHediffDamageRandomPart>
         <!-- <advHediffDamageResist> </advHediffDamageResist> -->
-
-        <advHediffHediffToAdd>NerveAgent</advHediffHediffToAdd>
-        <advHediffHediffInterval>240</advHediffHediffInterval>
+        
+        <!-- <advHediffHediffToAdd>ToxicBuildup</advHediffHediffToAdd>
+        <advHediffHediffInterval>480</advHediffHediffInterval>
         <advHediffHediffStrength>0.01</advHediffHediffStrength>
-        <advHediffHediffRandomPart>true</advHediffHediffRandomPart>
-        <!-- <advHediffHediffWholeBody>false</advHediffHediffWholeBody> -->
+        <advHediffHediffRandomPart>false</advHediffHediffRandomPart>
+        <advHediffHediffWholeBody>true</advHediffHediffWholeBody> -->
         <!-- <advHediffHediffResist>ToxicSensitivity</advHediffHediffResist> -->
-
-        <advHediffTendReducesSeverity>-.1</advHediffTendReducesSeverity>
+        
+        <advHediffTendReducesSeverity>-1</advHediffTendReducesSeverity>
       </li>
     </modExtensions>
   </HediffDef>
-
+  
   <!-- tear gas -->
   <HediffDef>
     <defName>SM_Teargas</defName>
@@ -453,7 +454,7 @@
     <maxSeverity>10</maxSeverity>
     <comps>
       <li Class="HediffCompProperties_SeverityPerDay">
-        <severityPerDay>-100.0</severityPerDay>
+        <severityPerDay>-120.0</severityPerDay>
       </li>
     </comps>
     <stages>
@@ -577,7 +578,7 @@
         </capMods>
       </li>
     </stages>
-  </HediffDef>
+  </HediffDef> 
 
   <!-- dart -->
   <HediffDef ParentName="InjuryBase" Name="SM_Dart" Abstract="True">
@@ -604,7 +605,7 @@
       <destroyedOutLabel>Shot out</destroyedOutLabel>
     </injuryProps>
   </HediffDef>
-
+ 
   <!-- narq darts -->
   <HediffDef ParentName="SM_Dart">
     <defName>SM_SeditiveDart</defName>
@@ -637,7 +638,7 @@
         <advHediffHediffRandomPart>false</advHediffHediffRandomPart>
         <advHediffHediffWholeBody>true</advHediffHediffWholeBody>
         <advHediffHediffBodyScaling>true</advHediffHediffBodyScaling>
-
+        
         <advHediffSeverityInterval>60</advHediffSeverityInterval>
         <advHediffSeverityOffset>-0.1</advHediffSeverityOffset>
       </li>
@@ -654,17 +655,17 @@
     <maxSeverity>1.0</maxSeverity>
     <comps>
       <li Class="HediffCompProperties_SeverityPerDay">
-        <severityPerDay>-2</severityPerDay>
+        <severityPerDay>-1.0</severityPerDay>
       </li>
     </comps>
     <stages>
       <li>
-        <restFallFactor>5</restFallFactor>
+        <restFallFactor>2</restFallFactor>
         <painFactor>0.90</painFactor>
         <capMods>
           <li>
             <capacity>Consciousness</capacity>
-            <offset>-0.30</offset>
+            <offset>-0.10</offset>
           </li>
         </capMods>
         <statOffsets>
@@ -672,9 +673,23 @@
         </statOffsets>
       </li>
       <li>
-        <restFallFactor>10</restFallFactor>
+        <restFallFactor>4</restFallFactor>
         <minSeverity>0.2</minSeverity>
         <painFactor>0.90</painFactor>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.20</offset>
+          </li>
+        </capMods>
+        <statOffsets>
+          <MentalBreakThreshold>-0.05</MentalBreakThreshold>
+        </statOffsets>
+      </li>
+      <li>
+        <restFallFactor>8</restFallFactor>
+        <minSeverity>0.4</minSeverity>
+        <painFactor>0.85</painFactor>
         <capMods>
           <li>
             <capacity>Consciousness</capacity>
@@ -682,25 +697,11 @@
           </li>
         </capMods>
         <statOffsets>
-          <MentalBreakThreshold>-0.05</MentalBreakThreshold>
-        </statOffsets>
-      </li>
-      <li>
-        <restFallFactor>20</restFallFactor>
-        <minSeverity>0.4</minSeverity>
-        <painFactor>0.85</painFactor>
-        <capMods>
-          <li>
-            <capacity>Consciousness</capacity>
-            <offset>-0.50</offset>
-          </li>
-        </capMods>
-        <statOffsets>
           <MentalBreakThreshold>-0.1</MentalBreakThreshold>
         </statOffsets>
       </li>
       <li>
-        <restFallFactor>40</restFallFactor>
+        <restFallFactor>12</restFallFactor>
         <minSeverity>0.6</minSeverity>
         <painFactor>0.80</painFactor>
         <capMods>
@@ -714,13 +715,13 @@
         </statOffsets>
       </li>
       <li>
-        <restFallFactor>80</restFallFactor>
+        <restFallFactor>16</restFallFactor>
         <minSeverity>0.8</minSeverity>
         <painFactor>0.75</painFactor>
         <capMods>
           <li>
             <capacity>Consciousness</capacity>
-            <offset>-0.70</offset>
+            <offset>-0.80</offset>
           </li>
         </capMods>
         <statOffsets>
@@ -728,8 +729,8 @@
         </statOffsets>
       </li>
       <li>
-        <restFallFactor>160</restFallFactor>
-        <minSeverity>.95</minSeverity>
+        <restFallFactor>100</restFallFactor>
+        <minSeverity>1</minSeverity>
         <painFactor>0.70</painFactor>
         <capMods>
           <li>
@@ -742,7 +743,7 @@
         </statOffsets>
       </li>
     </stages>
-  </HediffDef>
+  </HediffDef> 
   <HediffDef>
     <defName>SM_SeditiveHigh</defName>
     <hediffClass>HediffWithComps</hediffClass>
@@ -848,7 +849,7 @@
         <advHediffHediffRandomPart>false</advHediffHediffRandomPart>
         <advHediffHediffWholeBody>true</advHediffHediffWholeBody>
         <advHediffHediffBodyScaling>true</advHediffHediffBodyScaling>
-
+        
         <advHediffSeverityInterval>60</advHediffSeverityInterval>
         <advHediffSeverityOffset>-0.1</advHediffSeverityOffset>
       </li>
@@ -971,7 +972,7 @@
         </mentalStateGivers>
       </li>
     </stages>
-  </HediffDef>
+  </HediffDef> 
   <HediffDef>
     <defName>SM_RagingHigh</defName>
     <hediffClass>HediffWithComps</hediffClass>
@@ -1091,7 +1092,7 @@
       </li>
     </stages>
   </HediffDef>
-
+  
   <ChemicalDef>
     <defName>Roid</defName>
     <label>roid</label>
@@ -1099,7 +1100,7 @@
     <toleranceHediff>RoidTolerance</toleranceHediff>
 		<onGeneratedAddictedToleranceChance>0.8</onGeneratedAddictedToleranceChance>
 	</ChemicalDef>
-
+  
   <NeedDef ParentName="DrugAddictionNeedBase">
     <defName>Chemical_Roid</defName>
     <needClass>Need_Chemical</needClass>
@@ -1190,5 +1191,5 @@
       </li>
     </stages>
   </HediffDef>
-
+  
 </Defs>
