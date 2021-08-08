@@ -47,10 +47,10 @@ namespace Submunition
     }
     */
 
-    [HarmonyPatch(typeof(Projectile), nameof(Projectile.Launch), new Type[] { typeof(Thing), typeof(Vector3), typeof(LocalTargetInfo), typeof(LocalTargetInfo), typeof(ProjectileHitFlags), typeof(Thing), typeof(ThingDef) })]
+    [HarmonyPatch(typeof(Projectile), nameof(Projectile.Launch), new Type[] { typeof(Thing), typeof(Vector3), typeof(LocalTargetInfo), typeof(LocalTargetInfo), typeof(ProjectileHitFlags), typeof(bool), typeof(Thing), typeof(ThingDef) })]
     public static class fireCluster
     {
-        public static bool Prefix(Projectile __instance, Thing launcher, Vector3 origin, LocalTargetInfo usedTarget, LocalTargetInfo intendedTarget, ProjectileHitFlags hitFlags, Thing equipment = null, ThingDef targetCoverDef = null)
+        public static bool Prefix(Projectile __instance, Thing launcher, Vector3 origin, LocalTargetInfo usedTarget, LocalTargetInfo intendedTarget, ProjectileHitFlags hitFlags, bool preventFriendlyFire, Thing equipment = null, ThingDef targetCoverDef = null)
         {
             if (__instance.def.HasModExtension<DefClusterExtension>())
             {
@@ -85,7 +85,7 @@ namespace Submunition
                     //    }
                     //}
 
-                    pellet.Launch(launcher, origin, target, intendedTarget, pellet.HitFlags, equipment, null);
+                    pellet.Launch(launcher, origin, target, intendedTarget, pellet.HitFlags, false, equipment, null);
                 }
 
                 __instance.Destroy();
@@ -396,7 +396,7 @@ namespace Submunition
                             }
                         }
 
-                        frag.Launch(this, target, this.intendedTarget, frag.HitFlags, EquipmentDef.GetConcreteExample());
+                        frag.Launch(this, target, this.intendedTarget, frag.HitFlags, false, EquipmentDef.GetConcreteExample());
                     }
                 }
                 else
@@ -664,56 +664,60 @@ namespace Submunition
                     {
                         count = (int)(this.extension.fragMultiplier * (Math.PI * Math.Pow(this.extension.fragSpreadRadius + this.radiusExpansion, 2)));
                     }
-
                     for (int i = 0; i < count; i++)
                     {
                         IEnumerable<IntVec3> cells;
                         IntVec3 randomCell = cellRect.RandomElement();
-
-                        Projectile frag = (Projectile)GenSpawn.Spawn(this.extension.fragThingDef, base.Position, base.Map, WipeMode.Vanish);
-
-                        if ((randomCell - base.Position).LengthHorizontal < 1){
-                            cells = new ShootLine(base.Position, randomCell).Points();
-                        } else {
-                            cells = GenSight.PointsOnLineOfSight(base.Position, randomCell);
-                        }
-
-                        bool flag = true;
-                        LocalTargetInfo target = new LocalTargetInfo(randomCell);
-
-                        if (frag.HitFlags != ProjectileHitFlags.None)
+                        if (randomCell.InBounds(base.Map))
                         {
-                            for (int c = 0; c < cells.Count() && flag; c++)
+                            Projectile frag = (Projectile)GenSpawn.Spawn(this.extension.fragThingDef, base.Position, base.Map, WipeMode.Vanish);
+
+                            if ((randomCell - base.Position).LengthHorizontal < 1)
                             {
-                                List<Thing> things = cells.ElementAt(c).GetThingList(base.Map);
-                                for (int t = 0; t < things.Count && flag; t++)
+                                cells = new ShootLine(base.Position, randomCell).Points();
+                            }
+                            else
+                            {
+                                cells = GenSight.PointsOnLineOfSight(base.Position, randomCell);
+                            }
+
+                            bool flag = true;
+                            LocalTargetInfo target = new LocalTargetInfo(randomCell);
+
+                            if (frag.HitFlags != ProjectileHitFlags.None)
+                            {
+                                for (int c = 0; c < cells.Count() && flag; c++)
                                 {
-                                    float dist = (cells.ElementAt(c) - base.Position).LengthHorizontal;
-                                    Pawn pawn = things[t] as Pawn;
-                                    
-                                    float chance = 0;
-
-                                    if (pawn != null)
+                                    List<Thing> things = cells.ElementAt(c).GetThingList(base.Map);
+                                    for (int t = 0; t < things.Count && flag; t++)
                                     {
-                                        chance = pawn.BodySize * ((pawn.GetPosture() != PawnPosture.Standing && dist > 4.5f) ? .2f : 1f);
-                                    }
-                                    else
-                                    {
-                                        chance = things[t].def.fillPercent * (float)things[t].def.size.x * (float)things[t].def.size.z;
-                                    }
+                                        float dist = (cells.ElementAt(c) - base.Position).LengthHorizontal;
+                                        Pawn pawn = things[t] as Pawn;
 
-                                    Log.Message("chance: " + chance);
+                                        float chance = 0;
 
-                                    if (Rand.Chance(chance))
-                                    {
-                                        target = things[t];
-                                        flag = false;
+                                        if (pawn != null)
+                                        {
+                                            chance = pawn.BodySize * ((pawn.GetPosture() != PawnPosture.Standing && dist > 4.5f) ? .2f : 1f);
+                                        }
+                                        else
+                                        {
+                                            chance = things[t].def.fillPercent * (float)things[t].def.size.x * (float)things[t].def.size.z;
+                                        }
+
+                                        Log.Message("chance: " + chance);
+
+                                        if (Rand.Chance(chance))
+                                        {
+                                            target = things[t];
+                                            flag = false;
+                                        }
                                     }
                                 }
                             }
-                        }
 
-                        frag.Launch(this, target, this.intendedTarget, frag.HitFlags, equipmentDef.GetConcreteExample());
+                            frag.Launch(this, target, this.intendedTarget, frag.HitFlags, false, equipmentDef.GetConcreteExample());
+                        }
                     }
                 }
 
@@ -728,36 +732,39 @@ namespace Submunition
                     for (int i = 0; i < count; i++)
                     {
                         IntVec3 randomCell = cellRect.RandomElement();
-
-                        bool blocked = false;
-                        if (this.def.projectile.flyOverhead && !this.landed)
+                        if (randomCell.InBounds(base.Map))
                         {
-                            RoofDef roofDef = base.Map.roofGrid.RoofAt(randomCell);
-                            if (roofDef != null)
+
+                            bool blocked = false;
+                            if (this.def.projectile.flyOverhead && !this.landed)
                             {
-                                if (this.extension.blockedByRoof)
+                                RoofDef roofDef = base.Map.roofGrid.RoofAt(randomCell);
+                                if (roofDef != null)
                                 {
-                                    blocked = true;
-                                }
-                                if (roofDef.isThickRoof)
-                                {
-                                    blocked = true;
-                                }
-                                if (!blocked && (randomCell.GetEdifice(base.Map) == null || randomCell.GetEdifice(base.Map).def.Fillage != FillCategory.Full))
-                                {
-                                    RoofCollapserImmediate.DropRoofInCells(randomCell, base.Map, null);
+                                    if (this.extension.blockedByRoof)
+                                    {
+                                        blocked = true;
+                                    }
+                                    if (roofDef.isThickRoof)
+                                    {
+                                        blocked = true;
+                                    }
+                                    if (!blocked && (randomCell.GetEdifice(base.Map) == null || randomCell.GetEdifice(base.Map).def.Fillage != FillCategory.Full))
+                                    {
+                                        RoofCollapserImmediate.DropRoofInCells(randomCell, base.Map, null);
+                                    }
                                 }
                             }
-                        }
-                        else
-                        {
-                            if ((randomCell - base.Position).LengthHorizontal > 0) 
-                                randomCell = GenSight.PointsOnLineOfSight(base.Position, randomCell).Last();
-                        }
+                            else
+                            {
+                                if ((randomCell - base.Position).LengthHorizontal > 0)
+                                    randomCell = GenSight.PointsOnLineOfSight(base.Position, randomCell).Last();
+                            }
 
-                        if (this.wholemap.Contains(randomCell) && !blocked)
-                        {
-                            GenSpawn.Spawn(this.extension.spawnThingDef, randomCell, map, WipeMode.Vanish);
+                            if (this.wholemap.Contains(randomCell) && !blocked)
+                            {
+                                GenSpawn.Spawn(this.extension.spawnThingDef, randomCell, map, WipeMode.Vanish);
+                            }
                         }
                     }
                 }
@@ -773,50 +780,53 @@ namespace Submunition
                     for (int i = 0; i < count; i++)
                     {
                         IntVec3 randomCell = cellRect.RandomElement();
-
-                        bool blocked = false;
-                        if (this.def.projectile.flyOverhead && !this.landed)
+                        if (randomCell.InBounds(base.Map))
                         {
-                            RoofDef roofDef = base.Map.roofGrid.RoofAt(randomCell);
-                            if (roofDef != null)
+
+                            bool blocked = false;
+                            if (this.def.projectile.flyOverhead && !this.landed)
                             {
-                                if (this.extension.blockedByRoof)
+                                RoofDef roofDef = base.Map.roofGrid.RoofAt(randomCell);
+                                if (roofDef != null)
                                 {
-                                    blocked = true;
-                                }
-                                if (roofDef.isThickRoof)
-                                {
-                                    blocked = true;
-                                }
-                                if (!blocked && (randomCell.GetEdifice(base.Map) == null || randomCell.GetEdifice(base.Map).def.Fillage != FillCategory.Full))
-                                {
-                                    RoofCollapserImmediate.DropRoofInCells(randomCell, base.Map, null);
+                                    if (this.extension.blockedByRoof)
+                                    {
+                                        blocked = true;
+                                    }
+                                    if (roofDef.isThickRoof)
+                                    {
+                                        blocked = true;
+                                    }
+                                    if (!blocked && (randomCell.GetEdifice(base.Map) == null || randomCell.GetEdifice(base.Map).def.Fillage != FillCategory.Full))
+                                    {
+                                        RoofCollapserImmediate.DropRoofInCells(randomCell, base.Map, null);
+                                    }
                                 }
                             }
-                        }
-                        else
-                        {
-                            if ((randomCell - base.Position).LengthHorizontal > 0)
-                                randomCell = GenSight.PointsOnLineOfSight(base.Position, randomCell).Last();
-                        }
-
-                        if (this.wholemap.Contains(randomCell) && !blocked)
-                        {
-                            if (this.extension.explosionEffect != null)
+                            else
                             {
-                                Effecter effecter = this.extension.explosionEffect.Spawn();
-                                effecter.Trigger(new TargetInfo(base.ExactPosition.ToIntVec3(), map, false), new TargetInfo(base.ExactPosition.ToIntVec3(), map, false));
-                                effecter.Cleanup();
+                                if ((randomCell - base.Position).LengthHorizontal > 0)
+                                    randomCell = GenSight.PointsOnLineOfSight(base.Position, randomCell).Last();
                             }
 
-                            GenExplosion.DoExplosion(randomCell, map, this.extension.explosionRadius, this.extension.explosionDamageDef, launcher, this.extension.explosionDamageAmount,
-                                    this.extension.explosionDamageDef.defaultArmorPenetration, this.extension.explosionDamageDef.soundExplosion, equipmentDef, def, thing, this.extension.postExplosionSpawnThingDef,
-                                    this.extension.postExplosionSpawnThingChance, this.extension.postExplosionSpawnThingCount,
-                                    this.def.projectile.applyDamageToExplosionCellsNeighbors,
-                                    this.extension.preExplosionSpawnThingDef, this.extension.preExplosionSpawnThingChance,
-                                    this.extension.preExplosionSpawnThingCount,
-                                    this.def.projectile.explosionChanceToStartFire,
-                                    this.def.projectile.explosionDamageFalloff);
+                            if (this.wholemap.Contains(randomCell) && !blocked)
+                            {
+                                if (this.extension.explosionEffect != null)
+                                {
+                                    Effecter effecter = this.extension.explosionEffect.Spawn();
+                                    effecter.Trigger(new TargetInfo(base.ExactPosition.ToIntVec3(), map, false), new TargetInfo(base.ExactPosition.ToIntVec3(), map, false));
+                                    effecter.Cleanup();
+                                }
+
+                                GenExplosion.DoExplosion(randomCell, map, this.extension.explosionRadius, this.extension.explosionDamageDef, launcher, this.extension.explosionDamageAmount,
+                                        this.extension.explosionDamageDef.defaultArmorPenetration, this.extension.explosionDamageDef.soundExplosion, equipmentDef, def, thing, this.extension.postExplosionSpawnThingDef,
+                                        this.extension.postExplosionSpawnThingChance, this.extension.postExplosionSpawnThingCount,
+                                        this.def.projectile.applyDamageToExplosionCellsNeighbors,
+                                        this.extension.preExplosionSpawnThingDef, this.extension.preExplosionSpawnThingChance,
+                                        this.extension.preExplosionSpawnThingCount,
+                                        this.def.projectile.explosionChanceToStartFire,
+                                        this.def.projectile.explosionDamageFalloff);
+                            }
                         }
                     }
                 }

@@ -33,8 +33,7 @@ namespace Submunition
             {
                 GenTemperature.PushHeat(explosion.Position, explosion.Map, this.def.explosionHeatEnergyPerCell * (float)cellsToAffect.Count);
             }
-            MoteMaker.MakeStaticMote(explosion.Position, explosion.Map, ThingDefOf.Mote_ExplosionFlash, explosion.radius * 6f);
-
+            FleckMaker.Static(explosion.Position, explosion.Map, FleckDefOf.ExplosionFlash, explosion.radius * 6f);
             this.ExplosionVisualEffectCenter(explosion);
         }
     }
@@ -47,8 +46,7 @@ namespace Submunition
             {
                 GenTemperature.PushHeat(explosion.Position, explosion.Map, this.def.explosionHeatEnergyPerCell * (float)cellsToAffect.Count);
             }
-            MoteMaker.MakeStaticMote(explosion.Position, explosion.Map, ThingDefOf.Mote_ExplosionFlash, explosion.radius * 6f);
-
+            FleckMaker.Static(explosion.Position, explosion.Map, FleckDefOf.ExplosionFlash, explosion.radius * 6f);
             this.ExplosionVisualEffectCenter(explosion);
         }
     }
@@ -61,8 +59,7 @@ namespace Submunition
             {
                 GenTemperature.PushHeat(explosion.Position, explosion.Map, this.def.explosionHeatEnergyPerCell * (float)cellsToAffect.Count);
             }
-            MoteMaker.MakeStaticMote(explosion.Position, explosion.Map, ThingDefOf.Mote_ExplosionFlash, explosion.radius * 6f);
-
+            FleckMaker.Static(explosion.Position, explosion.Map, FleckDefOf.ExplosionFlash, explosion.radius * 6f);
             this.ExplosionVisualEffectCenter(explosion);
         }
     }
@@ -425,7 +422,7 @@ namespace Submunition
             }
         }
 
-        public void Tended_NewTemp(HediffWithComps main, float quality, float maxQuality, int batchPosition = 0)
+        public void Tended(HediffWithComps main, float quality, float maxQuality, int batchPosition = 0)
         {
             if (advHediffExtension.advHediffTendReducesSeverity > 0)
             {
@@ -471,10 +468,10 @@ namespace Submunition
             base.Tick();
         }
 
-        public override void Tended_NewTemp(float quality, float maxQuality, int batchPosition = 0)
+        public override void Tended(float quality, float maxQuality, int batchPosition = 0)
         {
-            worker.Tended_NewTemp(this, quality, maxQuality, batchPosition);
-            base.Tended_NewTemp(quality, maxQuality, batchPosition);
+            worker.Tended(this, quality, maxQuality, batchPosition);
+            base.Tended(quality, maxQuality, batchPosition);
         }
 
     }
@@ -496,10 +493,10 @@ namespace Submunition
             base.Tick();
         }
 
-        public override void Tended_NewTemp(float quality, float maxQuality, int batchPosition = 0)
+        public override void Tended(float quality, float maxQuality, int batchPosition = 0)
         {
-            worker.Tended_NewTemp(this, quality, maxQuality, batchPosition);
-            base.Tended_NewTemp(quality, maxQuality, batchPosition);
+            worker.Tended(this, quality, maxQuality, batchPosition);
+            base.Tended(quality, maxQuality, batchPosition);
         }
 
     }

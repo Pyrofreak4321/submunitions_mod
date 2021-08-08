@@ -236,44 +236,59 @@ namespace Submunition
 
                 if (toxicGasExtension.toxicGasSmokey > 0)
                 {
-                    if (this.tickCounter % (7 * toxicGasExtension.toxicGasSmokey) == 0)
+                    if (this.tickCounter % (8 * toxicGasExtension.toxicGasSmokey) == 0)
                     {
-                        MoteThrown moteThrown;
                         Vector3 loc = base.Position.ToVector3Shifted();
-                        moteThrown = (MoteThrown)ThingMaker.MakeThing(ThingDefOf.Mote_Smoke, null);
-                        moteThrown.Scale = Rand.Range(1.5f, 2.5f);
-                        moteThrown.rotationRate = Rand.Range(-30f, 30f);
-                        moteThrown.exactPosition = loc;
-                        moteThrown.exactPosition -= new Vector3(0.5f, 0f, 0.5f);
-                        moteThrown.exactPosition += new Vector3(Rand.Value, 0f, Rand.Value);
-                        moteThrown.SetVelocity((float)Rand.Range(30, 40), Rand.Range(0.5f, 0.7f));
-                        GenSpawn.Spawn(moteThrown, loc.ToIntVec3(), base.Map, WipeMode.Vanish);
+                        loc -= new Vector3(0.5f, 0f, 0.5f);
+                        loc += new Vector3(Rand.Value, 0f, Rand.Value);
+
+                        FleckMaker.ThrowSmoke(loc, base.Map, Rand.Range(0.25f, 1.5f));
+
+                        //MoteThrown moteThrown;
+                        //moteThrown = (MoteThrown)ThingMaker.MakeThing(ThingDefOf.Mote_Smoke, null);
+                        //moteThrown.Scale = Rand.Range(1.5f, 2.5f);
+                        //moteThrown.rotationRate = Rand.Range(-30f, 30f);
+                        //moteThrown.exactPosition = loc;
+                        //moteThrown.exactPosition -= new Vector3(0.5f, 0f, 0.5f);
+                        //moteThrown.exactPosition += new Vector3(Rand.Value, 0f, Rand.Value);
+                        //moteThrown.SetVelocity((float)Rand.Range(30, 40), Rand.Range(0.5f, 0.7f));
+                        //GenSpawn.Spawn(moteThrown, loc.ToIntVec3(), base.Map, WipeMode.Vanish);
                     }
-                    if (this.tickCounter % (1 * toxicGasExtension.toxicGasSmokey) == 0)
+                    if (this.tickCounter % (10 * toxicGasExtension.toxicGasSmokey) == 0)
                     {
-                        MoteThrown moteThrown;
                         Vector3 loc = base.Position.ToVector3Shifted();
-                        moteThrown = (MoteThrown)ThingMaker.MakeThing(ThingDefOf.Mote_FireGlow, null);
-                        moteThrown.Scale = Rand.Range(1.5f, 2.5f);
-                        moteThrown.rotationRate = Rand.Range(-3f, 3f);
-                        moteThrown.exactPosition = loc;
-                        moteThrown.exactPosition -= new Vector3(0.5f, 0f, 0.5f);
-                        moteThrown.exactPosition += new Vector3(Rand.Value, 0f, Rand.Value);
-                        moteThrown.SetVelocity((float)Rand.Range(0, 360), 0.12f);
-                        GenSpawn.Spawn(moteThrown, loc.ToIntVec3(), base.Map, WipeMode.Vanish);
+                        loc -= new Vector3(0.5f, 0f, 0.5f);
+                        loc += new Vector3(Rand.Value, 0f, Rand.Value);
+
+                        FleckMaker.ThrowFireGlow(loc, base.Map, Rand.Range(0.25f, 1.5f));
+
+                        //MoteThrown moteThrown;
+                        //moteThrown = (MoteThrown)ThingMaker.MakeThing(ThingDefOf.Mote_FireGlow, null);
+                        //moteThrown.Scale = Rand.Range(1.5f, 2.5f);
+                        //moteThrown.rotationRate = Rand.Range(-3f, 3f);
+                        //moteThrown.exactPosition = loc;
+                        //moteThrown.exactPosition -= new Vector3(0.5f, 0f, 0.5f);
+                        //moteThrown.exactPosition += new Vector3(Rand.Value, 0f, Rand.Value);
+                        //moteThrown.SetVelocity((float)Rand.Range(0, 360), 0.12f);
+                        //GenSpawn.Spawn(moteThrown, loc.ToIntVec3(), base.Map, WipeMode.Vanish);
                     }
-                    if (this.tickCounter % (4 * toxicGasExtension.toxicGasSmokey) == 0)
+                    if (this.tickCounter % (6 * toxicGasExtension.toxicGasSmokey) == 0)
                     {
-                        MoteThrown moteThrown;
                         Vector3 loc = base.Position.ToVector3Shifted();
-                        moteThrown = (MoteThrown)ThingMaker.MakeThing(ThingDefOf.Mote_MicroSparks, null);
-                        moteThrown.Scale = Rand.Range(0.8f, 1.2f);
-                        moteThrown.rotationRate = Rand.Range(-12f, 12f);
-                        moteThrown.exactPosition = loc;
-                        moteThrown.exactPosition -= new Vector3(0.5f, 0f, 0.5f);
-                        moteThrown.exactPosition += new Vector3(Rand.Value, 0f, Rand.Value);
-                        moteThrown.SetVelocity((float)Rand.Range(35, 45), 1.2f);
-                        GenSpawn.Spawn(moteThrown, loc.ToIntVec3(), base.Map, WipeMode.Vanish);
+                        loc -= new Vector3(0.5f, 0f, 0.5f);
+                        loc += new Vector3(Rand.Value, 0f, Rand.Value);
+
+                        FleckMaker.ThrowMicroSparks(loc, base.Map);
+
+                        //MoteThrown moteThrown;
+                        //moteThrown = (MoteThrown)ThingMaker.MakeThing(ThingDefOf.Mote_MicroSparks, null);
+                        //moteThrown.Scale = Rand.Range(0.8f, 1.2f);
+                        //moteThrown.rotationRate = Rand.Range(-12f, 12f);
+                        //moteThrown.exactPosition = loc;
+                        //moteThrown.exactPosition -= new Vector3(0.5f, 0f, 0.5f);
+                        //moteThrown.exactPosition += new Vector3(Rand.Value, 0f, Rand.Value);
+                        //moteThrown.SetVelocity((float)Rand.Range(35, 45), 1.2f);
+                        //GenSpawn.Spawn(moteThrown, loc.ToIntVec3(), base.Map, WipeMode.Vanish);
                     }
                 }
                 this.tickCounter++;
