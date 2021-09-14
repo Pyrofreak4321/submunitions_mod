@@ -19,6 +19,7 @@ namespace Submunition
         }
     }
 
+
     [HarmonyPatch(typeof(Verb_LaunchProjectile), nameof(Verb_LaunchProjectile.HighlightFieldRadiusAroundTarget))]
     class radiusFix
     {
@@ -65,25 +66,31 @@ namespace Submunition
 
                     Projectile pellet = (Projectile)GenSpawn.Spawn(ext.pelletDef, origin.ToIntVec3(), __instance.Map, WipeMode.Vanish);
 
-                    //ShootLine s = new ShootLine(origin.ToIntVec3(), randomCell);
-                    //IEnumerable<IntVec3> cells = s.Points();
-                    //bool flag = true;
+                    ShootLine s = new ShootLine(origin.ToIntVec3(), randomCell);
+                    IEnumerable<IntVec3> cells = s.Points();
+                    float mod = 1.1f / Math.Max(cells.Count(),1f);
+                    bool flag = true;
                     LocalTargetInfo target = randomCell;
 
-                    //for(int c = 0; c < cells.Count() && flag; c++)
-                    //{
-                    //    List<Thing> things = cells.ElementAt(c).GetThingList(__instance.Map);
-                    //    for(int t = 0; t < things.Count && flag; t++)
-                    //    {
-                    //        if (things[t] as Pawn != null && !things[t].Equals(launcher))
-                    //        {
-                    //            target = things[t];
-                    //        }
-                    //        else if (Rand.Chance(things[t].BaseBlockChance())){
-                    //            target = things[t];
-                    //        }
-                    //    }
-                    //}
+                    for (int c = 0; c < cells.Count() && flag; c++)
+                    {
+                        if (!cells.ElementAt(c).ToVector3().Equals(origin))
+                        {
+                            List<Thing> things = cells.ElementAt(c).GetThingList(__instance.Map);
+                            for (int t = 0; t < things.Count && flag; t++)
+                            {
+                                Pawn pawn = things[t] as Pawn;
+                                if (pawn != null && !things[t].Equals(launcher) && Rand.Chance(Math.Min(pawn.BodySize,0.95f)*mod))
+                                {
+                                    target = things[t];
+                                }
+                                else if (Rand.Chance(things[t].BaseBlockChance()*mod))
+                                {
+                                    target = things[t];
+                                }
+                            }
+                        }
+                    }
 
                     pellet.Launch(launcher, origin, target, intendedTarget, pellet.HitFlags, false, equipment, null);
                 }
@@ -96,6 +103,21 @@ namespace Submunition
             return true;
         }
     }
+
+
+    [HarmonyPatch(typeof(GenDraw), nameof(GenDraw.DrawRadiusRing), new Type[] { typeof(IntVec3), typeof(float)})]
+    public static class fixLargeRadius
+    {
+        public static bool Prefix(IntVec3 center, float radius)
+        {
+            if (radius > GenRadial.MaxRadialPatternRadius)
+                return false;
+            return true;
+        }
+    }
+
+
+
 
     public class DefClusterExtension : DefModExtension
     {
@@ -624,7 +646,7 @@ namespace Submunition
 
         protected virtual void Explode()
         {
-            GenExplosion.NotifyNearbyPawnsOfDangerousExplosive(this, this.def.projectile.damageDef, this.launcher.Faction);
+            GenExplosion.NotifyNearbyPawnsOfDangerousExplosive(this, this.def.projectile.damageDef);
 
             Map map = base.Map;
             IntVec3 position = base.ExactPosition.ToIntVec3();
