@@ -276,7 +276,7 @@
     <label>chemical burn</label>
     <hasForcefulImpact>false</hasForcefulImpact>
     <makesBlood>false</makesBlood>
-    <canInterruptJobs>false</canInterruptJobs>
+    <canInterruptJobs>true</canInterruptJobs>
     <externalViolence>true</externalViolence>
     <deathMessage>{0} has burned to death.</deathMessage>
     <hediff>SM_Chem_Burn</hediff>

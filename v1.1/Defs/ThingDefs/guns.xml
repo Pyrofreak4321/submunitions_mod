@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-<!-- DB Shot gun -->  
+  <!-- DB Shot gun -->
   <ThingDef ParentName="BaseHumanMakeableGun">
     <defName>SM_Gun_DBShotgun</defName>
     <label>shotgun \w dragon breath shells</label>
@@ -45,6 +45,7 @@
           <canTargetLocations>true</canTargetLocations>
         </targetParams>
         <texPath>Submunition/UI/db</texPath>
+        <commandIcon>Submunition/UI/db</commandIcon>
       </li>
       <li Class="AdditionalVerb.VerbProperties_Custom">
         <verbClass>Verb_Shoot</verbClass>
@@ -58,6 +59,7 @@
         <desc>Switch to Normal Rounds</desc>
         <label>Normal Rounds</label>
         <texPath>Things/Item/Equipment/WeaponRanged/Shotgun</texPath>
+        <commandIcon>Things/Item/Equipment/WeaponRanged/Shotgun</commandIcon>
       </li>
     </verbs>
     <tools>
@@ -85,65 +87,8 @@
       </li>
     </comps>
   </ThingDef>
-  <ThingDef ParentName="BaseBullet">
-    <defName>SM_Bullet_DBShotgun</defName>
-    <label>dragon breath shotgun blast</label>
-    <graphicData>
-      <texPath>Things/Projectile/Bullet_Small</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-      <shaderType>TransparentPostLight</shaderType>
-      <color>(254,151,58)</color>
-    </graphicData>
-    <projectile>
-      <damageAmountBase>10</damageAmountBase>
-      <damageDef>SM_WhitePhospherBullet</damageDef>
-      <speed>55</speed>
-    </projectile>
-    <modExtensions>
-      <li Class="Submunition.DefClusterExtension">
-        <pelletCount>10</pelletCount>
-        <pelletSpread>2</pelletSpread>
-        <pelletDef>SM_Bullet_DBShotgun_pellet</pelletDef>
-      </li>
-    </modExtensions>
-  </ThingDef>
-  <ThingDef ParentName="BaseBullet">
-    <defName>SM_Bullet_DBShotgun_pellet</defName>
-    <label>dragon breath shotgun blast</label>
-    <graphicData>
-      <texPath>Things/Projectile/Bullet_Small</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-      <shaderType>TransparentPostLight</shaderType>
-      <color>(254,151,58)</color>
-    </graphicData>
-    <thingClass>Projectile_Explosive</thingClass>
-    <projectile>
-      <alwaysFreeIntercept>true</alwaysFreeIntercept>
-      <damageAmountBase>1</damageAmountBase>
-      <explosionRadius>.9</explosionRadius>
-      <explosionDelay>0</explosionDelay>
-      <damageDef>SM_WhitePhospherBullet</damageDef>
-      <speed>55</speed>
-    </projectile>
-  </ThingDef>
-  <ThingDef ParentName="BaseBullet">
-    <defName>SM_Bullet_Shotgun_pellet</defName>
-    <label>shotgun blast</label>
-    <graphicData>
-      <texPath>Things/Projectile/Bullet_Small</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-    <projectile>
-      <alwaysFreeIntercept>true</alwaysFreeIntercept>
-      <damageDef>Bullet</damageDef>
-      <damageAmountBase>3</damageAmountBase>
-      <stoppingPower>1</stoppingPower>
-      <armorPenetrationBase>0.14</armorPenetrationBase>
-      <speed>55</speed>
-    </projectile>
-  </ThingDef>
 
-<!-- HF minigun -->  
+  <!-- HF minigun -->
   <ThingDef ParentName="BaseHumanMakeableGun">
     <defName>SM_Gun_Minigun_HF</defName>
     <label>hellfire minigun</label>
@@ -206,27 +151,8 @@
       </li>
     </tools>
   </ThingDef>
-  <ThingDef ParentName="BaseBullet">
-    <defName>SM_Bullet_Minigun_HF</defName>
-    <label>minigun bullet</label>
-    <graphicData>
-      <texPath>Things/Projectile/Bullet_Small</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-      <shaderType>TransparentPostLight</shaderType>
-      <color>(254,151,58)</color>
-    </graphicData>
-    <thingClass>Projectile_Explosive</thingClass>
-    <projectile>
-      <damageDef>SM_WhitePhospherBullet</damageDef>
-      <damageAmountBase>2</damageAmountBase>
-      <explosionDelay>0</explosionDelay>
-      <explosionRadius>.25</explosionRadius>
-      <flyOverhead>false</flyOverhead>
-      <speed>70</speed>
-    </projectile>
-  </ThingDef>
-  
-<!-- Roid -->  
+
+  <!-- Roid -->
   <ThingDef ParentName="BaseHumanMakeableGun">
     <defName>SM_Gun_RoidRifle</defName>
     <label>Rage rifle</label>
@@ -288,21 +214,6 @@
         <cooldownTime>2</cooldownTime>
       </li>
     </tools>
-  </ThingDef>
-  <ThingDef ParentName="BaseBullet">
-    <defName>SM_Bullet_RoidRifle</defName>
-    <label>bolt-action rifle bullet</label>
-    <projectile>
-      <damageDef>SM_Roid</damageDef>
-      <damageAmountBase>3</damageAmountBase>
-      <stoppingPower>0</stoppingPower>
-      <armorPenetrationBase>0</armorPenetrationBase>
-      <speed>70</speed>
-    </projectile>
-    <graphicData>
-      <texPath>Things/Projectile/Bullet_big</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
   </ThingDef>
 
   <ThingDef ParentName="BaseHumanMakeableGun">
@@ -371,23 +282,8 @@
       </li>
     </tools>
   </ThingDef>
-  <ThingDef ParentName="BaseBullet">
-    <defName>SM_Bullet_RoidRevolver</defName>
-    <label>Roid revolver bullet</label>
-    <graphicData>
-      <texPath>Things/Projectile/Bullet_Small</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-    <projectile>
-      <damageDef>SM_Roid</damageDef>
-      <damageAmountBase>1</damageAmountBase>
-      <stoppingPower>0</stoppingPower>
-      <armorPenetrationBase>0</armorPenetrationBase>
-      <speed>55</speed>
-    </projectile>
-  </ThingDef>
-  
-<!-- narq -->  
+
+  <!-- narq -->
   <ThingDef ParentName="BaseHumanMakeableGun">
     <defName>SM_Gun_NarqRifle</defName>
     <label>NARQ rifle</label>
@@ -449,21 +345,6 @@
         <cooldownTime>2</cooldownTime>
       </li>
     </tools>
-  </ThingDef>
-  <ThingDef ParentName="BaseBullet">
-    <defName>SM_Bullet_NarqRifle</defName>
-    <label>bolt-action rifle bullet</label>
-    <projectile>
-      <damageDef>SM_Narq</damageDef>
-      <damageAmountBase>3</damageAmountBase>
-      <stoppingPower>0</stoppingPower>
-      <armorPenetrationBase>0</armorPenetrationBase>
-      <speed>70</speed>
-    </projectile>
-    <graphicData>
-      <texPath>Things/Projectile/Bullet_big</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
   </ThingDef>
 
   <ThingDef ParentName="BaseHumanMakeableGun">
@@ -532,24 +413,8 @@
       </li>
     </tools>
   </ThingDef>
-  <ThingDef ParentName="BaseBullet">
-    <defName>SM_Bullet_NarqRevolver</defName>
-    <label>NARQ revolver bullet</label>
-    <graphicData>
-      <texPath>Things/Projectile/Bullet_Small</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-    <projectile>
-      <flyOverhead>false</flyOverhead>
-      <damageDef>SM_Narq</damageDef>
-      <damageAmountBase>1</damageAmountBase>
-      <stoppingPower>0</stoppingPower>
-      <armorPenetrationBase>0</armorPenetrationBase>
-      <speed>55</speed>
-    </projectile>
-  </ThingDef>
- 
-<!-- Tech rifle -->  
+
+  <!-- Tech rifle -->
   <ThingDef ParentName="BaseHumanMakeableGun">
     <ignoreConfigErrors>true</ignoreConfigErrors>
     <defName>SM_Gun_AssaultRifle_TECH</defName>
@@ -600,6 +465,7 @@
         <desc>Switch to Normal rounds</desc>
         <label>Normal Rounds</label>
         <texPath>Submunition/Item/SM_Gun_compensator</texPath>
+        <commandIcon>Submunition/Item/SM_Gun_compensator</commandIcon>
       </li>
       <li Class="AdditionalVerb.VerbProperties_Custom">
         <verbClass>Verb_Shoot</verbClass>
@@ -615,6 +481,7 @@
         <desc>Switch to AP Rounds</desc>
         <label>AP Rounds</label>
         <texPath>Submunition/UI/ap</texPath>
+        <commandIcon>Submunition/UI/ap</commandIcon>
       </li>
       <li Class="AdditionalVerb.VerbProperties_Custom">
         <verbClass>Verb_Shoot</verbClass>
@@ -630,6 +497,7 @@
         <desc>Switch to Rubber bullets</desc>
         <label>Rubber bullets</label>
         <texPath>Submunition/UI/rubber</texPath>
+        <commandIcon>Submunition/UI/rubber</commandIcon>
       </li>
       <li Class="AdditionalVerb.VerbProperties_Custom">
         <verbClass>Verb_Shoot</verbClass>
@@ -649,6 +517,7 @@
         <desc>Switch to hip fire using a laser sight</desc>
         <label>Hip Fire</label>
         <texPath>Submunition/UI/rapid</texPath>
+        <commandIcon>Submunition/UI/rapid</commandIcon>
       </li>
       <li Class="AdditionalVerb.VerbProperties_Custom">
         <verbClass>Verb_Shoot</verbClass>
@@ -668,6 +537,7 @@
         <desc>Switch to the high power scope</desc>
         <label>Scope</label>
         <texPath>Submunition/UI/scope</texPath>
+        <commandIcon>Submunition/UI/scope</commandIcon>
       </li>
       <li Class="AdditionalVerb.VerbProperties_Custom">
         <verbClass>Verb_Shoot</verbClass>
@@ -689,6 +559,7 @@
         <desc>Switch to the under-barrel launcher loaded with HE rounds</desc>
         <label>Under-barrel (HE)</label>
         <texPath>Submunition/UI/he_g</texPath>
+        <commandIcon>Submunition/UI/he_g</commandIcon>
       </li>
       <li Class="AdditionalVerb.VerbProperties_Custom">
         <verbClass>Verb_Shoot</verbClass>
@@ -710,6 +581,7 @@
         <desc>Switch to the under-barrel launcher loaded with Frag rounds</desc>
         <label>Under-barrel (Frag)</label>
         <texPath>Submunition/UI/frag_g</texPath>
+        <commandIcon>Submunition/UI/frag_g</commandIcon>
       </li>
       <li Class="AdditionalVerb.VerbProperties_Custom">
         <verbClass>Verb_Shoot</verbClass>
@@ -731,6 +603,7 @@
         <desc>Switch to the under-barrel launcher loaded with EMP rounds</desc>
         <label>Under-barrel (EMP)</label>
         <texPath>Submunition/UI/emp_g</texPath>
+        <commandIcon>Submunition/UI/emp_g</commandIcon>
       </li>
       <li Class="AdditionalVerb.VerbProperties_Custom">
         <verbClass>Verb_Shoot</verbClass>
@@ -752,6 +625,7 @@
         <desc>Switch to the under-barrel launcher loaded with incendiary rounds</desc>
         <label>Under-barrel (incendiary)</label>
         <texPath>Submunition/UI/inc_g</texPath>
+        <commandIcon>Submunition/UI/inc_g</commandIcon>
       </li>
       <li Class="AdditionalVerb.VerbProperties_Custom">
         <verbClass>Verb_Shoot</verbClass>
@@ -760,7 +634,7 @@
         <warmupTime>6</warmupTime>
         <range>27.9</range>
         <burstShotCount>1</burstShotCount>
-        <soundCast>Shot_IncendiaryLauncher</soundCast>
+        <soundCast>MortarBomb_Explode</soundCast>
         <soundCastTail>GunTail_Medium</soundCastTail>
         <accuracyTouch>0.10</accuracyTouch>
         <accuracyShort>-0.15</accuracyShort>
@@ -773,6 +647,7 @@
         <desc>Switch to the under-barrel launcher loaded with masterkey rounds</desc>
         <label>Under-barrel (masterkey)</label>
         <texPath>Submunition/UI/exp</texPath>
+        <commandIcon>Submunition/UI/exp</commandIcon>
       </li>
     </verbs>
     <weaponTags>
@@ -812,35 +687,8 @@
       </li>
     </comps>
   </ThingDef>
-  <ThingDef ParentName="BaseBullet">
-    <defName>SM_Bullet_AssaultRifleRubber</defName>
-    <label>assault rifle bullet</label>
-    <graphicData>
-      <texPath>Things/Projectile/Bullet_Small</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-    <projectile>
-      <damageDef>SM_Rubber</damageDef>
-      <damageAmountBase>1</damageAmountBase>
-      <speed>70</speed>
-    </projectile>
-  </ThingDef>
-  <ThingDef ParentName="BaseBullet">
-    <defName>SM_Bullet_AssaultRifleAP</defName>
-    <label>assault rifle bullet</label>
-    <graphicData>
-      <texPath>Things/Projectile/Bullet_Small</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-    <projectile>
-      <damageDef>Bullet</damageDef>
-      <damageAmountBase>8</damageAmountBase>
-      <armorPenetrationBase>0.8</armorPenetrationBase>
-      <speed>70</speed>
-    </projectile>
-  </ThingDef>
-  
-<!-- rifle grenade -->
+
+  <!-- rifle grenade -->
   <ThingDef ParentName="BaseHumanMakeableGun">
     <defName>SM_Gun_RifleGrenade</defName>
     <ignoreConfigErrors>true</ignoreConfigErrors>
@@ -891,6 +739,7 @@
         <desc>Switch to Rifle Grenades</desc>
         <label>Rifle Grenades</label>
         <texPath>Submunition/UI/he_g</texPath>
+        <commandIcon>Submunition/UI/he_g</commandIcon>
       </li>
       <li Class="AdditionalVerb.VerbProperties_Custom">
         <verbClass>Verb_Shoot</verbClass>
@@ -904,6 +753,7 @@
         <desc>Switch to Normal Rounds</desc>
         <label>Normal Rounds</label>
         <texPath>Things/Item/Equipment/WeaponRanged/BoltActionRifle</texPath>
+        <commandIcon>Things/Item/Equipment/WeaponRanged/BoltActionRifle</commandIcon>
       </li>
     </verbs>
     <tools>
@@ -931,24 +781,8 @@
       </li>
     </comps>
   </ThingDef>
-  <ThingDef ParentName="BaseBullet">
-    <defName>SM_Bullet_RifleGrenade</defName>
-    <label>rifle grenade</label>
-    <thingClass>Projectile_Explosive</thingClass>
-    <projectile>
-      <damageDef>Bomb</damageDef>
-      <damageAmountBase>25</damageAmountBase>
-      <explosionRadius>1</explosionRadius>
-      <flyOverhead>true</flyOverhead>
-      <speed>60</speed>
-    </projectile>
-    <graphicData>
-      <texPath>Things/Projectile/Bullet_big</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-  </ThingDef>
 
-<!-- rubber -->
+  <!-- rubber -->
   <ThingDef ParentName="BaseHumanMakeableGun">
     <defName>SM_Gun_BBShotgun</defName>
     <label>pump shotgun \w bean bag shells</label>
@@ -993,6 +827,7 @@
         <desc>Switch to Bean Bag shells</desc>
         <label>Bean Bags</label>
         <texPath>Submunition/UI/rubber</texPath>
+        <commandIcon>Submunition/UI/rubber</commandIcon>
       </li>
       <li Class="AdditionalVerb.VerbProperties_Custom">
         <verbClass>Verb_Shoot</verbClass>
@@ -1006,6 +841,7 @@
         <desc>Switch to Normal Rounds</desc>
         <label>Normal Rounds</label>
         <texPath>Things/Item/Equipment/WeaponRanged/Shotgun</texPath>
+        <commandIcon>Things/Item/Equipment/WeaponRanged/Shotgun</commandIcon>
       </li>
     </verbs>
     <tools>
@@ -1032,21 +868,6 @@
         <compClass>AdditionalVerb.Comp_VerbSaveable</compClass>
       </li>
     </comps>
-  </ThingDef>
-  <ThingDef ParentName="BaseBullet">
-    <defName>SM_Bullet_BBShotgun_Blast</defName>
-    <label>shotgun blast</label>
-    <graphicData>
-      <texPath>Things/Projectile/Bullet_Shotgun</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-    <projectile>
-      <damageDef>SM_Rubber</damageDef>
-      <damageAmountBase>3</damageAmountBase>
-      <stoppingPower>15</stoppingPower>
-      <armorPenetrationBase>0.0</armorPenetrationBase>
-      <speed>55</speed>
-    </projectile>
   </ThingDef>
 
   <ThingDef ParentName="BaseHumanMakeableGun">
@@ -1095,6 +916,7 @@
         <desc>Switch to Rubber Bullets</desc>
         <label>Rubber Bullets</label>
         <texPath>Submunition/UI/rubber</texPath>
+        <commandIcon>Submunition/UI/rubber</commandIcon>
       </li>
       <li Class="AdditionalVerb.VerbProperties_Custom">
         <verbClass>Verb_Shoot</verbClass>
@@ -1108,6 +930,7 @@
         <desc>Switch to Normal Rounds</desc>
         <label>Normal Rounds</label>
         <texPath>Things/Item/Equipment/WeaponRanged/Revolver</texPath>
+        <commandIcon>Things/Item/Equipment/WeaponRanged/Revolver</commandIcon>
       </li>
     </verbs>
     <tools>
@@ -1135,20 +958,7 @@
       </li>
     </comps>
   </ThingDef>
-  <ThingDef ParentName="BaseBullet">
-    <defName>SM_Bullet_RubberRevolver</defName>
-    <label>revolver bullet</label>
-    <graphicData>
-      <texPath>Things/Projectile/Bullet_Small</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-    <projectile>
-      <damageDef>SM_Rubber</damageDef>
-      <damageAmountBase>1</damageAmountBase>
-      <speed>55</speed>
-    </projectile>
-  </ThingDef>
-  
+
   <ThingDef ParentName="BaseHumanMakeableGun">
     <defName>SM_Gun_AutopistolRubber</defName>
     <label>autopistol \w rubber bullets</label>
@@ -1194,6 +1004,7 @@
         <desc>Switch to Rubber Bullets</desc>
         <label>Rubber Bullets</label>
         <texPath>Submunition/UI/rubber</texPath>
+        <commandIcon>Submunition/UI/rubber</commandIcon>
       </li>
       <li Class="AdditionalVerb.VerbProperties_Custom">
         <verbClass>Verb_Shoot</verbClass>
@@ -1207,6 +1018,7 @@
         <desc>Switch to Normal Rounds</desc>
         <label>Normal Rounds</label>
         <texPath>Things/Item/Equipment/WeaponRanged/Autopistol</texPath>
+        <commandIcon>Things/Item/Equipment/WeaponRanged/Autopistol</commandIcon>
       </li>
     </verbs>
     <tools>
@@ -1234,21 +1046,8 @@
       </li>
     </comps>
   </ThingDef>
-  <ThingDef ParentName="BaseBullet">
-    <defName>SM_Bullet_AutopistolRubber</defName>
-    <label>autopistol bullet</label>
-    <graphicData>
-      <texPath>Things/Projectile/Bullet_Small</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-    <projectile>
-      <damageDef>SM_Rubber</damageDef>
-      <damageAmountBase>1</damageAmountBase>
-      <speed>55</speed>
-    </projectile>
-  </ThingDef>
 
-<!-- flamethrower -->
+  <!-- flamethrower -->
   <ThingDef ParentName="BaseHumanMakeableGun">
     <ignoreConfigErrors>true</ignoreConfigErrors>
     <defName>SM_Gun_Flamer</defName>
@@ -1320,39 +1119,8 @@
       </li>
     </tools>
   </ThingDef>
-  <ThingDef ParentName="BaseBullet">
-    <defName>SM_Bullet_Flamer</defName>
-    <label>incendiary bolt</label>
-    <graphicData>
-      <texPath>Things/Projectile/LauncherShot</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-      <shaderType>TransparentPostLight</shaderType>
-      <color>(254,189,58)</color>
-    </graphicData>
-    <thingClass>Submunition.Projectile_Advanced</thingClass>
-    <projectile>
-      <speed>40</speed>
-      <damageAmountBase>0</damageAmountBase>
-      <damageDef>SM_Smoke_Silent</damageDef>
-      <explosionRadius>-1</explosionRadius>
-      <ai_IsIncendiary>true</ai_IsIncendiary>
-      <explosionDelay>0</explosionDelay>
-    </projectile>
-    <modExtensions>
-      <li Class="Submunition.DefAdvancedProjectileExtension">
-        <spawnSpreadRadius>.25</spawnSpreadRadius>
-        <spawnCount>1</spawnCount>
-        <preImpactDetonation>9999</preImpactDetonation>
-        <duration>9999</duration>
-        <interval>3</interval>
-        <secondaryDelay>10</secondaryDelay>
-        <spawnThingDef>SM_Gas_Napalm</spawnThingDef>
-        <spawner>true</spawner>
-      </li>
-    </modExtensions>
-  </ThingDef>
 
-<!-- chem sprayer -->
+  <!-- chem sprayer -->
   <ThingDef ParentName="BaseHumanMakeableGun">
     <ignoreConfigErrors>true</ignoreConfigErrors>
     <defName>SM_Gun_ChemSprayer</defName>
@@ -1424,36 +1192,4 @@
       </li>
     </tools>
   </ThingDef>
-  <ThingDef ParentName="BaseBullet">
-    <defName>SM_Bullet_ChemSprayer</defName>
-    <label>incendiary bolt</label>
-    <graphicData>
-      <texPath>Things/Projectile/LauncherShot</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-      <shaderType>TransparentPostLight</shaderType>
-      <color>(51,102,0)</color>
-    </graphicData>
-    <thingClass>Submunition.Projectile_Advanced</thingClass>
-    <projectile>
-      <speed>40</speed>
-      <damageAmountBase>0</damageAmountBase>
-      <damageDef>SM_Smoke_Silent</damageDef>
-      <explosionRadius>-1</explosionRadius>
-      <ai_IsIncendiary>true</ai_IsIncendiary>
-      <explosionDelay>0</explosionDelay>
-    </projectile>
-    <modExtensions>
-      <li Class="Submunition.DefAdvancedProjectileExtension">
-        <spawnSpreadRadius>.25</spawnSpreadRadius>
-        <spawnCount>1</spawnCount>
-        <preImpactDetonation>9999</preImpactDetonation>
-        <duration>9999</duration>
-        <interval>3</interval>
-        <secondaryDelay>10</secondaryDelay>
-        <spawnThingDef>SM_Gas_Nerve</spawnThingDef>
-        <spawner>true</spawner>
-      </li>
-    </modExtensions>
-  </ThingDef>
-
-</Defs> 
+</Defs>

@@ -56,8 +56,10 @@ namespace Submunition
             if (__instance.def.HasModExtension<DefClusterExtension>())
             {
                 DefClusterExtension ext = __instance.def.GetModExtension<DefClusterExtension>();
+                float dist = (origin.ToIntVec3() - usedTarget.Cell).LengthHorizontal+1;
+                
                 IEnumerable<IntVec3> cellRect = GenRadial.RadialCellsAround(usedTarget.Cell, ext.pelletSpread, true);
-                int max = GenRadial.NumCellsInRadius(ext.pelletSpread);
+                int max = GenRadial.NumCellsInRadius((ext.pelletSpread/ext.atRange)*dist);
 
                 for (int i = 0; i < ext.pelletCount; i++)
                 {
@@ -68,7 +70,7 @@ namespace Submunition
 
                     ShootLine s = new ShootLine(origin.ToIntVec3(), randomCell);
                     IEnumerable<IntVec3> cells = s.Points();
-                    float mod = 1.1f / Math.Max(cells.Count(),1f);
+                    float mod = (1f+(ext.pelletSpread/10f)) / Math.Max(cells.Count(),1f);
                     bool flag = true;
                     LocalTargetInfo target = randomCell;
 
@@ -80,13 +82,27 @@ namespace Submunition
                             for (int t = 0; t < things.Count && flag; t++)
                             {
                                 Pawn pawn = things[t] as Pawn;
-                                if (pawn != null && !things[t].Equals(launcher) && Rand.Chance(Math.Min(pawn.BodySize,0.95f)*mod))
+
+                                float chance = 0;
+                                if(usedTarget.HasThing && usedTarget.Thing.Equals(things[t]))
                                 {
-                                    target = things[t];
+                                    chance = 100f;
                                 }
-                                else if (Rand.Chance(things[t].BaseBlockChance()*mod))
+                                else if (pawn != null)
+                                {
+                                    dist = (cells.ElementAt(c) - randomCell).LengthHorizontal;
+                                    chance = pawn.BodySize * (float)Math.Pow(mod * c, 4f) * ((pawn.GetPosture() != PawnPosture.Standing && dist > ext.pelletSpread) ? .2f : 1f);
+                                }
+                                else
+                                {
+                                    chance = things[t].BaseBlockChance() * (float)Math.Pow(mod * c, 4f);
+                                }
+
+
+                                if (Rand.Chance(chance))
                                 {
                                     target = things[t];
+                                    flag = false;
                                 }
                             }
                         }
@@ -123,28 +139,9 @@ namespace Submunition
     {
         public int pelletCount = 6;
         public float pelletSpread = 1.9f;
+        public int atRange = 10;
         public ThingDef pelletDef;
     }
-
-    //class SubmunitionMod : Mod
-    //{
-    //    public SubmunitionMod(ModContentPack content) : base(content)
-    //    {
-    //        Harmony.DEBUG = true;
-    //        var harmony = new Harmony("com.ifp.advancedmunitions");
-    //        harmony.PatchAll();
-    //    }
-    //}
-
-    //[HarmonyPatch(typeof(VerbProperties),"ConfigErrors")]
-    //static class supressError
-    //{
-    //    //[HarmonyPrefix]
-    //    //static bool Prefix(ref IEnumerable<string> __result, ThingDef parent)
-    //    //{
-    //    //    return false;
-    //    //}
-    //}
 
     public class DefSubmunitionExtension : DefModExtension
         {
@@ -694,14 +691,7 @@ namespace Submunition
                         {
                             Projectile frag = (Projectile)GenSpawn.Spawn(this.extension.fragThingDef, base.Position, base.Map, WipeMode.Vanish);
 
-                            if ((randomCell - base.Position).LengthHorizontal < 1)
-                            {
-                                cells = new ShootLine(base.Position, randomCell).Points();
-                            }
-                            else
-                            {
-                                cells = GenSight.PointsOnLineOfSight(base.Position, randomCell);
-                            }
+                            cells = new ShootLine(base.Position, randomCell).Points();
 
                             bool flag = true;
                             LocalTargetInfo target = new LocalTargetInfo(randomCell);
@@ -720,16 +710,15 @@ namespace Submunition
 
                                         if (pawn != null)
                                         {
-                                            chance = pawn.BodySize * ((pawn.GetPosture() != PawnPosture.Standing && dist > 4.5f) ? .2f : 1f);
+                                            chance = pawn.BodySize * ((pawn.GetPosture() != PawnPosture.Standing && dist > 2) ? .2f : 1f);
                                         }
                                         else
                                         {
-                                            chance = things[t].def.fillPercent * (float)things[t].def.size.x * (float)things[t].def.size.z;
+                                            chance = things[t].BaseBlockChance();
                                         }
 
-                                        Log.Message("chance: " + chance);
 
-                                        if (Rand.Chance(chance))
+                                        if (Rand.Chance(chance * 1.25f))
                                         {
                                             target = things[t];
                                             flag = false;

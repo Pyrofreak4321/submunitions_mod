@@ -80,9 +80,9 @@
     <defName>SM_Gas_WP</defName>
     <label>White Phosphorus debries</label>
     <graphicData>
-      <texPath>Things/Gas/Puff</texPath>
-      <drawSize>0.1</drawSize>
-      <color>(1.0,1.0,1.0, 0.1)</color>
+      <texPath>Things/Special/Fire</texPath>
+      <graphicClass>Submunition.SM_Graphic_Flicker</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
     </graphicData>
     <gas>
       <expireSeconds>
@@ -207,6 +207,38 @@
     </modExtensions>
   </ThingDef>
 
+<!-- acid -->
+  <ThingDef ParentName="BaseGas">
+    <thingClass>Submunition.Gas_Toxic</thingClass>
+    <defName>SM_Gas_Acid</defName>
+    <label>corrosive gas</label>
+    <graphicData>
+      <graphicClass>Submunition.SM_Graphic_Random</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <texPath>Submunition/Effects/Acid</texPath>
+    </graphicData>
+    <gas>
+      <expireSeconds>
+        <min>60</min>
+        <max>90</max>
+      </expireSeconds>
+      <blockTurretTracking>false</blockTurretTracking>
+      <accuracyPenalty>0</accuracyPenalty>
+      <rotationSpeed>0</rotationSpeed>
+    </gas>
+    <modExtensions>
+      <li Class="Submunition.DefToxicGasExtension">
+        <toxicGasDamageChance>1</toxicGasDamageChance>
+        <toxicGasDamageStrength>1</toxicGasDamageStrength>
+        <toxicGasDamageDef>SM_Toxic</toxicGasDamageDef>
+        <!-- <toxicGasMote>SM_Mote_Gas_Nerve</toxicGasMote>
+        <toxicGasMoteRate>500</toxicGasMoteRate> -->
+        <toxicGasArea>true</toxicGasArea>
+        <toxicGasDamageEnviro>true</toxicGasDamageEnviro>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
 <!-- narq -->
   <ThingDef ParentName="BaseGas">
     <thingClass>Submunition.Gas_Toxic</thingClass>
@@ -247,9 +279,9 @@
     <defName>SM_Gas_Napalm</defName>
     <label>Napalm</label>
     <graphicData>
-      <texPath>Things/Gas/Puff</texPath>
-      <drawSize>0.1</drawSize>
-      <color>(1.0,1.0,1.0, 0.1)</color>
+      <texPath>Things/Special/Fire</texPath>
+      <graphicClass>Submunition.SM_Graphic_Flicker</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
     </graphicData>
     <gas>
       <expireSeconds>
@@ -258,11 +290,11 @@
       </expireSeconds>
       <blockTurretTracking>false</blockTurretTracking>
       <accuracyPenalty>0</accuracyPenalty>
-      <rotationSpeed>9999</rotationSpeed>
+      <rotationSpeed>0</rotationSpeed>
     </gas>
     <modExtensions>
       <li Class="Submunition.DefToxicGasExtension">
-        <toxicGasSmokey>20</toxicGasSmokey>
+        <!-- <toxicGasSmokey>100</toxicGasSmokey> -->
         <toxicGasHot>true</toxicGasHot>
         <toxicGasArea>true</toxicGasArea>
         <toxicGasDamageChance>1</toxicGasDamageChance>
@@ -271,5 +303,4 @@
       </li>
     </modExtensions>
   </ThingDef>
-
 </Defs>

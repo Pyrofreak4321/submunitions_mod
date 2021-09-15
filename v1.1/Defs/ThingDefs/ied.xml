@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-<!-- TG -->  
+  <!-- TG -->
   <ThingDef ParentName="TrapIEDBase">
     <defName>SM_TrapIED_Tear_Gas</defName>
     <label>Tear Gas IED trap</label>
@@ -26,9 +26,9 @@
       </li>
     </comps>
     <specialDisplayRadius>20</specialDisplayRadius>
-  </ThingDef>  
+  </ThingDef>
 
-<!-- WP -->  
+  <!-- WP -->
   <ThingDef ParentName="TrapIEDBase">
     <defName>TrapIED_WP</defName>
     <label>White Phosphorus IED trap</label>
@@ -53,9 +53,9 @@
       </li>
     </comps>
     <specialDisplayRadius>8</specialDisplayRadius>
-  </ThingDef>  
-  
-<!-- Roid -->  
+  </ThingDef>
+
+  <!-- Roid -->
   <ThingDef ParentName="TrapIEDBase">
     <defName>SM_TrapIED_Roid_Gas</defName>
     <label>Rage IED trap</label>
@@ -81,9 +81,9 @@
       </li>
     </comps>
     <specialDisplayRadius>20</specialDisplayRadius>
-  </ThingDef>  
-   
-<!-- nerve -->  
+  </ThingDef>
+
+  <!-- nerve -->
   <ThingDef ParentName="TrapIEDBase">
     <defName>TrapIED_Nerve</defName>
     <label>Nerve Agent IED trap</label>
@@ -108,9 +108,9 @@
       </li>
     </comps>
     <specialDisplayRadius>16</specialDisplayRadius>
-  </ThingDef>  
-  
-<!-- narq -->  
+  </ThingDef>
+
+  <!-- narq -->
   <ThingDef ParentName="TrapIEDBase">
     <defName>SM_TrapIED_Narq_Gas</defName>
     <label>NARQ IED trap</label>
@@ -136,9 +136,9 @@
       </li>
     </comps>
     <specialDisplayRadius>20</specialDisplayRadius>
-  </ThingDef>  
+  </ThingDef>
 
-<!-- napalm -->  
+  <!-- napalm -->
   <ThingDef ParentName="TrapIEDBase">
     <defName>TrapIED_Napalm</defName>
     <label>Napalm IED trap</label>
@@ -163,9 +163,9 @@
       </li>
     </comps>
     <specialDisplayRadius>6</specialDisplayRadius>
-  </ThingDef>   
-  
-<!-- minelet -->  
+  </ThingDef>
+
+  <!-- minelet -->
   <ThingDef ParentName="TrapIEDBase">
     <defName>SM_Minelet</defName>
     <label>Minelet</label>
