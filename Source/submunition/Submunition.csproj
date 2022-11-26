@@ -311,6 +311,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdvHediff.cs" />
+    <Compile Include="Graphics.cs" />
     <Compile Include="Traps.cs" />
     <Compile Include="Gas_Toxic.cs" />
     <Compile Include="Projectile_Advanced.cs" />

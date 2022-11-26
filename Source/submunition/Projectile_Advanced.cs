@@ -624,7 +624,7 @@ namespace Submunition
 
         protected virtual void Explode()
         {
-            GenExplosion.NotifyNearbyPawnsOfDangerousExplosive(this, this.def.projectile.damageDef, this.launcher.Faction);
+            GenExplosion.NotifyNearbyPawnsOfDangerousExplosive(this, this.def.projectile.damageDef);
 
             Map map = base.Map;
             IntVec3 position = base.ExactPosition.ToIntVec3();
