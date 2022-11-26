@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-<!-- tear -->  
+  <!-- tear -->
   <ThingDef ParentName="MoteBase">
     <defName>SM_Mote_Gas_Tear</defName>
     <graphicData>
@@ -16,8 +16,8 @@
       <fadeOutTime>0.75</fadeOutTime>
     </mote>
   </ThingDef>
-  
-<!-- roid -->  
+
+  <!-- roid -->
   <ThingDef ParentName="MoteBase">
     <defName>SM_Mote_Gas_Roid</defName>
     <graphicData>
@@ -33,8 +33,8 @@
       <fadeOutTime>0.75</fadeOutTime>
     </mote>
   </ThingDef>
-   
-<!-- nerve -->  
+
+  <!-- nerve -->
   <ThingDef ParentName="MoteBase">
     <defName>SM_Mote_Gas_Nerve</defName>
     <graphicData>
@@ -50,8 +50,8 @@
       <fadeOutTime>0.75</fadeOutTime>
     </mote>
   </ThingDef>
-  
-<!-- narq -->  
+
+  <!-- narq -->
   <ThingDef ParentName="MoteBase">
     <defName>SM_Mote_Gas_Narq</defName>
     <graphicData>
@@ -59,6 +59,23 @@
       <shaderType>MoteGlow</shaderType>
       <drawSize>2</drawSize>
       <color>(0.2,1,1,0.25)</color>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.75</fadeInTime>
+      <solidTime>0.75</solidTime>
+      <fadeOutTime>0.75</fadeOutTime>
+    </mote>
+  </ThingDef>
+
+  <!-- narq -->
+  <ThingDef ParentName="MoteBase">
+    <defName>SM_Mote_Gas_Tech</defName>
+    <graphicData>
+      <texPath>Things/Gas/Puff</texPath>
+      <shaderType>MoteGlow</shaderType>
+      <drawSize>2</drawSize>
+      <color>(1,1,1,0.15)</color>
     </graphicData>
     <altitudeLayer>MoteOverhead</altitudeLayer>
     <mote>

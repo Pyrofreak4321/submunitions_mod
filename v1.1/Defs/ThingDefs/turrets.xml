@@ -96,22 +96,6 @@
       <li>SM_chem_weapons</li>
     </researchPrerequisites>
   </ThingDef>
-  <ThingDef ParentName="BaseBullet">
-    <defName>SM_Bullet_NarqTurret</defName>
-    <label>NARQ turret dart</label>
-    <graphicData>
-      <texPath>Things/Projectile/Bullet_Small</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-    <projectile>
-      <flyOverhead>false</flyOverhead>
-      <damageDef>SM_Narq</damageDef>
-      <damageAmountBase>2</damageAmountBase>
-      <stoppingPower>0</stoppingPower>
-      <armorPenetrationBase>0</armorPenetrationBase>
-      <speed>70</speed>
-    </projectile>
-  </ThingDef>
   <ThingDef ParentName="BaseWeaponTurret">
     <defName>SM_Gun_NarqTurret</defName>
     <label>NARQ mini-turret gun</label>
@@ -145,7 +129,7 @@
       </li>
     </verbs>
   </ThingDef>
-  
+
   <ThingDef ParentName="BuildingBase">
     <defName>SM_Turret_mgmt</defName>
     <label>mini-gun mini-turret</label>
@@ -274,28 +258,9 @@
       </li>
     </verbs>
   </ThingDef>
-  <ThingDef ParentName="BaseBullet">
-    <defName>SM_Bullet_compensator</defName>
-    <label>minigun bullet</label>
-    <graphicData>
-      <texPath>Things/Projectile/Bullet_Small</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-    <projectile>
-      <damageDef>Bullet</damageDef>
-      <damageAmountBase>30</damageAmountBase>
-      <speed>70</speed>
-    </projectile>
-    <modExtensions>
-      <li Class="Submunition.DefClusterExtension">
-        <pelletCount>3</pelletCount>
-        <pelletSpread>1.0</pelletSpread>
-        <pelletDef>Bullet_Minigun</pelletDef>
-      </li>
-    </modExtensions>
-  </ThingDef>
-
-    <ThingDef ParentName="BuildingBase">
+</Defs>
+  <!--
+  <ThingDef ParentName="BuildingBase">
     <defName>SM_Turret_FieldGun_dynamic</defName>
     <label>Field Gun</label>
     <description>A large-bore cannon, equipped with a 10 round feeder box to reduce reload times. May explode when damaged.</description>
@@ -371,7 +336,6 @@
       <turretTopOffset>(0, 0)</turretTopOffset>
     </building>
   </ThingDef>
-  
   <ThingDef ParentName="BaseWeaponTurret">
     <defName>SM_Gun_FieldGun_dynamic</defName>
     <label>field gun</label>
@@ -383,7 +347,6 @@
       <drawSize>(2,2)</drawSize>
     </graphicData>
     <soundInteract>Interact_Rifle</soundInteract>
-    <menuHidden>true</menuHidden>
     <destroyOnDrop>true</destroyOnDrop>
     <tradeability>None</tradeability>
     <useHitPoints>false</useHitPoints>
@@ -421,115 +384,12 @@
     <comps>
       <li Class="CompProperties_ChangeableProjectile" />
     </comps>
-    
+
     <modExtensions>
       <li Class="Submunition.DefAdvancedTurret">
         <speedBoost>100</speedBoost>
       </li>
     </modExtensions>
   </ThingDef>
-  
-  
-  
-  <ThingDef ParentName="BuildingBase">
-    <defName>SM_Turret_MountedChargeRifle</defName>
-    <label>mounted charge rifle</label>
-    <description>A charged-shot assault rifle. Pulse-charge technology charges each shot with unstable energy as it leaves the barrel. Released on impact, the charged energy greatly increases the damage done. Mounted with is simple tripod to increase stability.</description>
-    <thingClass>Building_TurretGun</thingClass>
-    <graphicData>
-      <texPath>Things/Building/Security/TurretMini_Base</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>(3,3)</drawSize>
-      <damageData>
-        <rect>(0.2,0.2,0.6,0.6)</rect>
-      </damageData>
-      <shadowData>
-        <volume>(0.27,0.25,0.27)</volume>
-        <offset>(0,0,0)</offset>
-      </shadowData>
-    </graphicData>
-    <uiIconPath>Submunition/Item/TurretNarq_MenuIcon</uiIconPath>
-    <uiIconScale>0.90</uiIconScale>
-    <minifiedDef>MinifiedThing</minifiedDef>
-    <altitudeLayer>Building</altitudeLayer>
-    <stealable>false</stealable>
-    <rotatable>false</rotatable>
-    <thingCategories>
-      <li>BuildingsSecurity</li>
-    </thingCategories>
-    <statBases>
-      <MaxHitPoints>100</MaxHitPoints>
-      <Flammability>0.7</Flammability>
-      <WorkToBuild>1800</WorkToBuild>
-      <Mass>8</Mass>
-      <Beauty>-20</Beauty>
-      <ShootingAccuracyTurret>0.98</ShootingAccuracyTurret>
-    </statBases>
-    <tickerType>Normal</tickerType>
-    <comps>
-      <li Class="CompProperties_Forbiddable"/>
-      <li Class="CompProperties_Breakdownable"/>
-      <li Class="CompProperties_Mannable">
-        <manWorkType>Violent</manWorkType>
-      </li>
-    </comps>
-    <passability>PassThroughOnly</passability>
-    <pathCost>50</pathCost>
-    <fillPercent>0.4</fillPercent>
-    <hasTooltip>true</hasTooltip>
-    <costList>
-      <Steel>15</Steel>
-      <Gun_ChargeRifle>1</Gun_ChargeRifle>
-    </costList>
-    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-    <designationCategory>Security</designationCategory>
-    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
-    <building>
-      <combatPower>45</combatPower>   <!-- same as a scavenger -->
-      <ai_combatDangerous>true</ai_combatDangerous>
-      <turretGunDef>SM_Gun_MountedChargeRifle</turretGunDef>
-    </building>
-    <placeWorkers>
-      <li>PlaceWorker_TurretTop</li>
-      <li>PlaceWorker_ShowTurretRadius</li>
-    </placeWorkers>
-    <researchPrerequisites>
-      <li>SM_basic_def</li>
-    </researchPrerequisites>
-  </ThingDef>
-  <ThingDef ParentName="BaseWeaponTurret">
-    <defName>SM_Gun_MountedChargeRifle</defName>
-    <label>mounted charge rifle</label>
-    <description>A charged-shot assault rifle. Pulse-charge technology charges each shot with unstable energy as it leaves the barrel. Released on impact, the charged energy greatly increases the damage done. Mounted with is simple tripod to increase stability.</description>
-    <graphicData>
-      <texPath>Submunition/Item/TurretNarq_Top</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-    <statBases>
-      <AccuracyTouch>0.55</AccuracyTouch>
-      <AccuracyShort>0.70</AccuracyShort>
-      <AccuracyMedium>0.60</AccuracyMedium>
-      <AccuracyLong>0.49</AccuracyLong>
-      <RangedWeapon_Cooldown>2.00</RangedWeapon_Cooldown>
-      <DeteriorationRate>0</DeteriorationRate>
-      <Mass>5</Mass>
-      <Flammability>0</Flammability>
-    </statBases>
-    <verbs>
-      <li>
-        <verbClass>Verb_Shoot</verbClass>
-        <hasStandardCommand>true</hasStandardCommand>
-        <defaultProjectile>Bullet_ChargeRifle</defaultProjectile>
-        <warmupTime>1.0</warmupTime>
-        <range>25.9</range>
-        <ticksBetweenBurstShots>12</ticksBetweenBurstShots>
-        <burstShotCount>6</burstShotCount>
-        <soundCast>Shot_ChargeRifle</soundCast>
-        <soundCastTail>GunTail_Medium</soundCastTail>
-        <muzzleFlashScale>9</muzzleFlashScale>
-      </li>
-    </verbs>
-  </ThingDef>
 
-</Defs>
-
+   -->

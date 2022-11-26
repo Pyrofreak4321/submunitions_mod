@@ -4,7 +4,8 @@
     <defName>SM_researchTab</defName>
     <label>Advanced Munitions</label>
   </ResearchTabDef>
-  
+
+  <!--
   <ResearchProjectDef>
     <defName>SM_basic_def</defName>
     <label>Basic Defenses</label>
@@ -16,9 +17,10 @@
       <li>Machining</li>
     </prerequisites>
     <researchViewX>0</researchViewX>
-    <researchViewY>1</researchViewY>
+    <researchViewY>0</researchViewY>
   </ResearchProjectDef>
-  
+   -->
+
   <ResearchProjectDef>
     <defName>SM_adv_def</defName>
     <label>Advanced Defenses</label>
@@ -27,14 +29,14 @@
     <tab>SM_researchTab</tab>
     <techLevel>Industrial</techLevel>
     <prerequisites>
-      <li>SM_basic_def</li>
+      <!-- <li>SM_basic_def</li> -->
       <li>BlowbackOperation</li>
     </prerequisites>
     <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
-    <researchViewX>1</researchViewX>
+    <researchViewX>0</researchViewX>
     <researchViewY>0</researchViewY>
   </ResearchProjectDef>
-    
+
   <ResearchProjectDef>
     <defName>SM_space_def</defName>
     <label>Glitteworld Defenses</label>
@@ -53,7 +55,7 @@
     <researchViewX>1</researchViewX>
     <researchViewY>0</researchViewY>
   </ResearchProjectDef>
-  
+
   <ResearchProjectDef>
     <defName>Submunitions</defName>
     <label>advanced munitions</label>
@@ -65,10 +67,10 @@
       <li>Mortars</li>
     </prerequisites>
     <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
-    <researchViewX>0</researchViewX>
+    <researchViewX>1</researchViewX>
     <researchViewY>1</researchViewY>
   </ResearchProjectDef>
-  
+
   <ResearchProjectDef>
     <defName>SM_chem_weapons</defName>
     <label>chemical weapons</label>
@@ -82,6 +84,6 @@
     </prerequisites>
     <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
     <researchViewX>0</researchViewX>
-    <researchViewY>2</researchViewY>
+    <researchViewY>1</researchViewY>
   </ResearchProjectDef>
 </Defs>
